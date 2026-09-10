@@ -955,11 +955,11 @@ tbody tr:hover{
      STATE
      ========================================================= */
 
-  let report = {
-    rows: [],
-    recent: [],
-    totals: {}
-  };
+ let report = {
+  rows: [],
+  history: [],
+  totals: {}
+};
 
   let loading = false;
 
@@ -1066,9 +1066,9 @@ tbody tr:hover{
 
     const recent =
       Array.isArray(
-        report.recent
+        report.history
       )
-        ? report.recent
+        ? report.history
         : [];
 
     $("kpiProducts").textContent =
@@ -1244,9 +1244,9 @@ tbody tr:hover{
 
     const sourceRows =
       Array.isArray(
-        report.recent
+        report.history
       )
-        ? report.recent
+        ? report.history
         : [];
 
 
