@@ -1,1 +1,1672 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
 
+<title>BIG BROTHER — Damage Stock Report</title>
+
+<style>
+*{
+  box-sizing:border-box;
+}
+
+:root{
+  --navy:#17457a;
+  --blue:#245fae;
+  --green:#168652;
+  --red:#b43a3a;
+  --orange:#b56a13;
+  --line:#d9e2ef;
+  --muted:#667085;
+  --text:#24384c;
+  --bg:#eef3f8;
+  --white:#ffffff;
+}
+
+html,
+body{
+  margin:0;
+  min-height:100%;
+  font-family:
+    Inter,
+    Arial,
+    Helvetica,
+    sans-serif;
+
+  background:var(--bg);
+  color:var(--text);
+}
+
+body.embed .page{
+  max-width:none;
+  padding:14px;
+}
+
+.page{
+  max-width:1650px;
+  margin:auto;
+  padding:24px;
+}
+
+
+/* =========================================================
+   HEADER
+   ========================================================= */
+
+.topbar{
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-start;
+  gap:16px;
+  margin-bottom:14px;
+}
+
+.title-wrap h1{
+  margin:0;
+  color:var(--navy);
+  font-size:28px;
+}
+
+.subtitle{
+  margin-top:5px;
+  color:var(--muted);
+  font-size:12px;
+  line-height:1.5;
+}
+
+.top-actions{
+  display:flex;
+  gap:8px;
+  flex-wrap:wrap;
+  justify-content:flex-end;
+}
+
+.pill{
+  display:inline-flex;
+  align-items:center;
+  min-height:38px;
+  padding:8px 12px;
+
+  border:
+    1px solid #cbead9;
+
+  border-radius:999px;
+
+  background:#e8f7ef;
+  color:var(--green);
+
+  font-size:10px;
+  font-weight:900;
+
+  white-space:nowrap;
+}
+
+.btn{
+  border:0;
+  min-height:38px;
+  padding:9px 13px;
+
+  border-radius:9px;
+
+  font:inherit;
+  font-size:11px;
+  font-weight:900;
+
+  cursor:pointer;
+}
+
+.btn.primary{
+  background:var(--navy);
+  color:#fff;
+}
+
+.btn.secondary{
+  background:#fff;
+  color:var(--navy);
+  border:1px solid var(--line);
+}
+
+.btn:disabled{
+  opacity:.55;
+  cursor:not-allowed;
+}
+
+
+/* =========================================================
+   STATUS
+   ========================================================= */
+
+.status{
+  margin-bottom:12px;
+  padding:10px 12px;
+
+  border:
+    1px solid #ceddf0;
+
+  border-radius:10px;
+
+  background:#eef5ff;
+  color:#49627e;
+
+  font-size:11px;
+}
+
+.status.success{
+  background:#edf9f3;
+  border-color:#ccebdc;
+  color:#176d4b;
+}
+
+.status.error{
+  background:#fff1f1;
+  border-color:#f0cece;
+  color:#9d2f2f;
+}
+
+.status.warn{
+  background:#fff8eb;
+  border-color:#efd9aa;
+  color:#805b17;
+}
+
+
+/* =========================================================
+   KPI
+   ========================================================= */
+
+.kpis{
+  display:grid;
+
+  grid-template-columns:
+    repeat(
+      4,
+      minmax(0,1fr)
+    );
+
+  gap:10px;
+  margin-bottom:12px;
+}
+
+.kpi{
+  background:#fff;
+  border:1px solid var(--line);
+  border-radius:14px;
+
+  padding:15px;
+
+  box-shadow:
+    0 5px 20px
+    rgba(23,69,122,.05);
+}
+
+.kpi small{
+  display:block;
+
+  color:#718096;
+
+  font-size:9px;
+  font-weight:900;
+
+  text-transform:uppercase;
+}
+
+.kpi strong{
+  display:block;
+
+  margin-top:6px;
+
+  color:var(--navy);
+
+  font-size:22px;
+}
+
+.kpi .danger{
+  color:var(--red);
+}
+
+
+/* =========================================================
+   CARDS
+   ========================================================= */
+
+.card{
+  background:#fff;
+
+  border:
+    1px solid var(--line);
+
+  border-radius:14px;
+
+  padding:15px;
+
+  margin-bottom:12px;
+
+  box-shadow:
+    0 5px 20px
+    rgba(23,69,122,.05);
+}
+
+.card-head{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+
+  gap:12px;
+
+  margin-bottom:11px;
+}
+
+.card-title{
+  color:var(--navy);
+
+  font-size:14px;
+  font-weight:900;
+}
+
+.card-sub{
+  margin-top:3px;
+
+  color:#8392a5;
+
+  font-size:9px;
+}
+
+
+/* =========================================================
+   CONTROLS
+   ========================================================= */
+
+.controls{
+  display:flex;
+  gap:8px;
+  flex-wrap:wrap;
+}
+
+.controls input,
+.controls select{
+  min-height:38px;
+
+  padding:8px 10px;
+
+  border:
+    1px solid #cbd8e7;
+
+  border-radius:9px;
+
+  background:#fff;
+  color:var(--text);
+
+  font:inherit;
+  font-size:11px;
+}
+
+.controls input{
+  min-width:260px;
+}
+
+
+/* =========================================================
+   TABLE
+   ========================================================= */
+
+.table-wrap{
+  overflow:auto;
+
+  border:
+    1px solid var(--line);
+
+  border-radius:10px;
+}
+
+table{
+  width:100%;
+  border-collapse:collapse;
+}
+
+.remaining-table{
+  min-width:950px;
+}
+
+.history-table{
+  min-width:1250px;
+}
+
+th,
+td{
+  padding:10px;
+
+  border-bottom:
+    1px solid #edf1f5;
+
+  text-align:left;
+  vertical-align:top;
+
+  font-size:10px;
+}
+
+th{
+  position:sticky;
+  top:0;
+
+  background:#f7f9fc;
+
+  color:#53677d;
+
+  font-size:8px;
+  font-weight:900;
+
+  text-transform:uppercase;
+
+  letter-spacing:.02em;
+}
+
+td.amount,
+th.amount{
+  text-align:right;
+}
+
+tbody tr:hover{
+  background:#fbfdff;
+}
+
+.empty{
+  padding:25px !important;
+
+  text-align:center !important;
+
+  color:#8090a1 !important;
+}
+
+.product-name{
+  color:var(--navy);
+  font-weight:900;
+}
+
+.code{
+  font-family:
+    Consolas,
+    monospace;
+
+  font-size:9px;
+}
+
+.badge{
+  display:inline-block;
+
+  padding:4px 7px;
+
+  border-radius:999px;
+
+  background:#eef5ff;
+  color:#245fae;
+
+  font-size:8px;
+  font-weight:900;
+}
+
+.badge.warehouse{
+  background:#eef5ff;
+  color:#245fae;
+}
+
+.badge.batch{
+  background:#fff4df;
+  color:#9b610e;
+}
+
+.money{
+  font-variant-numeric:
+    tabular-nums;
+}
+
+.note{
+  max-width:260px;
+
+  white-space:normal;
+
+  line-height:1.4;
+}
+
+.last-update{
+  margin-top:9px;
+
+  color:#8291a1;
+
+  font-size:9px;
+}
+
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media(
+  max-width:950px
+){
+  .kpis{
+    grid-template-columns:
+      1fr 1fr;
+  }
+
+  .card-head{
+    align-items:flex-start;
+    flex-direction:column;
+  }
+}
+
+@media(
+  max-width:650px
+){
+  .page{
+    padding:12px;
+  }
+
+  .topbar{
+    display:block;
+  }
+
+  .top-actions{
+    margin-top:10px;
+    justify-content:flex-start;
+  }
+
+  .title-wrap h1{
+    font-size:23px;
+  }
+
+  .kpis{
+    grid-template-columns:1fr;
+  }
+
+  .controls{
+    width:100%;
+  }
+
+  .controls input,
+  .controls select,
+  .controls .btn{
+    width:100%;
+  }
+
+  .controls input{
+    min-width:0;
+  }
+}
+</style>
+
+
+<script src="supabase-damaged-stock.js?v=1"></script>
+
+</head>
+
+<body>
+
+<main class="page">
+
+  <!-- =====================================================
+       HEADER
+       ===================================================== -->
+
+  <div class="topbar">
+
+    <div class="title-wrap">
+
+      <h1>
+        ⚠️ Damage Stock Report
+      </h1>
+
+      <div class="subtitle">
+        BIG BROTHER · Stock Management ·
+        Current Remaining Damaged Stock
+      </div>
+
+    </div>
+
+
+    <div class="top-actions">
+
+      <div class="pill">
+        SUPABASE LIVE
+      </div>
+
+      <button
+        type="button"
+        class="btn secondary"
+        onclick="openClearedReport()"
+      >
+        ✅ Cleared Damaged Stock
+      </button>
+
+    </div>
+
+  </div>
+
+
+
+  <!-- =====================================================
+       STATUS
+       ===================================================== -->
+
+  <div
+    id="status"
+    class="status"
+  >
+    Loading Damaged Stock from Supabase...
+  </div>
+
+
+
+  <!-- =====================================================
+       KPI
+       ===================================================== -->
+
+  <section class="kpis">
+
+    <div class="kpi">
+
+      <small>
+        Damaged Products
+      </small>
+
+      <strong
+        id="kpiProducts"
+      >
+        0
+      </strong>
+
+    </div>
+
+
+    <div class="kpi">
+
+      <small>
+        Remaining Damaged Qty
+      </small>
+
+      <strong
+        id="kpiQty"
+        class="danger"
+      >
+        0
+      </strong>
+
+    </div>
+
+
+    <div class="kpi">
+
+      <small>
+        Estimated Damaged Value
+      </small>
+
+      <strong
+        id="kpiValue"
+      >
+        $0.00
+      </strong>
+
+    </div>
+
+
+    <div class="kpi">
+
+      <small>
+        Recent Damage Entries
+      </small>
+
+      <strong
+        id="kpiRecent"
+      >
+        0
+      </strong>
+
+    </div>
+
+  </section>
+
+
+
+  <!-- =====================================================
+       CURRENT REMAINING DAMAGED STOCK
+       ===================================================== -->
+
+  <section class="card">
+
+    <div class="card-head">
+
+      <div>
+
+        <div class="card-title">
+          Current Remaining Damaged Stock
+        </div>
+
+        <div class="card-sub">
+          Only stock still remaining inside
+          the Damaged Stock bucket.
+        </div>
+
+      </div>
+
+
+      <div class="controls">
+
+        <input
+          id="remainingSearch"
+          type="search"
+          placeholder="Search product / code"
+        >
+
+        <button
+          id="refreshBtn"
+          type="button"
+          class="btn primary"
+        >
+          ↻ Refresh
+        </button>
+
+      </div>
+
+    </div>
+
+
+    <div class="table-wrap">
+
+      <table class="remaining-table">
+
+        <thead>
+
+          <tr>
+
+            <th>
+              Product
+            </th>
+
+            <th>
+              Product Code
+            </th>
+
+            <th>
+              Category
+            </th>
+
+            <th>
+              Unit
+            </th>
+
+            <th class="amount">
+              Remaining Qty
+            </th>
+
+            <th class="amount">
+              Average Cost
+            </th>
+
+            <th class="amount">
+              Damaged Value
+            </th>
+
+          </tr>
+
+        </thead>
+
+
+        <tbody id="remainingRows">
+
+          <tr>
+
+            <td
+              colspan="7"
+              class="empty"
+            >
+              Loading...
+            </td>
+
+          </tr>
+
+        </tbody>
+
+      </table>
+
+    </div>
+
+  </section>
+
+
+
+  <!-- =====================================================
+       RECENT DAMAGE ENTRIES
+       ===================================================== -->
+
+  <section class="card">
+
+    <div class="card-head">
+
+      <div>
+
+        <div class="card-title">
+          Recent Damage Entries
+        </div>
+
+        <div class="card-sub">
+          Original damage movements that created
+          the Damaged Stock balance.
+        </div>
+
+      </div>
+
+
+      <div class="controls">
+
+        <input
+          id="historySearch"
+          type="search"
+          placeholder="Search product / batch / reference"
+        >
+
+        <select id="sourceFilter">
+
+          <option value="">
+            All Damage Sources
+          </option>
+
+          <option value="WAREHOUSE">
+            Warehouse Damage
+          </option>
+
+          <option value="BATCH">
+            Batch Damage
+          </option>
+
+        </select>
+
+      </div>
+
+    </div>
+
+
+    <div class="table-wrap">
+
+      <table class="history-table">
+
+        <thead>
+
+          <tr>
+
+            <th>
+              Date
+            </th>
+
+            <th>
+              Source
+            </th>
+
+            <th>
+              Movement
+            </th>
+
+            <th>
+              Product
+            </th>
+
+            <th>
+              Code
+            </th>
+
+            <th class="amount">
+              Qty
+            </th>
+
+            <th>
+              Unit
+            </th>
+
+            <th class="amount">
+              Unit Cost
+            </th>
+
+            <th class="amount">
+              Damage Value
+            </th>
+
+            <th>
+              Batch
+            </th>
+
+            <th>
+              Location
+            </th>
+
+            <th>
+              Controller
+            </th>
+
+            <th>
+              Reference
+            </th>
+
+            <th>
+              Note
+            </th>
+
+          </tr>
+
+        </thead>
+
+
+        <tbody id="historyRows">
+
+          <tr>
+
+            <td
+              colspan="14"
+              class="empty"
+            >
+              Loading...
+            </td>
+
+          </tr>
+
+        </tbody>
+
+      </table>
+
+    </div>
+
+
+    <div
+      id="lastUpdate"
+      class="last-update"
+    ></div>
+
+  </section>
+
+</main>
+
+
+
+<script>
+(function () {
+
+  "use strict";
+
+
+  /* =========================================================
+     EMBED MODE
+     ========================================================= */
+
+  if (
+    new URLSearchParams(
+      location.search
+    ).get("embed") === "1"
+  ) {
+
+    document.body.classList.add(
+      "embed"
+    );
+
+  }
+
+
+
+  /* =========================================================
+     SHORTCUTS
+     ========================================================= */
+
+  const $ =
+    id =>
+      document.getElementById(id);
+
+
+  const num =
+    value =>
+      Number(value) || 0;
+
+
+  const clean =
+    value =>
+      String(
+        value == null
+          ? ""
+          : value
+      ).trim();
+
+
+  const esc =
+    value =>
+      window.BBDamagedStock
+        .escapeHtml(value);
+
+
+  const qty =
+    value =>
+      window.BBDamagedStock
+        .qty(value);
+
+
+  const money =
+    value =>
+      window.BBDamagedStock
+        .money(value);
+
+
+
+  /* =========================================================
+     STATE
+     ========================================================= */
+
+  let report = {
+    rows: [],
+    recent: [],
+    totals: {}
+  };
+
+  let loading = false;
+
+
+
+  /* =========================================================
+     STATUS
+     ========================================================= */
+
+  function setStatus(
+    message,
+    type = ""
+  ) {
+
+    const el =
+      $("status");
+
+    el.className =
+      "status" +
+      (
+        type
+          ? " " + type
+          : ""
+      );
+
+    el.textContent =
+      message || "";
+
+  }
+
+
+
+  /* =========================================================
+     HELPERS
+     ========================================================= */
+
+  function sourceName(
+    source
+  ) {
+
+    const s =
+      clean(source)
+        .toUpperCase();
+
+    if (
+      s === "BATCH"
+    ) {
+
+      return "Batch Damage";
+
+    }
+
+    if (
+      s === "WAREHOUSE"
+    ) {
+
+      return "Warehouse Damage";
+
+    }
+
+    return (
+      clean(source) ||
+      "-"
+    );
+
+  }
+
+
+  function sourceBadge(
+    source
+  ) {
+
+    const s =
+      clean(source)
+        .toUpperCase();
+
+    const cls =
+      s === "BATCH"
+        ? "batch"
+        : "warehouse";
+
+    return (
+      '<span class="badge ' +
+      cls +
+      '">' +
+      esc(
+        sourceName(source)
+      ) +
+      "</span>"
+    );
+
+  }
+
+
+
+  /* =========================================================
+     KPI
+     ========================================================= */
+
+  function renderKpis() {
+
+    const totals =
+      report.totals || {};
+
+    const recent =
+      Array.isArray(
+        report.recent
+      )
+        ? report.recent
+        : [];
+
+    $("kpiProducts").textContent =
+      qty(
+        totals.productCount
+      );
+
+    $("kpiQty").textContent =
+      qty(
+        totals.damagedQty
+      );
+
+    $("kpiValue").textContent =
+      money(
+        totals.damagedValue
+      );
+
+    $("kpiRecent").textContent =
+      qty(
+        recent.length
+      );
+
+  }
+
+
+
+  /* =========================================================
+     REMAINING STOCK
+     ========================================================= */
+
+  function renderRemaining() {
+
+    const query =
+      clean(
+        $("remainingSearch")
+          .value
+      ).toLowerCase();
+
+    const rows =
+      (
+        Array.isArray(
+          report.rows
+        )
+          ? report.rows
+          : []
+      ).filter(
+        row => {
+
+          const haystack =
+            [
+              row.productName,
+              row.productCode,
+              row.category,
+              row.unit
+            ]
+              .join(" ")
+              .toLowerCase();
+
+          return (
+            !query ||
+            haystack.includes(
+              query
+            )
+          );
+
+        }
+      );
+
+
+    if (
+      !rows.length
+    ) {
+
+      $("remainingRows")
+        .innerHTML =
+          '<tr>' +
+          '<td colspan="7" class="empty">' +
+          "No remaining damaged stock found." +
+          "</td>" +
+          "</tr>";
+
+      return;
+
+    }
+
+
+    $("remainingRows")
+      .innerHTML =
+        rows.map(
+          row => {
+
+            return `
+              <tr>
+
+                <td>
+                  <span class="product-name">
+                    ${esc(
+                      row.productName
+                    )}
+                  </span>
+                </td>
+
+                <td class="code">
+                  ${esc(
+                    row.productCode
+                  )}
+                </td>
+
+                <td>
+                  ${esc(
+                    row.category ||
+                    "-"
+                  )}
+                </td>
+
+                <td>
+                  ${esc(
+                    row.unit ||
+                    "-"
+                  )}
+                </td>
+
+                <td class="amount">
+                  <strong>
+                    ${qty(
+                      row.damagedQty
+                    )}
+                  </strong>
+                </td>
+
+                <td class="amount money">
+                  ${money(
+                    row.averageCost
+                  )}
+                </td>
+
+                <td class="amount money">
+                  <strong>
+                    ${money(
+                      row.damagedValue
+                    )}
+                  </strong>
+                </td>
+
+              </tr>
+            `;
+
+          }
+        ).join("");
+
+  }
+
+
+
+  /* =========================================================
+     RECENT DAMAGE HISTORY
+     ========================================================= */
+
+  function renderHistory() {
+
+    const query =
+      clean(
+        $("historySearch")
+          .value
+      ).toLowerCase();
+
+    const source =
+      clean(
+        $("sourceFilter")
+          .value
+      ).toUpperCase();
+
+
+    const sourceRows =
+      Array.isArray(
+        report.recent
+      )
+        ? report.recent
+        : [];
+
+
+    const rows =
+      sourceRows.filter(
+        row => {
+
+          const rowSource =
+            clean(
+              row.damageSource ||
+              row.source
+            ).toUpperCase();
+
+
+          if (
+            source &&
+            rowSource !== source
+          ) {
+
+            return false;
+
+          }
+
+
+          const haystack =
+            [
+              row.productName,
+              row.productCode,
+              row.batchId,
+              row.movementId,
+              row.referenceNo,
+              row.locationName,
+              row.locationCode,
+              row.controllerName,
+              row.inventoryControllerName,
+              row.note,
+              rowSource
+            ]
+              .join(" ")
+              .toLowerCase();
+
+
+          return (
+            !query ||
+            haystack.includes(
+              query
+            )
+          );
+
+        }
+      );
+
+
+    if (
+      !rows.length
+    ) {
+
+      $("historyRows")
+        .innerHTML =
+          '<tr>' +
+          '<td colspan="14" class="empty">' +
+          "No damage entries found." +
+          "</td>" +
+          "</tr>";
+
+      return;
+
+    }
+
+
+    $("historyRows")
+      .innerHTML =
+        rows.map(
+          row => {
+
+            const damageSource =
+              row.damageSource ||
+              row.source ||
+              "";
+
+            const unitCost =
+              row.unitCost ??
+              row.averageCost ??
+              0;
+
+            const lineValue =
+              row.lineValue ??
+              row.damageValue ??
+              row.value ??
+              (
+                num(row.qty) *
+                num(unitCost)
+              );
+
+            const controller =
+              row.controllerName ||
+              row.inventoryControllerName ||
+              row.inventoryControllerNameSnapshot ||
+              "-";
+
+            const location =
+              row.locationName ||
+              row.locationCode ||
+              "-";
+
+            return `
+              <tr>
+
+                <td>
+                  ${esc(
+                    row.activityDate ||
+                    row.date ||
+                    "-"
+                  )}
+                </td>
+
+                <td>
+                  ${sourceBadge(
+                    damageSource
+                  )}
+                </td>
+
+                <td class="code">
+                  ${esc(
+                    row.movementId ||
+                    "-"
+                  )}
+                </td>
+
+                <td>
+                  <span class="product-name">
+                    ${esc(
+                      row.productName
+                    )}
+                  </span>
+                </td>
+
+                <td class="code">
+                  ${esc(
+                    row.productCode
+                  )}
+                </td>
+
+                <td class="amount">
+                  <strong>
+                    ${qty(
+                      row.qty
+                    )}
+                  </strong>
+                </td>
+
+                <td>
+                  ${esc(
+                    row.unit ||
+                    "-"
+                  )}
+                </td>
+
+                <td class="amount money">
+                  ${money(
+                    unitCost
+                  )}
+                </td>
+
+                <td class="amount money">
+                  ${money(
+                    lineValue
+                  )}
+                </td>
+
+                <td class="code">
+                  ${esc(
+                    row.batchId ||
+                    "-"
+                  )}
+                </td>
+
+                <td>
+                  ${esc(
+                    location
+                  )}
+                </td>
+
+                <td>
+                  ${esc(
+                    controller
+                  )}
+                </td>
+
+                <td>
+                  ${esc(
+                    row.referenceNo ||
+                    "-"
+                  )}
+                </td>
+
+                <td class="note">
+                  ${esc(
+                    row.note ||
+                    "-"
+                  )}
+                </td>
+
+              </tr>
+            `;
+
+          }
+        ).join("");
+
+  }
+
+
+
+  /* =========================================================
+     RENDER ALL
+     ========================================================= */
+
+  function render() {
+
+    renderKpis();
+
+    renderRemaining();
+
+    renderHistory();
+
+
+    $("lastUpdate")
+      .textContent =
+        "Generated: " +
+        (
+          report.lastUpdate ||
+          report.generatedAt ||
+          "-"
+        ) +
+        (
+          report.revision
+            ? " · Revision " +
+              report.revision
+            : ""
+        );
+
+  }
+
+
+
+  /* =========================================================
+     LOAD
+     ========================================================= */
+
+  async function loadReport() {
+
+    if (
+      loading
+    ) {
+
+      return;
+
+    }
+
+
+    loading = true;
+
+    $("refreshBtn")
+      .disabled = true;
+
+
+    setStatus(
+      "Loading Damage Stock Report from Supabase..."
+    );
+
+
+    try {
+
+      const result =
+        await window
+          .BBDamagedStock
+          .getDamageReport();
+
+
+      report =
+        result || {
+          rows: [],
+          recent: [],
+          totals: {}
+        };
+
+
+      render();
+
+
+      const remainingQty =
+        num(
+          report.totals
+            ?.damagedQty
+        );
+
+
+      setStatus(
+        "Damage Stock Report is live · " +
+        qty(
+          remainingQty
+        ) +
+        " unit(s) remaining damaged stock.",
+        "success"
+      );
+
+
+    } catch (
+      error
+    ) {
+
+      console.error(
+        error
+      );
+
+
+      setStatus(
+        clean(
+          error?.message ||
+          error
+        ),
+        "error"
+      );
+
+
+      $("remainingRows")
+        .innerHTML =
+          '<tr>' +
+          '<td colspan="7" class="empty">' +
+          "Could not load Damaged Stock." +
+          "</td>" +
+          "</tr>";
+
+
+      $("historyRows")
+        .innerHTML =
+          '<tr>' +
+          '<td colspan="14" class="empty">' +
+          "Could not load damage history." +
+          "</td>" +
+          "</tr>";
+
+    } finally {
+
+      loading = false;
+
+      $("refreshBtn")
+        .disabled = false;
+
+    }
+
+  }
+
+
+
+  /* =========================================================
+     NAVIGATION
+     ========================================================= */
+
+  window.openClearedReport =
+    function () {
+
+      const embed =
+        new URLSearchParams(
+          location.search
+        ).get("embed") === "1";
+
+      location.href =
+        "cleared.html" +
+        (
+          embed
+            ? "?embed=1"
+            : ""
+        );
+
+    };
+
+
+
+  /* =========================================================
+     EVENTS
+     ========================================================= */
+
+  $("remainingSearch")
+    .addEventListener(
+      "input",
+      renderRemaining
+    );
+
+
+  $("historySearch")
+    .addEventListener(
+      "input",
+      renderHistory
+    );
+
+
+  $("sourceFilter")
+    .addEventListener(
+      "change",
+      renderHistory
+    );
+
+
+  $("refreshBtn")
+    .addEventListener(
+      "click",
+      loadReport
+    );
+
+
+
+  /* =========================================================
+     START
+     ========================================================= */
+
+  loadReport();
+
+})();
+</script>
+
+</body>
+</html>
