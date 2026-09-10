@@ -1300,40 +1300,69 @@ tbody tr:hover{
 
   function renderMainKpis() {
 
-    const totals =
-      cleared.totals || {};
+  const totals =
+    cleared.totals || {};
+
+  const rows =
+    Array.isArray(cleared.rows)
+      ? cleared.rows
+      : [];
+
+  /*
+   * One Stock clearance movement can contain
+   * several product lines.
+   *
+   * Example:
+   * STK-000007
+   * - Kirisu Milk Barista
+   * - Kirisu Milk 3% fat 2L
+   *
+   * That is 1 transaction, not 2.
+   */
+  const transactionKeys =
+    rows.map(
+      (row, index) =>
+        clean(row.movementId) ||
+        clean(row.transactionId) ||
+        "ROW-" + index
+    );
+
+  const transactionCount =
+    new Set(
+      transactionKeys
+    ).size;
 
 
-    $("kpiTransactions")
-      .textContent =
-        qty(
-          totals.lineCount
-        );
+  $("kpiTransactions")
+    .textContent =
+      qty(
+        transactionCount
+      );
 
 
-    $("kpiQty")
-      .textContent =
-        qty(
-          totals.clearedQty
-        );
+  $("kpiQty")
+    .textContent =
+      qty(
+        totals.clearedQty
+      );
 
 
-    $("kpiValue")
-      .textContent =
-        money(
-          totals.clearedValue
-        );
+  $("kpiValue")
+    .textContent =
+      money(
+        totals.clearedValue
+      );
 
 
-    $("kpiRemaining")
-      .textContent =
-        qty(
-          remaining
-            .totals
-            ?.damagedQty
-        );
+  $("kpiRemaining")
+    .textContent =
+      qty(
+        remaining
+          .totals
+          ?.damagedQty
+      );
 
-  }
+}
 
 
 
