@@ -1,1 +1,1959 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
 
+<title>BIG BROTHER — Cleared Damaged Stock</title>
+
+<style>
+*{
+  box-sizing:border-box;
+}
+
+:root{
+  --navy:#17457a;
+  --blue:#245fae;
+  --green:#168652;
+  --red:#b43a3a;
+  --orange:#b56a13;
+  --purple:#7357a8;
+  --line:#d9e2ef;
+  --muted:#667085;
+  --text:#24384c;
+  --bg:#eef3f8;
+}
+
+html,
+body{
+  margin:0;
+  min-height:100%;
+
+  font-family:
+    Inter,
+    Arial,
+    Helvetica,
+    sans-serif;
+
+  background:var(--bg);
+  color:var(--text);
+}
+
+body.embed .page{
+  max-width:none;
+  padding:14px;
+}
+
+.page{
+  max-width:1700px;
+  margin:auto;
+  padding:24px;
+}
+
+
+/* =========================================================
+   HEADER
+   ========================================================= */
+
+.topbar{
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-start;
+  gap:16px;
+
+  margin-bottom:14px;
+}
+
+.title h1{
+  margin:0;
+
+  color:var(--navy);
+
+  font-size:28px;
+}
+
+.subtitle{
+  margin-top:5px;
+
+  color:var(--muted);
+
+  font-size:12px;
+  line-height:1.5;
+}
+
+.top-actions{
+  display:flex;
+  align-items:center;
+  justify-content:flex-end;
+
+  gap:8px;
+
+  flex-wrap:wrap;
+}
+
+.pill{
+  min-height:38px;
+
+  display:inline-flex;
+  align-items:center;
+
+  padding:8px 12px;
+
+  border:
+    1px solid #cbead9;
+
+  border-radius:999px;
+
+  background:#e8f7ef;
+  color:var(--green);
+
+  font-size:10px;
+  font-weight:900;
+
+  white-space:nowrap;
+}
+
+.btn{
+  min-height:38px;
+
+  padding:9px 13px;
+
+  border:0;
+  border-radius:9px;
+
+  font:inherit;
+  font-size:11px;
+  font-weight:900;
+
+  cursor:pointer;
+}
+
+.btn.primary{
+  background:var(--navy);
+  color:#fff;
+}
+
+.btn.secondary{
+  background:#fff;
+
+  color:var(--navy);
+
+  border:
+    1px solid var(--line);
+}
+
+.btn:disabled{
+  opacity:.55;
+  cursor:not-allowed;
+}
+
+
+/* =========================================================
+   STATUS
+   ========================================================= */
+
+.status{
+  margin-bottom:12px;
+
+  padding:10px 12px;
+
+  border:
+    1px solid #ceddf0;
+
+  border-radius:10px;
+
+  background:#eef5ff;
+  color:#49627e;
+
+  font-size:11px;
+}
+
+.status.success{
+  background:#edf9f3;
+
+  border-color:#ccebdc;
+
+  color:#176d4b;
+}
+
+.status.error{
+  background:#fff1f1;
+
+  border-color:#f0cece;
+
+  color:#9d2f2f;
+}
+
+
+/* =========================================================
+   MAIN KPI
+   ========================================================= */
+
+.kpis{
+  display:grid;
+
+  grid-template-columns:
+    repeat(
+      4,
+      minmax(0,1fr)
+    );
+
+  gap:10px;
+
+  margin-bottom:12px;
+}
+
+.kpi{
+  background:#fff;
+
+  border:
+    1px solid var(--line);
+
+  border-radius:14px;
+
+  padding:15px;
+
+  box-shadow:
+    0 5px 20px
+    rgba(23,69,122,.05);
+}
+
+.kpi small{
+  display:block;
+
+  color:#718096;
+
+  font-size:9px;
+  font-weight:900;
+
+  text-transform:uppercase;
+}
+
+.kpi strong{
+  display:block;
+
+  margin-top:6px;
+
+  color:var(--navy);
+
+  font-size:22px;
+}
+
+.kpi .danger{
+  color:var(--red);
+}
+
+
+/* =========================================================
+   CLEARANCE TYPE SUMMARY
+   ========================================================= */
+
+.type-grid{
+  display:grid;
+
+  grid-template-columns:
+    repeat(
+      3,
+      minmax(0,1fr)
+    );
+
+  gap:10px;
+
+  margin-bottom:12px;
+}
+
+.type-card{
+  background:#fff;
+
+  border:
+    1px solid var(--line);
+
+  border-radius:14px;
+
+  padding:15px;
+
+  box-shadow:
+    0 5px 20px
+    rgba(23,69,122,.05);
+}
+
+.type-card .type-name{
+  font-size:12px;
+  font-weight:900;
+
+  color:var(--navy);
+}
+
+.type-stats{
+  display:grid;
+
+  grid-template-columns:
+    1fr 1fr;
+
+  gap:8px;
+
+  margin-top:12px;
+}
+
+.type-stat{
+  padding:9px;
+
+  border:
+    1px solid #e8edf4;
+
+  border-radius:9px;
+
+  background:#fafcff;
+}
+
+.type-stat small{
+  display:block;
+
+  color:#8090a2;
+
+  font-size:8px;
+  font-weight:900;
+
+  text-transform:uppercase;
+}
+
+.type-stat strong{
+  display:block;
+
+  margin-top:4px;
+
+  color:#233e5e;
+
+  font-size:14px;
+}
+
+
+/* =========================================================
+   CARD
+   ========================================================= */
+
+.card{
+  background:#fff;
+
+  border:
+    1px solid var(--line);
+
+  border-radius:14px;
+
+  padding:15px;
+
+  margin-bottom:12px;
+
+  box-shadow:
+    0 5px 20px
+    rgba(23,69,122,.05);
+}
+
+.card-head{
+  display:flex;
+
+  align-items:flex-start;
+  justify-content:space-between;
+
+  gap:12px;
+
+  margin-bottom:11px;
+}
+
+.card-title{
+  color:var(--navy);
+
+  font-size:14px;
+  font-weight:900;
+}
+
+.card-sub{
+  margin-top:3px;
+
+  color:#8392a5;
+
+  font-size:9px;
+}
+
+
+/* =========================================================
+   FILTER
+   ========================================================= */
+
+.controls{
+  display:flex;
+
+  gap:8px;
+
+  flex-wrap:wrap;
+}
+
+.controls input,
+.controls select{
+  min-height:38px;
+
+  padding:8px 10px;
+
+  border:
+    1px solid #cbd8e7;
+
+  border-radius:9px;
+
+  background:#fff;
+  color:var(--text);
+
+  font:inherit;
+  font-size:11px;
+}
+
+.controls input[type="search"]{
+  min-width:250px;
+}
+
+
+/* =========================================================
+   TABLE
+   ========================================================= */
+
+.table-wrap{
+  overflow:auto;
+
+  border:
+    1px solid var(--line);
+
+  border-radius:10px;
+}
+
+table{
+  width:100%;
+
+  min-width:1450px;
+
+  border-collapse:collapse;
+}
+
+th,
+td{
+  padding:10px;
+
+  border-bottom:
+    1px solid #edf1f5;
+
+  text-align:left;
+  vertical-align:top;
+
+  font-size:10px;
+}
+
+th{
+  position:sticky;
+  top:0;
+
+  background:#f7f9fc;
+
+  color:#53677d;
+
+  font-size:8px;
+  font-weight:900;
+
+  text-transform:uppercase;
+
+  letter-spacing:.02em;
+}
+
+td.amount,
+th.amount{
+  text-align:right;
+}
+
+tbody tr:hover{
+  background:#fbfdff;
+}
+
+.product{
+  color:var(--navy);
+
+  font-weight:900;
+}
+
+.code{
+  font-family:
+    Consolas,
+    monospace;
+
+  font-size:9px;
+}
+
+.money{
+  font-variant-numeric:
+    tabular-nums;
+}
+
+.note{
+  max-width:260px;
+
+  white-space:normal;
+
+  line-height:1.4;
+}
+
+.empty{
+  padding:26px !important;
+
+  text-align:center !important;
+
+  color:#8090a1 !important;
+}
+
+
+/* =========================================================
+   BADGES
+   ========================================================= */
+
+.badge{
+  display:inline-block;
+
+  padding:5px 8px;
+
+  border-radius:999px;
+
+  font-size:8px;
+  font-weight:900;
+
+  white-space:nowrap;
+}
+
+.badge.cost{
+  background:#fff0f0;
+  color:#a63a3a;
+}
+
+.badge.buyback{
+  background:#eef5ff;
+  color:#245fae;
+}
+
+.badge.exchange{
+  background:#edf9f3;
+  color:#168652;
+}
+
+.badge.legacy{
+  background:#f1f3f6;
+  color:#6f7c8b;
+}
+
+
+/* =========================================================
+   FOOTER
+   ========================================================= */
+
+.last-update{
+  margin-top:9px;
+
+  color:#8291a1;
+
+  font-size:9px;
+}
+
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media(max-width:1000px){
+
+  .kpis{
+    grid-template-columns:
+      1fr 1fr;
+  }
+
+  .type-grid{
+    grid-template-columns:1fr;
+  }
+
+  .card-head{
+    flex-direction:column;
+  }
+
+}
+
+@media(max-width:650px){
+
+  .page{
+    padding:12px;
+  }
+
+  .topbar{
+    display:block;
+  }
+
+  .top-actions{
+    margin-top:10px;
+
+    justify-content:flex-start;
+  }
+
+  .title h1{
+    font-size:23px;
+  }
+
+  .kpis{
+    grid-template-columns:1fr;
+  }
+
+  .controls{
+    width:100%;
+  }
+
+  .controls input,
+  .controls select,
+  .controls .btn{
+    width:100%;
+  }
+
+  .controls input[type="search"]{
+    min-width:0;
+  }
+
+}
+</style>
+
+
+<script src="supabase-damaged-stock.js?v=1"></script>
+
+</head>
+
+
+<body>
+
+<main class="page">
+
+
+  <!-- =====================================================
+       HEADER
+       ===================================================== -->
+
+  <div class="topbar">
+
+    <div class="title">
+
+      <h1>
+        ✅ Cleared Damaged Stock
+      </h1>
+
+      <div class="subtitle">
+        BIG BROTHER · Stock Management ·
+        Cleared Damaged Stock History and Cost Classification
+      </div>
+
+    </div>
+
+
+    <div class="top-actions">
+
+      <div class="pill">
+        SUPABASE LIVE
+      </div>
+
+      <button
+        type="button"
+        class="btn secondary"
+        onclick="openRemainingReport()"
+      >
+        ⚠️ Remaining Damaged Stock
+      </button>
+
+    </div>
+
+  </div>
+
+
+
+  <!-- =====================================================
+       STATUS
+       ===================================================== -->
+
+  <div
+    id="status"
+    class="status"
+  >
+    Loading Cleared Damaged Stock...
+  </div>
+
+
+
+  <!-- =====================================================
+       MAIN KPI
+       ===================================================== -->
+
+  <section class="kpis">
+
+    <div class="kpi">
+
+      <small>
+        Cleared Transactions
+      </small>
+
+      <strong id="kpiTransactions">
+        0
+      </strong>
+
+    </div>
+
+
+    <div class="kpi">
+
+      <small>
+        Total Cleared Qty
+      </small>
+
+      <strong id="kpiQty">
+        0
+      </strong>
+
+    </div>
+
+
+    <div class="kpi">
+
+      <small>
+        Total Cleared Cost
+      </small>
+
+      <strong id="kpiValue">
+        $0.00
+      </strong>
+
+    </div>
+
+
+    <div class="kpi">
+
+      <small>
+        Remaining Damaged Qty
+      </small>
+
+      <strong
+        id="kpiRemaining"
+        class="danger"
+      >
+        0
+      </strong>
+
+    </div>
+
+  </section>
+
+
+
+  <!-- =====================================================
+       3 CLEARANCE TYPES
+       ===================================================== -->
+
+  <section class="type-grid">
+
+
+    <!-- DEDUCT AS COST -->
+
+    <div class="type-card">
+
+      <div class="type-name">
+        💸 Deduct as Cost
+      </div>
+
+      <div class="type-stats">
+
+        <div class="type-stat">
+
+          <small>
+            Cleared Qty
+          </small>
+
+          <strong id="costQty">
+            0
+          </strong>
+
+        </div>
+
+
+        <div class="type-stat">
+
+          <small>
+            Cost Value
+          </small>
+
+          <strong id="costValue">
+            $0.00
+          </strong>
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+
+    <!-- CLIENT BUY BACK -->
+
+    <div class="type-card">
+
+      <div class="type-name">
+        💳 Client Buy Back
+      </div>
+
+      <div class="type-stats">
+
+        <div class="type-stat">
+
+          <small>
+            Cleared Qty
+          </small>
+
+          <strong id="buybackQty">
+            0
+          </strong>
+
+        </div>
+
+
+        <div class="type-stat">
+
+          <small>
+            Stock Cost
+          </small>
+
+          <strong id="buybackValue">
+            $0.00
+          </strong>
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+
+    <!-- EXCHANGE -->
+
+    <div class="type-card">
+
+      <div class="type-name">
+        🔄 Exchange for Good products
+      </div>
+
+      <div class="type-stats">
+
+        <div class="type-stat">
+
+          <small>
+            Cleared Qty
+          </small>
+
+          <strong id="exchangeQty">
+            0
+          </strong>
+
+        </div>
+
+
+        <div class="type-stat">
+
+          <small>
+            Stock Cost
+          </small>
+
+          <strong id="exchangeValue">
+            $0.00
+          </strong>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+
+  <!-- =====================================================
+       HISTORY
+       ===================================================== -->
+
+  <section class="card">
+
+    <div class="card-head">
+
+      <div>
+
+        <div class="card-title">
+          Cleared Damaged Stock History
+        </div>
+
+        <div class="card-sub">
+          Every Damaged Stock clearance is permanently
+          classified for future accounting calculation.
+        </div>
+
+      </div>
+
+
+      <div class="controls">
+
+        <input
+          id="search"
+          type="search"
+          placeholder="Search product / code / reference / movement"
+        >
+
+
+        <select id="typeFilter">
+
+          <option value="">
+            All Clearance Types
+          </option>
+
+          <option value="DEDUCT_AS_COST">
+            Deduct as Cost
+          </option>
+
+          <option value="CLIENT_BUY_BACK">
+            Client Buy Back
+          </option>
+
+          <option value="EXCHANGE_FOR_GOOD_PRODUCTS">
+            Exchange for Good products
+          </option>
+
+        </select>
+
+
+        <input
+          id="dateFrom"
+          type="date"
+          title="From date"
+        >
+
+
+        <input
+          id="dateTo"
+          type="date"
+          title="To date"
+        >
+
+
+        <button
+          id="refreshBtn"
+          type="button"
+          class="btn primary"
+        >
+          ↻ Refresh
+        </button>
+
+      </div>
+
+    </div>
+
+
+
+    <div class="table-wrap">
+
+      <table>
+
+        <thead>
+
+          <tr>
+
+            <th>
+              Date
+            </th>
+
+            <th>
+              Clearance Type
+            </th>
+
+            <th>
+              Movement
+            </th>
+
+            <th>
+              Product
+            </th>
+
+            <th>
+              Product Code
+            </th>
+
+            <th class="amount">
+              Qty
+            </th>
+
+            <th>
+              Unit
+            </th>
+
+            <th class="amount">
+              Unit Cost
+            </th>
+
+            <th class="amount">
+              Cleared Cost
+            </th>
+
+            <th>
+              Location
+            </th>
+
+            <th>
+              Controller
+            </th>
+
+            <th>
+              Reference
+            </th>
+
+            <th>
+              Note
+            </th>
+
+          </tr>
+
+        </thead>
+
+
+        <tbody id="rows">
+
+          <tr>
+
+            <td
+              colspan="13"
+              class="empty"
+            >
+              Loading...
+            </td>
+
+          </tr>
+
+        </tbody>
+
+      </table>
+
+    </div>
+
+
+    <div
+      id="lastUpdate"
+      class="last-update"
+    ></div>
+
+  </section>
+
+
+</main>
+
+
+
+<script>
+(function () {
+
+  "use strict";
+
+
+  /* =========================================================
+     EMBED MODE
+     ========================================================= */
+
+  if (
+    new URLSearchParams(
+      location.search
+    ).get("embed") === "1"
+  ) {
+
+    document.body
+      .classList
+      .add("embed");
+
+  }
+
+
+
+  /* =========================================================
+     HELPERS
+     ========================================================= */
+
+  const $ =
+    id =>
+      document.getElementById(id);
+
+
+  const clean =
+    value =>
+      String(
+        value == null
+          ? ""
+          : value
+      ).trim();
+
+
+  const num =
+    value =>
+      Number(value) || 0;
+
+
+  const esc =
+    value =>
+      window
+        .BBDamagedStock
+        .escapeHtml(value);
+
+
+  const qty =
+    value =>
+      window
+        .BBDamagedStock
+        .qty(value);
+
+
+  const money =
+    value =>
+      window
+        .BBDamagedStock
+        .money(value);
+
+
+
+  /* =========================================================
+     STATE
+     ========================================================= */
+
+  let cleared = {
+    rows: [],
+    totals: {}
+  };
+
+
+  let remaining = {
+    totals: {}
+  };
+
+
+  let loading = false;
+
+
+
+  /* =========================================================
+     STATUS
+     ========================================================= */
+
+  function setStatus(
+    message,
+    type = ""
+  ) {
+
+    $("status").className =
+      "status" +
+      (
+        type
+          ? " " + type
+          : ""
+      );
+
+    $("status").textContent =
+      message || "";
+
+  }
+
+
+
+  /* =========================================================
+     CLEARANCE TYPE HELPERS
+     ========================================================= */
+
+  function typeLabel(
+    row
+  ) {
+
+    if (
+      clean(
+        row.clearanceTypeLabel
+      )
+    ) {
+
+      return clean(
+        row.clearanceTypeLabel
+      );
+
+    }
+
+
+    const type =
+      clean(
+        row.clearanceType
+      );
+
+
+    if (
+      type ===
+      "DEDUCT_AS_COST"
+    ) {
+
+      return "Deduct as Cost";
+
+    }
+
+
+    if (
+      type ===
+      "CLIENT_BUY_BACK"
+    ) {
+
+      return "Client Buy Back";
+
+    }
+
+
+    if (
+      type ===
+      "EXCHANGE_FOR_GOOD_PRODUCTS"
+    ) {
+
+      return "Exchange for Good products";
+
+    }
+
+
+    return (
+      type ||
+      "Legacy / Unclassified"
+    );
+
+  }
+
+
+  function typeBadge(
+    row
+  ) {
+
+    const type =
+      clean(
+        row.clearanceType
+      );
+
+
+    let cls =
+      "legacy";
+
+
+    if (
+      type ===
+      "DEDUCT_AS_COST"
+    ) {
+
+      cls =
+        "cost";
+
+    }
+
+
+    if (
+      type ===
+      "CLIENT_BUY_BACK"
+    ) {
+
+      cls =
+        "buyback";
+
+    }
+
+
+    if (
+      type ===
+      "EXCHANGE_FOR_GOOD_PRODUCTS"
+    ) {
+
+      cls =
+        "exchange";
+
+    }
+
+
+    return (
+      '<span class="badge ' +
+      cls +
+      '">' +
+      esc(
+        typeLabel(row)
+      ) +
+      "</span>"
+    );
+
+  }
+
+
+
+  /* =========================================================
+     MAIN KPI
+     ========================================================= */
+
+  function renderMainKpis() {
+
+    const totals =
+      cleared.totals || {};
+
+
+    $("kpiTransactions")
+      .textContent =
+        qty(
+          totals.lineCount
+        );
+
+
+    $("kpiQty")
+      .textContent =
+        qty(
+          totals.clearedQty
+        );
+
+
+    $("kpiValue")
+      .textContent =
+        money(
+          totals.clearedValue
+        );
+
+
+    $("kpiRemaining")
+      .textContent =
+        qty(
+          remaining
+            .totals
+            ?.damagedQty
+        );
+
+  }
+
+
+
+  /* =========================================================
+     CATEGORY TOTALS
+     ========================================================= */
+
+  function categoryTotals(
+    type
+  ) {
+
+    const rows =
+      Array.isArray(
+        cleared.rows
+      )
+        ? cleared.rows
+        : [];
+
+
+    return rows
+      .filter(
+        row =>
+          clean(
+            row.clearanceType
+          ) === type
+      )
+      .reduce(
+        (
+          total,
+          row
+        ) => {
+
+          total.qty +=
+            num(
+              row.qty
+            );
+
+
+          total.value +=
+            num(
+              row.lineValue
+            );
+
+
+          return total;
+
+        },
+        {
+          qty:0,
+          value:0
+        }
+      );
+
+  }
+
+
+  function renderCategoryTotals() {
+
+    const cost =
+      categoryTotals(
+        "DEDUCT_AS_COST"
+      );
+
+
+    const buyback =
+      categoryTotals(
+        "CLIENT_BUY_BACK"
+      );
+
+
+    const exchange =
+      categoryTotals(
+        "EXCHANGE_FOR_GOOD_PRODUCTS"
+      );
+
+
+    $("costQty")
+      .textContent =
+        qty(
+          cost.qty
+        );
+
+
+    $("costValue")
+      .textContent =
+        money(
+          cost.value
+        );
+
+
+    $("buybackQty")
+      .textContent =
+        qty(
+          buyback.qty
+        );
+
+
+    $("buybackValue")
+      .textContent =
+        money(
+          buyback.value
+        );
+
+
+    $("exchangeQty")
+      .textContent =
+        qty(
+          exchange.qty
+        );
+
+
+    $("exchangeValue")
+      .textContent =
+        money(
+          exchange.value
+        );
+
+  }
+
+
+
+  /* =========================================================
+     FILTER
+     ========================================================= */
+
+  function filteredRows() {
+
+    const query =
+      clean(
+        $("search").value
+      ).toLowerCase();
+
+
+    const type =
+      clean(
+        $("typeFilter").value
+      );
+
+
+    const dateFrom =
+      clean(
+        $("dateFrom").value
+      );
+
+
+    const dateTo =
+      clean(
+        $("dateTo").value
+      );
+
+
+    const sourceRows =
+      Array.isArray(
+        cleared.rows
+      )
+        ? cleared.rows
+        : [];
+
+
+    return sourceRows.filter(
+      row => {
+
+        const rowType =
+          clean(
+            row.clearanceType
+          );
+
+
+        const rowDate =
+          clean(
+            row.activityDate
+          );
+
+
+        if (
+          type &&
+          rowType !== type
+        ) {
+
+          return false;
+
+        }
+
+
+        if (
+          dateFrom &&
+          rowDate &&
+          rowDate < dateFrom
+        ) {
+
+          return false;
+
+        }
+
+
+        if (
+          dateTo &&
+          rowDate &&
+          rowDate > dateTo
+        ) {
+
+          return false;
+
+        }
+
+
+        const haystack =
+          [
+            row.productName,
+            row.productCode,
+            row.movementId,
+            row.referenceNo,
+            row.locationName,
+            row.locationCode,
+            row.controllerName,
+            row.note,
+            row.clearanceType,
+            row.clearanceTypeLabel
+          ]
+            .join(" ")
+            .toLowerCase();
+
+
+        if (
+          query &&
+          !haystack.includes(
+            query
+          )
+        ) {
+
+          return false;
+
+        }
+
+
+        return true;
+
+      }
+    );
+
+  }
+
+
+
+  /* =========================================================
+     TABLE
+     ========================================================= */
+
+  function renderTable() {
+
+    const rows =
+      filteredRows();
+
+
+    if (
+      !rows.length
+    ) {
+
+      $("rows")
+        .innerHTML =
+          '<tr>' +
+          '<td colspan="13" class="empty">' +
+          "No Cleared Damaged Stock records found." +
+          "</td>" +
+          "</tr>";
+
+      return;
+
+    }
+
+
+    $("rows")
+      .innerHTML =
+        rows.map(
+          row => {
+
+            return `
+              <tr>
+
+                <td>
+                  ${esc(
+                    row.activityDate ||
+                    "-"
+                  )}
+                </td>
+
+
+                <td>
+                  ${typeBadge(
+                    row
+                  )}
+                </td>
+
+
+                <td class="code">
+                  ${esc(
+                    row.movementId ||
+                    "-"
+                  )}
+                </td>
+
+
+                <td>
+                  <span class="product">
+                    ${esc(
+                      row.productName ||
+                      "-"
+                    )}
+                  </span>
+                </td>
+
+
+                <td class="code">
+                  ${esc(
+                    row.productCode ||
+                    "-"
+                  )}
+                </td>
+
+
+                <td class="amount">
+                  <strong>
+                    ${qty(
+                      row.qty
+                    )}
+                  </strong>
+                </td>
+
+
+                <td>
+                  ${esc(
+                    row.unit ||
+                    "-"
+                  )}
+                </td>
+
+
+                <td class="amount money">
+                  ${money(
+                    row.unitCost
+                  )}
+                </td>
+
+
+                <td class="amount money">
+                  <strong>
+                    ${money(
+                      row.lineValue
+                    )}
+                  </strong>
+                </td>
+
+
+                <td>
+                  ${esc(
+                    row.locationName ||
+                    row.locationCode ||
+                    "-"
+                  )}
+                </td>
+
+
+                <td>
+                  ${esc(
+                    row.controllerName ||
+                    "-"
+                  )}
+                </td>
+
+
+                <td>
+                  ${esc(
+                    row.referenceNo ||
+                    "-"
+                  )}
+                </td>
+
+
+                <td class="note">
+                  ${esc(
+                    row.note ||
+                    "-"
+                  )}
+                </td>
+
+              </tr>
+            `;
+
+          }
+        )
+        .join("");
+
+  }
+
+
+
+  /* =========================================================
+     RENDER
+     ========================================================= */
+
+  function render() {
+
+    renderMainKpis();
+
+    renderCategoryTotals();
+
+    renderTable();
+
+
+    $("lastUpdate")
+      .textContent =
+        "Generated: " +
+        (
+          cleared.generatedAt ||
+          "-"
+        ) +
+        (
+          cleared.revision
+            ? " · Revision " +
+              cleared.revision
+            : ""
+        );
+
+  }
+
+
+
+  /* =========================================================
+     LOAD
+     ========================================================= */
+
+  async function loadData() {
+
+    if (
+      loading
+    ) {
+
+      return;
+
+    }
+
+
+    loading =
+      true;
+
+
+    $("refreshBtn")
+      .disabled =
+        true;
+
+
+    setStatus(
+      "Loading Cleared Damaged Stock from Supabase..."
+    );
+
+
+    try {
+
+      const [
+        clearedResult,
+        remainingResult
+      ] =
+        await Promise.all([
+
+          window
+            .BBDamagedStock
+            .getClearedDamage(
+              2000
+            ),
+
+          window
+            .BBDamagedStock
+            .getDamageReport()
+
+        ]);
+
+
+      cleared =
+        clearedResult || {
+          rows:[],
+          totals:{}
+        };
+
+
+      remaining =
+        remainingResult || {
+          totals:{}
+        };
+
+
+      render();
+
+
+      setStatus(
+        "Cleared Damaged Stock is live · " +
+        qty(
+          cleared
+            .totals
+            ?.clearedQty
+        ) +
+        " unit(s) cleared.",
+        "success"
+      );
+
+
+    } catch (
+      error
+    ) {
+
+      console.error(
+        error
+      );
+
+
+      setStatus(
+        clean(
+          error?.message ||
+          error
+        ),
+        "error"
+      );
+
+
+      $("rows")
+        .innerHTML =
+          '<tr>' +
+          '<td colspan="13" class="empty">' +
+          "Could not load Cleared Damaged Stock." +
+          "</td>" +
+          "</tr>";
+
+    } finally {
+
+      loading =
+        false;
+
+
+      $("refreshBtn")
+        .disabled =
+          false;
+
+    }
+
+  }
+
+
+
+  /* =========================================================
+     NAVIGATION
+     ========================================================= */
+
+  window.openRemainingReport =
+    function () {
+
+      const embed =
+        new URLSearchParams(
+          location.search
+        ).get("embed") === "1";
+
+
+      location.href =
+        "index.html" +
+        (
+          embed
+            ? "?embed=1"
+            : ""
+        );
+
+    };
+
+
+
+  /* =========================================================
+     EVENTS
+     ========================================================= */
+
+  $("search")
+    .addEventListener(
+      "input",
+      renderTable
+    );
+
+
+  $("typeFilter")
+    .addEventListener(
+      "change",
+      renderTable
+    );
+
+
+  $("dateFrom")
+    .addEventListener(
+      "change",
+      renderTable
+    );
+
+
+  $("dateTo")
+    .addEventListener(
+      "change",
+      renderTable
+    );
+
+
+  $("refreshBtn")
+    .addEventListener(
+      "click",
+      loadData
+    );
+
+
+
+  /* =========================================================
+     START
+     ========================================================= */
+
+  loadData();
+
+})();
+</script>
+
+</body>
+</html>
