@@ -1,25 +1,12 @@
 <!doctype html>
 <html lang="en">
-
 <head>
-
 <meta charset="utf-8">
-
-<meta
-  name="viewport"
-  content="width=device-width,initial-scale=1"
->
-
-<title>
-  BIG BROTHER — Damage Accounting & Recovery Ledger
-</title>
-
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>BIG BROTHER — Damage Accounting & Recovery Ledger</title>
 
 <style>
-
-*{
-  box-sizing:border-box;
-}
+*{box-sizing:border-box}
 
 :root{
   --navy:#17457a;
@@ -28,7 +15,6 @@
   --red:#b43a3a;
   --orange:#b56a13;
   --purple:#7654a8;
-
   --line:#d9e2ef;
   --muted:#667085;
   --text:#24384c;
@@ -39,13 +25,7 @@ html,
 body{
   margin:0;
   min-height:100%;
-
-  font-family:
-    Inter,
-    Arial,
-    Helvetica,
-    sans-serif;
-
+  font-family:Inter,Arial,Helvetica,sans-serif;
   background:var(--bg);
   color:var(--text);
 }
@@ -56,15 +36,10 @@ body.embed .page{
 }
 
 .page{
-  max-width:2300px;
+  max-width:2400px;
   margin:auto;
-  padding:24px;
+  padding:22px;
 }
-
-
-/* =========================================================
-   HEADER
-   ========================================================= */
 
 .topbar{
   display:flex;
@@ -87,12 +62,17 @@ body.embed .page{
   line-height:1.5;
 }
 
-.top-actions{
+.top-actions,
+.controls,
+.modal-actions{
   display:flex;
-  align-items:center;
-  justify-content:flex-end;
   gap:8px;
   flex-wrap:wrap;
+}
+
+.top-actions{
+  justify-content:flex-end;
+  align-items:center;
 }
 
 .pill{
@@ -100,13 +80,10 @@ body.embed .page{
   align-items:center;
   min-height:38px;
   padding:8px 12px;
-
   border:1px solid #cbead9;
   border-radius:999px;
-
   background:#e8f7ef;
   color:var(--green);
-
   font-size:10px;
   font-weight:900;
   white-space:nowrap;
@@ -115,14 +92,11 @@ body.embed .page{
 .btn{
   min-height:38px;
   padding:9px 13px;
-
   border:0;
   border-radius:9px;
-
   font:inherit;
   font-size:11px;
   font-weight:900;
-
   cursor:pointer;
 }
 
@@ -138,7 +112,12 @@ body.embed .page{
 }
 
 .btn.success{
-  background:#168652;
+  background:var(--green);
+  color:#fff;
+}
+
+.btn.danger{
+  background:#b43a3a;
   color:#fff;
 }
 
@@ -153,21 +132,13 @@ body.embed .page{
   cursor:not-allowed;
 }
 
-
-/* =========================================================
-   STATUS
-   ========================================================= */
-
 .status{
   margin-bottom:12px;
   padding:10px 12px;
-
   border:1px solid #ceddf0;
   border-radius:10px;
-
   background:#eef5ff;
   color:#49627e;
-
   font-size:11px;
 }
 
@@ -183,11 +154,6 @@ body.embed .page{
   color:#9d2f2f;
 }
 
-
-/* =========================================================
-   KPI
-   ========================================================= */
-
 .kpis{
   display:grid;
   grid-template-columns:repeat(4,minmax(0,1fr));
@@ -195,23 +161,25 @@ body.embed .page{
   margin-bottom:12px;
 }
 
-.kpi{
+.kpi,
+.summary-card,
+.card{
   background:#fff;
-
   border:1px solid var(--line);
   border-radius:14px;
-
-  padding:15px;
-
-  box-shadow:
-    0 5px 20px
-    rgba(23,69,122,.05);
+  box-shadow:0 5px 20px rgba(23,69,122,.05);
 }
 
-.kpi small{
+.kpi{
+  padding:15px;
+}
+
+.kpi small,
+.summary-stat small,
+.box small{
   display:block;
   color:#718096;
-  font-size:9px;
+  font-size:8px;
   font-weight:900;
   text-transform:uppercase;
 }
@@ -223,7 +191,7 @@ body.embed .page{
   font-size:22px;
 }
 
-.kpi.expense strong{
+.kpi.writeoff strong{
   color:var(--red);
 }
 
@@ -235,11 +203,6 @@ body.embed .page{
   color:var(--orange);
 }
 
-
-/* =========================================================
-   SUMMARY
-   ========================================================= */
-
 .summary-grid{
   display:grid;
   grid-template-columns:repeat(3,minmax(0,1fr));
@@ -248,21 +211,13 @@ body.embed .page{
 }
 
 .summary-card{
-  background:#fff;
-
-  border:1px solid var(--line);
-  border-radius:14px;
-
   padding:15px;
-
-  box-shadow:
-    0 5px 20px
-    rgba(23,69,122,.05);
 }
 
-.summary-title{
+.summary-title,
+.card-title{
   color:var(--navy);
-  font-size:12px;
+  font-size:13px;
   font-weight:900;
 }
 
@@ -273,55 +228,33 @@ body.embed .page{
   margin-top:12px;
 }
 
-.summary-stat{
+.summary-stat,
+.box{
   padding:9px;
-
   border:1px solid #e8edf4;
   border-radius:9px;
-
   background:#fafcff;
 }
 
-.summary-stat small{
-  display:block;
-  color:#8090a2;
-  font-size:8px;
-  font-weight:900;
-  text-transform:uppercase;
-}
-
-.summary-stat strong{
+.summary-stat strong,
+.box strong{
   display:block;
   margin-top:4px;
   color:#233e5e;
   font-size:14px;
 }
 
-.summary-stat.warning strong{
-  color:var(--purple);
-}
-
 .summary-stat.success strong{
   color:var(--green);
 }
 
-
-/* =========================================================
-   CARD
-   ========================================================= */
+.summary-stat.warning strong{
+  color:var(--purple);
+}
 
 .card{
-  background:#fff;
-
-  border:1px solid var(--line);
-  border-radius:14px;
-
   padding:15px;
   margin-bottom:12px;
-
-  box-shadow:
-    0 5px 20px
-    rgba(23,69,122,.05);
 }
 
 .card-head{
@@ -332,63 +265,37 @@ body.embed .page{
   margin-bottom:11px;
 }
 
-.card-title{
-  color:var(--navy);
-  font-size:14px;
-  font-weight:900;
-}
-
 .card-sub{
   margin-top:3px;
   color:#8392a5;
   font-size:9px;
 }
 
-
-/* =========================================================
-   FILTERS
-   ========================================================= */
-
-.controls{
-  display:flex;
-  gap:8px;
-  flex-wrap:wrap;
-}
-
 .controls input,
 .controls select{
   min-height:38px;
   padding:8px 10px;
-
   border:1px solid #cbd8e7;
   border-radius:9px;
-
   background:#fff;
   color:var(--text);
-
   font:inherit;
   font-size:11px;
 }
 
 .controls input[type="search"]{
-  min-width:300px;
+  min-width:310px;
 }
-
-
-/* =========================================================
-   TABLE
-   ========================================================= */
 
 .table-wrap{
   overflow:auto;
-
   border:1px solid var(--line);
   border-radius:10px;
 }
 
 table{
   width:100%;
-  min-width:2850px;
+  min-width:2800px;
   border-collapse:collapse;
 }
 
@@ -396,20 +303,16 @@ th,
 td{
   padding:10px;
   border-bottom:1px solid #edf1f5;
-
   text-align:left;
   vertical-align:top;
-
   font-size:10px;
 }
 
 th{
   position:sticky;
   top:0;
-
   background:#f7f9fc;
   color:#53677d;
-
   font-size:8px;
   font-weight:900;
   text-transform:uppercase;
@@ -440,38 +343,34 @@ tbody tr:hover{
 }
 
 .note{
-  max-width:250px;
+  max-width:260px;
   white-space:normal;
   line-height:1.4;
 }
 
 .empty{
-  padding:26px !important;
-  text-align:center !important;
-  color:#8090a1 !important;
+  padding:24px!important;
+  text-align:center!important;
+  color:#8090a1!important;
 }
-
-
-/* =========================================================
-   BADGES
-   ========================================================= */
 
 .badge{
   display:inline-block;
-
   padding:5px 8px;
-
   border-radius:999px;
-
   font-size:8px;
   font-weight:900;
-
   white-space:nowrap;
 }
 
-.badge.expense{
+.badge.writeoff-pending{
   background:#fff0f0;
   color:#a63a3a;
+}
+
+.badge.writeoff-posted{
+  background:#edf9f3;
+  color:#168652;
 }
 
 .badge.recovery-pending{
@@ -509,12 +408,7 @@ tbody tr:hover{
   color:#168652;
 }
 
-.badge.review{
-  background:#f3effa;
-  color:#7654a8;
-}
-
-.badge.type-cost{
+.badge.type-writeoff{
   background:#fff0f0;
   color:#a63a3a;
 }
@@ -529,10 +423,10 @@ tbody tr:hover{
   color:#168652;
 }
 
-
-/* =========================================================
-   AUDIT
-   ========================================================= */
+.badge.review{
+  background:#f3effa;
+  color:#7654a8;
+}
 
 .audit-main{
   color:#17457a;
@@ -565,12 +459,9 @@ tbody tr:hover{
 .legacy-note{
   max-width:230px;
   padding:6px 8px;
-
   border-radius:7px;
-
   background:#f6f1fb;
   color:#7654a8;
-
   font-size:8px;
   font-weight:800;
   line-height:1.4;
@@ -582,67 +473,38 @@ tbody tr:hover{
   font-size:9px;
 }
 
-
-/* =========================================================
-   PAYMENT HISTORY
-   ========================================================= */
-
-.history-empty{
-  padding:22px;
-  text-align:center;
-  color:#8291a1;
-  font-size:10px;
-}
-
 .payment-method{
   display:inline-block;
-
   padding:4px 7px;
-
   border-radius:999px;
-
   background:#f2f5f9;
   color:#40566f;
-
   font-size:8px;
   font-weight:900;
 }
-
-
-/* =========================================================
-   MODAL
-   ========================================================= */
 
 .modal-backdrop{
   position:fixed;
   inset:0;
   z-index:9999;
-
   display:flex;
   align-items:center;
   justify-content:center;
-
   padding:20px;
-
   background:rgba(18,38,63,.48);
 }
 
 .modal-backdrop[hidden]{
-  display:none !important;
+  display:none!important;
 }
 
 .modal{
-  width:min(760px,100%);
+  width:min(780px,100%);
   max-height:92vh;
   overflow:auto;
-
   background:#fff;
-
   border-radius:16px;
-
-  box-shadow:
-    0 30px 80px
-    rgba(0,0,0,.25);
+  box-shadow:0 30px 80px rgba(0,0,0,.25);
 }
 
 .modal-head{
@@ -650,9 +512,7 @@ tbody tr:hover{
   align-items:flex-start;
   justify-content:space-between;
   gap:12px;
-
   padding:18px 20px;
-
   border-bottom:1px solid var(--line);
 }
 
@@ -672,16 +532,12 @@ tbody tr:hover{
 .modal-close{
   width:34px;
   height:34px;
-
   border:0;
   border-radius:8px;
-
   background:#f2f5f9;
   color:#52667c;
-
   font-size:18px;
   font-weight:900;
-
   cursor:pointer;
 }
 
@@ -695,10 +551,6 @@ tbody tr:hover{
   gap:12px;
 }
 
-.field{
-  min-width:0;
-}
-
 .field.full{
   grid-column:1/-1;
 }
@@ -706,9 +558,7 @@ tbody tr:hover{
 .field label{
   display:block;
   margin-bottom:5px;
-
   color:#53677d;
-
   font-size:9px;
   font-weight:900;
   text-transform:uppercase;
@@ -718,17 +568,12 @@ tbody tr:hover{
 .field select,
 .field textarea{
   width:100%;
-
   min-height:40px;
-
   padding:9px 10px;
-
   border:1px solid #cbd8e7;
   border-radius:9px;
-
   background:#fff;
   color:var(--text);
-
   font:inherit;
   font-size:11px;
 }
@@ -740,65 +585,25 @@ tbody tr:hover{
 
 .helper{
   margin-top:4px;
-
   color:#8392a5;
-
   font-size:9px;
   line-height:1.4;
 }
 
-.recovery-summary{
+.modal-summary{
   display:grid;
   grid-template-columns:repeat(4,minmax(0,1fr));
   gap:8px;
-
   margin-bottom:16px;
-}
-
-.recovery-box{
-  padding:10px;
-
-  border:1px solid #e1e8f1;
-  border-radius:10px;
-
-  background:#fafcff;
-}
-
-.recovery-box small{
-  display:block;
-
-  color:#7b8797;
-
-  font-size:8px;
-  font-weight:900;
-  text-transform:uppercase;
-}
-
-.recovery-box strong{
-  display:block;
-
-  margin-top:5px;
-
-  color:#17457a;
-
-  font-size:13px;
-}
-
-.recovery-box.outstanding strong{
-  color:#b43a3a;
 }
 
 .preview-box{
   margin-top:12px;
   padding:10px 12px;
-
   border:1px solid #d7e5f6;
   border-radius:9px;
-
   background:#f7fbff;
-
   color:#36597c;
-
   font-size:10px;
   line-height:1.5;
 }
@@ -806,13 +611,10 @@ tbody tr:hover{
 .modal-error{
   margin-top:12px;
   padding:9px 10px;
-
   border:1px solid #f0cece;
   border-radius:9px;
-
   background:#fff1f1;
   color:#9d2f2f;
-
   font-size:10px;
 }
 
@@ -821,19 +623,10 @@ tbody tr:hover{
 }
 
 .modal-actions{
-  display:flex;
   justify-content:flex-end;
-  gap:8px;
-
   padding:15px 20px;
-
   border-top:1px solid var(--line);
 }
-
-
-/* =========================================================
-   RESPONSIVE
-   ========================================================= */
 
 @media(max-width:1000px){
 
@@ -896,29 +689,20 @@ tbody tr:hover{
     grid-column:auto;
   }
 
-  .recovery-summary{
+  .modal-summary{
     grid-template-columns:1fr 1fr;
   }
 
 }
-
 </style>
-
 
 <script src="supabase-damaged-stock.js?v=1"></script>
 
 </head>
 
-
 <body>
 
-
 <main class="page">
-
-
-  <!-- =====================================================
-       HEADER
-       ===================================================== -->
 
   <div class="topbar">
 
@@ -929,13 +713,9 @@ tbody tr:hover{
       </h1>
 
       <div class="subtitle">
-
-        BIG BROTHER · Accounting ·
-        Damage expense,
+        BIG BROTHER · Accounting · Inventory Write-Off,
         Client / Supplier recovery,
-        replacement-stock recovery
-        and financial settlement audit.
-
+        replacement-stock recovery and settlement audit.
       </div>
 
     </div>
@@ -947,19 +727,17 @@ tbody tr:hover{
         SUPABASE LIVE · ACCOUNTING
       </div>
 
-
       <button
-        type="button"
         class="btn secondary"
+        type="button"
         onclick="openDamageReport()"
       >
         ⚠️ Damage Stock Report
       </button>
 
-
       <button
-        type="button"
         class="btn secondary"
+        type="button"
         onclick="openClearedReport()"
       >
         ✅ Cleared Damaged Stock
@@ -970,11 +748,6 @@ tbody tr:hover{
   </div>
 
 
-
-  <!-- =====================================================
-       STATUS
-       ===================================================== -->
-
   <div
     id="status"
     class="status"
@@ -983,13 +756,7 @@ tbody tr:hover{
   </div>
 
 
-
-  <!-- =====================================================
-       KPI
-       ===================================================== -->
-
   <section class="kpis">
-
 
     <div class="kpi">
 
@@ -1004,13 +771,13 @@ tbody tr:hover{
     </div>
 
 
-    <div class="kpi expense">
+    <div class="kpi writeoff">
 
       <small>
-        Expense Pending
+        Inventory Write-Off Pending
       </small>
 
-      <strong id="kpiExpensePending">
+      <strong id="kpiWriteOffPending">
         $0.00
       </strong>
 
@@ -1042,14 +809,8 @@ tbody tr:hover{
 
     </div>
 
-
   </section>
 
-
-
-  <!-- =====================================================
-       SUMMARY
-       ===================================================== -->
 
   <section class="summary-grid">
 
@@ -1057,7 +818,7 @@ tbody tr:hover{
     <div class="summary-card">
 
       <div class="summary-title">
-        💸 Damage / Spoilage Expense
+        📝 Inventory Write-Off
       </div>
 
       <div class="summary-stats">
@@ -1068,11 +829,12 @@ tbody tr:hover{
             Pending Qty
           </small>
 
-          <strong id="expenseQty">
+          <strong id="writeOffPendingQty">
             0
           </strong>
 
         </div>
+
 
         <div class="summary-stat">
 
@@ -1080,7 +842,33 @@ tbody tr:hover{
             Pending Value
           </small>
 
-          <strong id="expenseValue">
+          <strong id="writeOffPendingValue">
+            $0.00
+          </strong>
+
+        </div>
+
+
+        <div class="summary-stat success">
+
+          <small>
+            Posted Qty
+          </small>
+
+          <strong id="writeOffPostedQty">
+            0
+          </strong>
+
+        </div>
+
+
+        <div class="summary-stat success">
+
+          <small>
+            Posted Value
+          </small>
+
+          <strong id="writeOffPostedValue">
             $0.00
           </strong>
 
@@ -1112,6 +900,7 @@ tbody tr:hover{
 
         </div>
 
+
         <div class="summary-stat">
 
           <small>
@@ -1123,6 +912,7 @@ tbody tr:hover{
           </strong>
 
         </div>
+
 
         <div class="summary-stat success">
 
@@ -1136,6 +926,7 @@ tbody tr:hover{
 
         </div>
 
+
         <div class="summary-stat">
 
           <small>
@@ -1148,6 +939,7 @@ tbody tr:hover{
 
         </div>
 
+
         <div class="summary-stat warning">
 
           <small>
@@ -1159,6 +951,7 @@ tbody tr:hover{
           </strong>
 
         </div>
+
 
         <div class="summary-stat warning">
 
@@ -1198,6 +991,7 @@ tbody tr:hover{
 
         </div>
 
+
         <div class="summary-stat">
 
           <small>
@@ -1214,20 +1008,14 @@ tbody tr:hover{
 
     </div>
 
-
   </section>
 
 
-
-  <!-- =====================================================
-       LEDGER
-       ===================================================== -->
 
   <section class="card">
 
 
     <div class="card-head">
-
 
       <div>
 
@@ -1236,11 +1024,9 @@ tbody tr:hover{
         </div>
 
         <div class="card-sub">
-
-          Recovery settlement is enabled for documented
-          Client Buy Back work items.
-          Legacy Buy Back records remain review-only.
-
+          Inventory Write-Off posting and documented
+          Client Buy Back recovery settlement are enabled.
+          Legacy Buy Back remains review-only.
         </div>
 
       </div>
@@ -1248,11 +1034,10 @@ tbody tr:hover{
 
       <div class="controls">
 
-
         <input
           id="search"
           type="search"
-          placeholder="Search product / client / recovery document / exchange document / movement"
+          placeholder="Search product / client / document / movement"
         >
 
 
@@ -1262,8 +1047,12 @@ tbody tr:hover{
             All Accounting Status
           </option>
 
-          <option value="EXPENSE PENDING">
-            Expense Pending
+          <option value="INVENTORY WRITE-OFF PENDING">
+            Inventory Write-Off Pending
+          </option>
+
+          <option value="INVENTORY WRITE-OFF POSTED">
+            Inventory Write-Off Posted
           </option>
 
           <option value="RECOVERY PENDING">
@@ -1304,7 +1093,7 @@ tbody tr:hover{
           </option>
 
           <option value="DEDUCT_AS_COST">
-            Deduct as Cost
+            Inventory Write-Off
           </option>
 
           <option value="CLIENT_BUY_BACK">
@@ -1332,18 +1121,15 @@ tbody tr:hover{
 
         <button
           id="refreshBtn"
-          type="button"
           class="btn primary"
+          type="button"
         >
           ↻ Refresh
         </button>
 
-
       </div>
 
-
     </div>
-
 
 
     <div class="table-wrap">
@@ -1355,17 +1141,34 @@ tbody tr:hover{
           <tr>
 
             <th>Date</th>
-            <th>Accounting Status</th>
-            <th>Clearance Type</th>
-            <th>Movement</th>
-            <th>Product</th>
-            <th>Code</th>
+
+            <th>
+              Accounting Status
+            </th>
+
+            <th>
+              Clearance Type
+            </th>
+
+            <th>
+              Movement
+            </th>
+
+            <th>
+              Product
+            </th>
+
+            <th>
+              Code
+            </th>
 
             <th class="amount">
               Qty
             </th>
 
-            <th>Unit</th>
+            <th>
+              Unit
+            </th>
 
             <th class="amount">
               Unit Cost
@@ -1373,6 +1176,14 @@ tbody tr:hover{
 
             <th class="amount">
               Stock Cost
+            </th>
+
+            <th>
+              Write-Off ID
+            </th>
+
+            <th>
+              Write-Off Action
             </th>
 
             <th>
@@ -1412,10 +1223,6 @@ tbody tr:hover{
             </th>
 
             <th>
-              Legacy Review
-            </th>
-
-            <th>
               Accounting Treatment
             </th>
 
@@ -1445,7 +1252,7 @@ tbody tr:hover{
           <tr>
 
             <td
-              colspan="25"
+              colspan="26"
               class="empty"
             >
               Loading...
@@ -1465,17 +1272,117 @@ tbody tr:hover{
       class="last-update"
     ></div>
 
+  </section>
+
+
+
+  <section class="card">
+
+    <div class="card-head">
+
+      <div>
+
+        <div class="card-title">
+          Inventory Write-Off History
+        </div>
+
+        <div class="card-sub">
+          Permanent non-cash accounting record
+          for posted Inventory Write-Offs.
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <div class="table-wrap">
+
+      <table style="min-width:1450px">
+
+        <thead>
+
+          <tr>
+
+            <th>
+              Write-Off ID
+            </th>
+
+            <th>
+              Date
+            </th>
+
+            <th>
+              Movement
+            </th>
+
+            <th>
+              Product
+            </th>
+
+            <th>
+              Code
+            </th>
+
+            <th class="amount">
+              Qty
+            </th>
+
+            <th>
+              Unit
+            </th>
+
+            <th class="amount">
+              Unit Cost
+            </th>
+
+            <th class="amount">
+              Write-Off Value
+            </th>
+
+            <th>
+              Reference
+            </th>
+
+            <th>
+              Note
+            </th>
+
+          </tr>
+
+        </thead>
+
+
+        <tbody id="writeOffRows">
+
+          <tr>
+
+            <td
+              colspan="11"
+              class="empty"
+            >
+              No Inventory Write-Off has been posted yet.
+            </td>
+
+          </tr>
+
+        </tbody>
+
+      </table>
+
+    </div>
+
+
+    <div
+      id="writeOffHistoryStatus"
+      class="last-update"
+    ></div>
 
   </section>
 
 
 
-  <!-- =====================================================
-       RECOVERY PAYMENT HISTORY
-       ===================================================== -->
-
   <section class="card">
-
 
     <div class="card-head">
 
@@ -1486,10 +1393,8 @@ tbody tr:hover{
         </div>
 
         <div class="card-sub">
-
-          Append-only settlement history for
-          documented Client Buy Back recoveries.
-
+          Append-only settlement history
+          for documented Client Buy Back recoveries.
         </div>
 
       </div>
@@ -1499,21 +1404,39 @@ tbody tr:hover{
 
     <div class="table-wrap">
 
-      <table
-        style="min-width:1500px"
-      >
+      <table style="min-width:1500px">
 
         <thead>
 
           <tr>
 
-            <th>Settlement ID</th>
-            <th>Date</th>
-            <th>Movement</th>
-            <th>Client / Supplier</th>
-            <th>Recovery Document</th>
-            <th>Product</th>
-            <th>Currency</th>
+            <th>
+              Settlement ID
+            </th>
+
+            <th>
+              Date
+            </th>
+
+            <th>
+              Movement
+            </th>
+
+            <th>
+              Client / Supplier
+            </th>
+
+            <th>
+              Recovery Document
+            </th>
+
+            <th>
+              Product
+            </th>
+
+            <th>
+              Currency
+            </th>
 
             <th class="amount">
               Amount
@@ -1523,9 +1446,17 @@ tbody tr:hover{
               USD Value
             </th>
 
-            <th>Method</th>
-            <th>Reference</th>
-            <th>Note</th>
+            <th>
+              Method
+            </th>
+
+            <th>
+              Reference
+            </th>
+
+            <th>
+              Note
+            </th>
 
           </tr>
 
@@ -1557,16 +1488,206 @@ tbody tr:hover{
       class="last-update"
     ></div>
 
-
   </section>
-
 
 </main>
 
 
 
 <!-- =========================================================
-     RECORD RECOVERY MODAL
+     INVENTORY WRITE-OFF MODAL
+     ========================================================= -->
+
+<div
+  id="writeOffModalBackdrop"
+  class="modal-backdrop"
+  hidden
+>
+
+  <div
+    class="modal"
+    role="dialog"
+    aria-modal="true"
+  >
+
+    <div class="modal-head">
+
+      <div>
+
+        <div class="modal-title">
+          📝 Post Inventory Write-Off
+        </div>
+
+        <div
+          id="writeOffModalSub"
+          class="modal-sub"
+        ></div>
+
+      </div>
+
+
+      <button
+        id="writeOffModalClose"
+        type="button"
+        class="modal-close"
+      >
+        ×
+      </button>
+
+    </div>
+
+
+    <div class="modal-body">
+
+
+      <div class="modal-summary">
+
+        <div class="box">
+
+          <small>
+            Movement
+          </small>
+
+          <strong id="woMovement">
+            -
+          </strong>
+
+        </div>
+
+
+        <div class="box">
+
+          <small>
+            Qty
+          </small>
+
+          <strong id="woQty">
+            0
+          </strong>
+
+        </div>
+
+
+        <div class="box">
+
+          <small>
+            Unit Cost
+          </small>
+
+          <strong id="woUnitCost">
+            $0.00
+          </strong>
+
+        </div>
+
+
+        <div class="box">
+
+          <small>
+            Write-Off Value
+          </small>
+
+          <strong id="woValue">
+            $0.00
+          </strong>
+
+        </div>
+
+      </div>
+
+
+      <div class="modal-grid">
+
+
+        <div class="field">
+
+          <label>
+            Write-Off Date
+          </label>
+
+          <input
+            id="writeOffDate"
+            type="date"
+          >
+
+        </div>
+
+
+        <div class="field">
+
+          <label>
+            Reference No.
+          </label>
+
+          <input
+            id="writeOffReference"
+            type="text"
+            autocomplete="off"
+            placeholder="Optional"
+          >
+
+        </div>
+
+
+        <div class="field full">
+
+          <label>
+            Note
+          </label>
+
+          <textarea
+            id="writeOffNote"
+            placeholder="Optional Inventory Write-Off note"
+          ></textarea>
+
+        </div>
+
+      </div>
+
+
+      <div class="preview-box">
+        This is a non-cash accounting post.
+        Stock will NOT decrease again.
+      </div>
+
+
+      <div
+        id="writeOffError"
+        class="modal-error"
+        hidden
+      ></div>
+
+    </div>
+
+
+    <div class="modal-actions">
+
+      <button
+        id="cancelWriteOffBtn"
+        type="button"
+        class="btn secondary"
+      >
+        Cancel
+      </button>
+
+      <button
+        id="saveWriteOffBtn"
+        type="button"
+        class="btn danger"
+      >
+        Post Inventory Write-Off
+      </button>
+
+    </div>
+
+  </div>
+
+</div>
+
+
+
+<!-- =========================================================
+     RECOVERY SETTLEMENT MODAL
      ========================================================= -->
 
 <div
@@ -1575,13 +1696,11 @@ tbody tr:hover{
   hidden
 >
 
-
   <div
     class="modal"
     role="dialog"
     aria-modal="true"
   >
-
 
     <div class="modal-head">
 
@@ -1594,8 +1713,7 @@ tbody tr:hover{
         <div
           id="recoveryModalSub"
           class="modal-sub"
-        >
-        </div>
+        ></div>
 
       </div>
 
@@ -1611,14 +1729,12 @@ tbody tr:hover{
     </div>
 
 
-
     <div class="modal-body">
 
 
-      <div class="recovery-summary">
+      <div class="modal-summary">
 
-
-        <div class="recovery-box">
+        <div class="box">
 
           <small>
             Recovery Value
@@ -1631,7 +1747,7 @@ tbody tr:hover{
         </div>
 
 
-        <div class="recovery-box">
+        <div class="box">
 
           <small>
             Recovered
@@ -1644,7 +1760,7 @@ tbody tr:hover{
         </div>
 
 
-        <div class="recovery-box outstanding">
+        <div class="box">
 
           <small>
             Outstanding
@@ -1657,7 +1773,7 @@ tbody tr:hover{
         </div>
 
 
-        <div class="recovery-box">
+        <div class="box">
 
           <small>
             Recovery Document
@@ -1669,9 +1785,7 @@ tbody tr:hover{
 
         </div>
 
-
       </div>
-
 
 
       <div class="modal-grid">
@@ -1703,34 +1817,33 @@ tbody tr:hover{
               Select Method
             </option>
 
-            <option value="Cash">
+            <option>
               Cash
             </option>
 
-            <option value="ABA">
+            <option>
               ABA
             </option>
 
-            <option value="Bank Transfer">
+            <option>
               Bank Transfer
             </option>
 
-            <option value="Credit Note">
+            <option>
               Credit Note
             </option>
 
-            <option value="Offset">
+            <option>
               Offset
             </option>
 
-            <option value="Other">
+            <option>
               Other
             </option>
 
           </select>
 
         </div>
-
 
 
         <div class="field">
@@ -1775,7 +1888,6 @@ tbody tr:hover{
         </div>
 
 
-
         <div class="field">
 
           <label>
@@ -1793,8 +1905,7 @@ tbody tr:hover{
           <div
             id="settlementAmountHelp"
             class="helper"
-          >
-          </div>
+          ></div>
 
         </div>
 
@@ -1815,7 +1926,6 @@ tbody tr:hover{
         </div>
 
 
-
         <div class="field full">
 
           <label>
@@ -1829,9 +1939,7 @@ tbody tr:hover{
 
         </div>
 
-
       </div>
-
 
 
       <div
@@ -1848,13 +1956,10 @@ tbody tr:hover{
         hidden
       ></div>
 
-
     </div>
 
 
-
     <div class="modal-actions">
-
 
       <button
         id="cancelSettlementBtn"
@@ -1864,7 +1969,6 @@ tbody tr:hover{
         Cancel
       </button>
 
-
       <button
         id="saveSettlementBtn"
         type="button"
@@ -1873,12 +1977,9 @@ tbody tr:hover{
         Record Recovery
       </button>
 
-
     </div>
 
-
   </div>
-
 
 </div>
 
@@ -1886,581 +1987,597 @@ tbody tr:hover{
 
 <script>
 
-(function () {
+(function(){
 
-  "use strict";
+"use strict";
 
 
-  /* =========================================================
-     EMBED
-     ========================================================= */
+if(
+  new URLSearchParams(
+    location.search
+  ).get("embed") === "1"
+){
+  document.body
+    .classList
+    .add("embed");
+}
 
-  if (
-    new URLSearchParams(
-      location.search
-    ).get("embed") === "1"
-  ) {
 
-    document.body
-      .classList
-      .add("embed");
-
-  }
-
-
-
-  /* =========================================================
-     HELPERS
-     ========================================================= */
-
-  const $ =
-    id =>
-      document.getElementById(
-        id
-      );
-
-
-  const clean =
-    value =>
-      String(
-        value == null
-          ? ""
-          : value
-      ).trim();
-
-
-  const num =
-    value =>
-      Number(value) || 0;
-
-
-  const esc =
-    value =>
-      window
-        .BBDamagedStock
-        .escapeHtml(
-          value
-        );
-
-
-  const qty =
-    value =>
-      window
-        .BBDamagedStock
-        .qty(
-          value
-        );
-
-
-  const money =
-    value =>
-      window
-        .BBDamagedStock
-        .money(
-          value
-        );
-
-
-  function localDateValue() {
-
-    const now =
-      new Date();
-
-
-    const offset =
-      now.getTimezoneOffset();
-
-
-    return new Date(
-      now.getTime()
-      -
-      offset * 60000
-    )
-      .toISOString()
-      .slice(
-        0,
-        10
-      );
-
-  }
-
-
-
-  /* =========================================================
-     STATE
-     ========================================================= */
-
-  let report = {
-    rows:[],
-    totals:{}
-  };
-
-
-  let paymentHistory = {
-    rows:[]
-  };
-
-
-  let loading =
-    false;
-
-
-  let paymentLoading =
-    false;
-
-
-  let settlementSaving =
-    false;
-
-
-  let activeRecoveryRow =
-    null;
-
-
-
-  /* =========================================================
-     STATUS
-     ========================================================= */
-
-  function setStatus(
-    message,
-    type = ""
-  ) {
-
-    $("status")
-      .className =
-
-        "status" +
-
-        (
-          type
-            ? " " + type
-            : ""
-        );
-
-
-    $("status")
-      .textContent =
-        message || "";
-
-  }
-
-
-
-  /* =========================================================
-     ACCOUNTING STATUS BADGE
-     ========================================================= */
-
-  function accountingStatusBadge(
-    status
-  ) {
-
-    const value =
-      clean(
-        status
-      ).toUpperCase();
-
-
-    let cls =
-      "review";
-
-
-    if (
-      value ===
-      "EXPENSE PENDING"
-    ) {
-
-      cls =
-        "expense";
-
-    } else if (
-      value ===
-      "RECOVERY PENDING"
-    ) {
-
-      cls =
-        "recovery-pending";
-
-    } else if (
-      value ===
-      "RECOVERY PARTIAL"
-    ) {
-
-      cls =
-        "recovery-partial";
-
-    } else if (
-      value ===
-      "RECOVERY SETTLED"
-    ) {
-
-      cls =
-        "recovery-settled";
-
-    } else if (
-      value ===
-      "RECOVERY REVIEW REQUIRED"
-    ) {
-
-      cls =
-        "recovery-review";
-
-    } else if (
-      value ===
-      "EXCHANGE PENDING"
-    ) {
-
-      cls =
-        "exchange-pending";
-
-    } else if (
-      value ===
-      "EXCHANGE PARTIAL"
-    ) {
-
-      cls =
-        "exchange-partial";
-
-    } else if (
-      value ===
-      "EXCHANGE COMPLETED"
-    ) {
-
-      cls =
-        "exchange-complete";
-
-    }
-
-
-    return (
-
-      '<span class="badge ' +
-      cls +
-      '">' +
-
-      esc(
-        value ||
-        "REVIEW REQUIRED"
-      ) +
-
-      "</span>"
-
+const $ =
+  id =>
+    document.getElementById(
+      id
     );
 
-  }
+
+const clean =
+  value =>
+    String(
+      value == null
+        ? ""
+        : value
+    ).trim();
 
 
-
-  /* =========================================================
-     CLEARANCE BADGE
-     ========================================================= */
-
-  function clearanceBadge(
-    row
-  ) {
-
-    const type =
-      clean(
-        row.clearanceType
-      );
+const num =
+  value =>
+    Number(
+      value
+    ) || 0;
 
 
-    let cls =
-      "review";
-
-
-    let label =
-      clean(
-        row.clearanceTypeLabel
-      );
-
-
-    if (
-      type ===
-      "DEDUCT_AS_COST"
-    ) {
-
-      cls =
-        "type-cost";
-
-      label =
-        label ||
-        "Deduct as Cost";
-
-    } else if (
-      type ===
-      "CLIENT_BUY_BACK"
-    ) {
-
-      cls =
-        "type-buyback";
-
-      label =
-        label ||
-        "Client Buy Back";
-
-    } else if (
-      type ===
-      "EXCHANGE_FOR_GOOD_PRODUCTS"
-    ) {
-
-      cls =
-        "type-exchange";
-
-      label =
-        label ||
-        "Exchange for Good products";
-
-    }
-
-
-    return (
-
-      '<span class="badge ' +
-      cls +
-      '">' +
-
-      esc(
-        label ||
-        type ||
-        "Unknown"
-      ) +
-
-      "</span>"
-
-    );
-
-  }
-
-
-
-  /* =========================================================
-     CLIENT
-     ========================================================= */
-
-  function clientHtml(
-    row
-  ) {
-
-    const name =
-      clean(
-        row.clientName
-      );
-
-
-    const id =
-      clean(
-        row.clientId
-      );
-
-
-    if (
-      !name &&
-      !id
-    ) {
-
-      return "-";
-
-    }
-
-
-    return (
-
-      '<div class="audit-main">' +
-
-      esc(
-        name ||
-        id
-      ) +
-
-      "</div>" +
-
-      (
-        id
-          ? (
-              '<div class="audit-sub">' +
-              esc(id) +
-              "</div>"
-            )
-          : ""
-      )
-
-    );
-
-  }
-
-
-
-  /* =========================================================
-     DOCUMENT
-     ========================================================= */
-
-  function documentHtml(
-    value
-  ) {
-
-    const documentNo =
-      clean(
+const esc =
+  value =>
+    window
+      .BBDamagedStock
+      .escapeHtml(
         value
       );
 
 
-    if (
-      !documentNo
-    ) {
+const qty =
+  value =>
+    window
+      .BBDamagedStock
+      .qty(
+        value
+      );
 
-      return "-";
 
-    }
+const money =
+  value =>
+    window
+      .BBDamagedStock
+      .money(
+        value
+      );
 
 
-    return (
+function localDateValue(){
 
-      '<span class="document">' +
+  const now =
+    new Date();
 
-      esc(
-        documentNo
-      ) +
 
-      "</span>"
+  const offset =
+    now.getTimezoneOffset();
 
+
+  return new Date(
+    now.getTime()
+    -
+    offset * 60000
+  )
+    .toISOString()
+    .slice(
+      0,
+      10
     );
+
+}
+
+
+
+let report = {
+  rows:[],
+  totals:{}
+};
+
+
+let paymentHistory = {
+  rows:[]
+};
+
+
+let writeOffHistory = {
+  rows:[]
+};
+
+
+let loading =
+  false;
+
+
+let paymentLoading =
+  false;
+
+
+let writeOffHistoryLoading =
+  false;
+
+
+let settlementSaving =
+  false;
+
+
+let writeOffSaving =
+  false;
+
+
+let activeRecoveryRow =
+  null;
+
+
+let activeWriteOffRow =
+  null;
+
+
+
+function setStatus(
+  message,
+  type = ""
+){
+
+  $("status")
+    .className =
+
+      "status"
+
+      +
+
+      (
+        type
+          ? " " + type
+          : ""
+      );
+
+
+  $("status")
+    .textContent =
+      message || "";
+
+}
+
+
+
+function statusBadge(
+  status
+){
+
+  const value =
+    clean(
+      status
+    ).toUpperCase();
+
+
+  let cls =
+    "review";
+
+
+  if(
+    value ===
+    "INVENTORY WRITE-OFF PENDING"
+  ){
+
+    cls =
+      "writeoff-pending";
+
+  }
+
+  else if(
+    value ===
+    "INVENTORY WRITE-OFF POSTED"
+  ){
+
+    cls =
+      "writeoff-posted";
+
+  }
+
+  else if(
+    value ===
+    "RECOVERY PENDING"
+  ){
+
+    cls =
+      "recovery-pending";
+
+  }
+
+  else if(
+    value ===
+    "RECOVERY PARTIAL"
+  ){
+
+    cls =
+      "recovery-partial";
+
+  }
+
+  else if(
+    value ===
+    "RECOVERY SETTLED"
+  ){
+
+    cls =
+      "recovery-settled";
+
+  }
+
+  else if(
+    value ===
+    "RECOVERY REVIEW REQUIRED"
+  ){
+
+    cls =
+      "recovery-review";
+
+  }
+
+  else if(
+    value ===
+    "EXCHANGE PENDING"
+  ){
+
+    cls =
+      "exchange-pending";
+
+  }
+
+  else if(
+    value ===
+    "EXCHANGE PARTIAL"
+  ){
+
+    cls =
+      "exchange-partial";
+
+  }
+
+  else if(
+    value ===
+    "EXCHANGE COMPLETED"
+  ){
+
+    cls =
+      "exchange-complete";
 
   }
 
 
+  return (
 
-  /* =========================================================
-     LEGACY
-     ========================================================= */
+    '<span class="badge ' +
+    cls +
+    '">' +
 
-  function legacyHtml(
-    row
-  ) {
+    esc(
+      value ||
+      "REVIEW REQUIRED"
+    ) +
 
-    if (
-      !row.legacyRecovery
-    ) {
+    '</span>'
 
-      return "-";
+  );
 
-    }
-
-
-    return (
-
-      '<div class="legacy-note">' +
-
-      "Legacy Buy Back · no Recovery work item exists. " +
-      "Accounting review required before settlement." +
-
-      "</div>"
-
-    );
-
-  }
+}
 
 
 
-/* =========================================================
-   RECOVERY ACTION
-   ========================================================= */
-
-function recoveryActionHtml(
+function clearanceBadge(
   row
-) {
+){
 
-  if (
+  const type =
     clean(
       row.clearanceType
-    ) !==
-    "CLIENT_BUY_BACK"
-  ) {
-
-    return "-";
-
-  }
-
-
-  /* -------------------------------------------------------
-     Legacy Buy Back
-     ------------------------------------------------------- */
-
-  if (
-    row.legacyRecovery
-  ) {
-
-    return (
-
-      '<span class="badge recovery-review">' +
-      'REVIEW ONLY' +
-      '</span>'
-
-    );
-
-  }
-
-
-  /* -------------------------------------------------------
-     Already settled
-     ------------------------------------------------------- */
-
-  if (
-    num(
-      row.recoveryOutstandingValue
-    )
-    <=
-    0.005
-  ) {
-
-    return (
-
-      '<span class="badge recovery-settled">' +
-      'SETTLED' +
-      '</span>'
-
-    );
-
-  }
-
-
-  /* -------------------------------------------------------
-     Recovery Item ID
-     ------------------------------------------------------- */
-
-  const recoveryItemId =
-    Number(
-      row.recoveryItemId
     );
 
 
-  if (
-    !Number.isFinite(
-      recoveryItemId
+  let cls =
+    "review";
+
+
+  let label =
+    clean(
+      row.clearanceTypeLabel
     )
 
     ||
 
-    recoveryItemId <= 0
-  ) {
+    type
+
+    ||
+
+    "Unknown";
+
+
+  if(
+    type ===
+    "DEDUCT_AS_COST"
+  ){
+
+    cls =
+      "type-writeoff";
+
+
+    label =
+      "Inventory Write-Off";
+
+  }
+
+  else if(
+    type ===
+    "CLIENT_BUY_BACK"
+  ){
+
+    cls =
+      "type-buyback";
+
+
+    label =
+      "Client Buy Back";
+
+  }
+
+  else if(
+    type ===
+    "EXCHANGE_FOR_GOOD_PRODUCTS"
+  ){
+
+    cls =
+      "type-exchange";
+
+
+    label =
+      "Exchange for Good products";
+
+  }
+
+
+  return (
+
+    '<span class="badge ' +
+    cls +
+    '">' +
+
+    esc(
+      label
+    ) +
+
+    '</span>'
+
+  );
+
+}
+
+
+
+function clientHtml(
+  row
+){
+
+  const name =
+    clean(
+      row.clientName
+    );
+
+
+  const id =
+    clean(
+      row.clientId
+    );
+
+
+  if(
+    !name
+    &&
+    !id
+  ){
 
     return "-";
 
   }
 
 
-  /* -------------------------------------------------------
-     Action Button
-     ------------------------------------------------------- */
+  return (
+
+    '<div class="audit-main">' +
+
+    esc(
+      name ||
+      id
+    ) +
+
+    '</div>'
+
+    +
+
+    (
+      id
+
+        ? (
+            '<div class="audit-sub">' +
+            esc(id) +
+            '</div>'
+          )
+
+        : ""
+    )
+
+  );
+
+}
+
+
+
+function documentHtml(
+  value
+){
+
+  const documentNo =
+    clean(
+      value
+    );
+
+
+  return documentNo
+
+    ? (
+        '<span class="document">' +
+        esc(
+          documentNo
+        ) +
+        '</span>'
+      )
+
+    : "-";
+
+}
+
+
+
+function writeOffActionHtml(
+  row
+){
+
+  if(
+    clean(
+      row.clearanceType
+    ) !==
+    "DEDUCT_AS_COST"
+  ){
+
+    return "-";
+
+  }
+
+
+  if(
+    row.writeoffPosted
+
+    ||
+
+    clean(
+      row.writeoffId
+    )
+  ){
+
+    return (
+      '<span class="badge writeoff-posted">' +
+      'POSTED' +
+      '</span>'
+    );
+
+  }
+
+
+  if(
+    !clean(
+      row.transactionId
+    )
+  ){
+
+    return "-";
+
+  }
+
 
   return (
 
     '<button' +
     ' type="button"' +
-    ' class="btn success small"' +
-    ' onclick="window.openRecoverySettlement(' +
-    recoveryItemId +
-    ')"' +
+    ' class="btn danger small js-writeoff"' +
+    ' data-transaction-id="' +
+    esc(
+      row.transactionId
+    ) +
+    '"' +
+    '>' +
+    '📝 Post Write-Off' +
+    '</button>'
+
+  );
+
+}
+
+
+
+function recoveryActionHtml(
+  row
+){
+
+  if(
+    clean(
+      row.clearanceType
+    ) !==
+    "CLIENT_BUY_BACK"
+  ){
+
+    return "-";
+
+  }
+
+
+  if(
+    row.legacyRecovery
+  ){
+
+    return (
+      '<span class="badge recovery-review">' +
+      'REVIEW ONLY' +
+      '</span>'
+    );
+
+  }
+
+
+  if(
+    num(
+      row.recoveryOutstandingValue
+    )
+    <=
+    0.005
+  ){
+
+    return (
+      '<span class="badge recovery-settled">' +
+      'SETTLED' +
+      '</span>'
+    );
+
+  }
+
+
+  if(
+    !row.recoveryItemId
+  ){
+
+    return "-";
+
+  }
+
+
+  return (
+
+    '<button' +
+    ' type="button"' +
+    ' class="btn success small js-recovery"' +
+    ' data-recovery-id="' +
+    esc(
+      row.recoveryItemId
+    ) +
+    '"' +
     '>' +
     '💵 Record Recovery' +
     '</button>'
@@ -2471,1540 +2588,2140 @@ function recoveryActionHtml(
 
 
 
-/* =========================================================
-   KPI
-   ========================================================= */
+function renderKpis(){
+
+  const totals =
+    report.totals || {};
+
+
+  $("kpiTotalCost")
+    .textContent =
+      money(
+        totals.totalStockCost
+      );
+
+
+  $("kpiWriteOffPending")
+    .textContent =
+      money(
+        totals.writeOffPendingValue
+      );
+
+
+  $("kpiRecoveryPending")
+    .textContent =
+      money(
+        totals.buyBackPendingValue
+      );
+
+
+  $("kpiExchangePending")
+    .textContent =
+      money(
+        totals.exchangePendingValue
+      );
+
+
+  $("writeOffPendingQty")
+    .textContent =
+      qty(
+        totals.writeOffPendingQty
+      );
+
+
+  $("writeOffPendingValue")
+    .textContent =
+      money(
+        totals.writeOffPendingValue
+      );
+
+
+  $("writeOffPostedQty")
+    .textContent =
+      qty(
+        totals.writeOffPostedQty
+      );
+
+
+  $("writeOffPostedValue")
+    .textContent =
+      money(
+        totals.writeOffPostedValue
+      );
+
+
+  $("buyBackQty")
+    .textContent =
+      qty(
+        totals.buyBackRecoveryQty
+      );
+
+
+  $("buyBackValue")
+    .textContent =
+      money(
+        totals.buyBackRecoveryValue
+      );
+
+
+  $("buyBackRecovered")
+    .textContent =
+      money(
+        totals.buyBackRecoveredValue
+      );
+
+
+  $("buyBackOutstanding")
+    .textContent =
+      money(
+        totals.buyBackPendingValue
+      );
+
+
+  $("legacyBuyBackQty")
+    .textContent =
+      qty(
+        totals.legacyBuyBackQty
+      );
+
+
+  $("legacyBuyBackValue")
+    .textContent =
+      money(
+        totals.legacyBuyBackValue
+      );
+
+
+  $("exchangeRecoveryValue")
+    .textContent =
+      money(
+        totals.exchangeRecoveryValue
+      );
+
+
+  $("exchangePendingValue")
+    .textContent =
+      money(
+        totals.exchangePendingValue
+      );
+
+}
 
 
 
-  /* =========================================================
-     KPI
-     ========================================================= */
+function filteredRows(){
 
-  function renderKpis() {
+  const query =
+    clean(
+      $("search").value
+    ).toLowerCase();
+
+
+  const status =
+    clean(
+      $("statusFilter").value
+    ).toUpperCase();
+
+
+  const type =
+    clean(
+      $("typeFilter").value
+    );
+
+
+  const dateFrom =
+    clean(
+      $("dateFrom").value
+    );
+
+
+  const dateTo =
+    clean(
+      $("dateTo").value
+    );
+
+
+  return (
+
+    Array.isArray(
+      report.rows
+    )
+
+      ? report.rows
+
+      : []
+
+  ).filter(
+    row => {
+
+
+      const rowStatus =
+        clean(
+          row.accountingStatus
+        ).toUpperCase();
+
+
+      const rowType =
+        clean(
+          row.clearanceType
+        );
+
+
+      const rowDate =
+        clean(
+          row.activityDate
+        );
+
+
+      if(
+        status
+        &&
+        rowStatus !==
+        status
+      ){
+
+        return false;
+
+      }
+
+
+      if(
+        type
+        &&
+        rowType !==
+        type
+      ){
+
+        return false;
+
+      }
+
+
+      if(
+        dateFrom
+        &&
+        rowDate
+        &&
+        rowDate <
+        dateFrom
+      ){
+
+        return false;
+
+      }
+
+
+      if(
+        dateTo
+        &&
+        rowDate
+        &&
+        rowDate >
+        dateTo
+      ){
+
+        return false;
+
+      }
+
+
+      const haystack =
+        [
+
+          row.productName,
+
+          row.productCode,
+
+          row.movementId,
+
+          row.transactionId,
+
+          row.accountingStatus,
+
+          row.accountingTreatment,
+
+          row.clearanceType,
+
+          row.clientName,
+
+          row.clientId,
+
+          row.recoveryDocumentNo,
+
+          row.exchangeDocumentNo,
+
+          row.writeoffId,
+
+          row.locationName,
+
+          row.locationCode,
+
+          row.controllerName,
+
+          row.referenceNo,
+
+          row.note
+
+        ]
+        .join(" ")
+        .toLowerCase();
+
+
+      return (
+
+        !query
+
+        ||
+
+        haystack.includes(
+          query
+        )
+
+      );
+
+    }
+  );
+
+}
+
+
+
+function renderTable(){
+
+  const rows =
+    filteredRows();
+
+
+  if(
+    !rows.length
+  ){
+
+    $("rows")
+      .innerHTML =
+
+        '<tr>' +
+
+        '<td colspan="26" class="empty">' +
+
+        'No Damage Accounting records found.' +
+
+        '</td>' +
+
+        '</tr>';
+
+
+    return;
+
+  }
+
+
+  $("rows")
+    .innerHTML =
+
+      rows.map(
+        row => `
+
+          <tr>
+
+            <td>
+              ${esc(
+                row.activityDate ||
+                "-"
+              )}
+            </td>
+
+            <td>
+              ${statusBadge(
+                row.accountingStatus
+              )}
+            </td>
+
+            <td>
+              ${clearanceBadge(
+                row
+              )}
+            </td>
+
+            <td class="code">
+              ${esc(
+                row.movementId ||
+                "-"
+              )}
+            </td>
+
+            <td>
+
+              <span class="product">
+                ${esc(
+                  row.productName ||
+                  "-"
+                )}
+              </span>
+
+            </td>
+
+            <td class="code">
+              ${esc(
+                row.productCode ||
+                "-"
+              )}
+            </td>
+
+            <td class="amount">
+
+              <strong>
+                ${qty(
+                  row.qty
+                )}
+              </strong>
+
+            </td>
+
+            <td>
+              ${esc(
+                row.unit ||
+                "-"
+              )}
+            </td>
+
+            <td class="amount money">
+              ${money(
+                row.unitCost
+              )}
+            </td>
+
+            <td class="amount money">
+
+              <strong>
+                ${money(
+                  row.stockCost
+                )}
+              </strong>
+
+            </td>
+
+            <td>
+              ${documentHtml(
+                row.writeoffId
+              )}
+            </td>
+
+            <td>
+              ${writeOffActionHtml(
+                row
+              )}
+            </td>
+
+            <td>
+              ${clientHtml(
+                row
+              )}
+            </td>
+
+            <td>
+              ${documentHtml(
+                row.recoveryDocumentNo
+              )}
+            </td>
+
+            <td class="amount money">
+
+              ${
+                clean(
+                  row.clearanceType
+                ) ===
+                "CLIENT_BUY_BACK"
+
+                  ? money(
+                      row.recoveryValue
+                    )
+
+                  : "-"
+              }
+
+            </td>
+
+            <td class="amount money">
+
+              ${
+                clean(
+                  row.clearanceType
+                ) ===
+                "CLIENT_BUY_BACK"
+
+                  ? money(
+                      row.recoveredAmount
+                    )
+
+                  : "-"
+              }
+
+            </td>
+
+            <td class="amount money">
+
+              ${
+                clean(
+                  row.clearanceType
+                ) ===
+                "CLIENT_BUY_BACK"
+
+                  ? (
+                      row.legacyRecovery
+
+                        ? "-"
+
+                        : money(
+                            row.recoveryOutstandingValue
+                          )
+                    )
+
+                  : "-"
+              }
+
+            </td>
+
+            <td>
+              ${recoveryActionHtml(
+                row
+              )}
+            </td>
+
+            <td>
+              ${documentHtml(
+                row.exchangeDocumentNo
+              )}
+            </td>
+
+            <td class="amount">
+              ${qty(
+                row.exchangeReceivedQty
+              )}
+            </td>
+
+            <td class="amount">
+
+              <strong>
+                ${qty(
+                  row.exchangePendingQty
+                )}
+              </strong>
+
+            </td>
+
+            <td>
+
+              <div class="treatment">
+                ${esc(
+                  row.accountingTreatment ||
+                  "-"
+                )}
+              </div>
+
+            </td>
+
+            <td>
+              ${esc(
+                row.locationName ||
+                row.locationCode ||
+                "-"
+              )}
+            </td>
+
+            <td>
+              ${esc(
+                row.controllerName ||
+                "-"
+              )}
+            </td>
+
+            <td>
+              ${esc(
+                row.referenceNo ||
+                "-"
+              )}
+            </td>
+
+            <td class="note">
+              ${esc(
+                row.note ||
+                "-"
+              )}
+            </td>
+
+          </tr>
+
+        `
+      )
+      .join("");
+
+}
+
+
+
+function renderPaymentHistory(){
+
+  const rows =
+
+    Array.isArray(
+      paymentHistory.rows
+    )
+
+      ? paymentHistory.rows
+
+      : [];
+
+
+  if(
+    !rows.length
+  ){
+
+    $("paymentRows")
+      .innerHTML =
+
+        '<tr>' +
+
+        '<td colspan="12" class="empty">' +
+
+        'No Recovery Settlement has been recorded yet.' +
+
+        '</td>' +
+
+        '</tr>';
+
+
+    return;
+
+  }
+
+
+  $("paymentRows")
+    .innerHTML =
+
+      rows.map(
+        row => `
+
+          <tr>
+
+            <td class="code">
+              ${esc(
+                row.paymentId ||
+                "-"
+              )}
+            </td>
+
+            <td>
+              ${esc(
+                row.paymentDate ||
+                "-"
+              )}
+            </td>
+
+            <td class="code">
+              ${esc(
+                row.movementId ||
+                "-"
+              )}
+            </td>
+
+            <td>
+
+              <div class="audit-main">
+                ${esc(
+                  row.clientName ||
+                  row.clientId ||
+                  "-"
+                )}
+              </div>
+
+              ${
+                clean(
+                  row.clientId
+                )
+
+                  ? (
+                      '<div class="audit-sub">' +
+                      esc(
+                        row.clientId
+                      ) +
+                      '</div>'
+                    )
+
+                  : ""
+              }
+
+            </td>
+
+            <td>
+              ${documentHtml(
+                row.recoveryDocumentNo
+              )}
+            </td>
+
+            <td>
+
+              <span class="product">
+
+                ${esc(
+                  row.productName ||
+                  row.productCode ||
+                  "-"
+                )}
+
+              </span>
+
+            </td>
+
+            <td>
+              ${esc(
+                row.currency ||
+                "-"
+              )}
+            </td>
+
+            <td class="amount money">
+
+              ${
+                clean(
+                  row.currency
+                ) ===
+                "KHR"
+
+                  ? (
+                      "៛" +
+                      Number(
+                        row.paymentAmount ||
+                        0
+                      ).toLocaleString()
+                    )
+
+                  : money(
+                      row.paymentAmount
+                    )
+              }
+
+            </td>
+
+            <td class="amount money">
+
+              <strong>
+                ${money(
+                  row.paymentAmountUSD
+                )}
+              </strong>
+
+            </td>
+
+            <td>
+
+              <span class="payment-method">
+                ${esc(
+                  row.paymentMethod ||
+                  "-"
+                )}
+              </span>
+
+            </td>
+
+            <td>
+              ${esc(
+                row.referenceNo ||
+                "-"
+              )}
+            </td>
+
+            <td class="note">
+              ${esc(
+                row.note ||
+                "-"
+              )}
+            </td>
+
+          </tr>
+
+        `
+      )
+      .join("");
+
+}
+
+
+
+function renderWriteOffHistory(){
+
+  const rows =
+
+    Array.isArray(
+      writeOffHistory.rows
+    )
+
+      ? writeOffHistory.rows
+
+      : [];
+
+
+  if(
+    !rows.length
+  ){
+
+    $("writeOffRows")
+      .innerHTML =
+
+        '<tr>' +
+
+        '<td colspan="11" class="empty">' +
+
+        'No Inventory Write-Off has been posted yet.' +
+
+        '</td>' +
+
+        '</tr>';
+
+
+    return;
+
+  }
+
+
+  $("writeOffRows")
+    .innerHTML =
+
+      rows.map(
+        row => `
+
+          <tr>
+
+            <td class="code">
+              ${esc(
+                row.writeoffId ||
+                "-"
+              )}
+            </td>
+
+            <td>
+              ${esc(
+                row.writeoffDate ||
+                "-"
+              )}
+            </td>
+
+            <td class="code">
+              ${esc(
+                row.movementId ||
+                "-"
+              )}
+            </td>
+
+            <td>
+
+              <span class="product">
+                ${esc(
+                  row.productName ||
+                  row.productCode ||
+                  "-"
+                )}
+              </span>
+
+            </td>
+
+            <td class="code">
+              ${esc(
+                row.productCode ||
+                "-"
+              )}
+            </td>
+
+            <td class="amount">
+              ${qty(
+                row.qty
+              )}
+            </td>
+
+            <td>
+              ${esc(
+                row.unit ||
+                "-"
+              )}
+            </td>
+
+            <td class="amount money">
+              ${money(
+                row.unitCost
+              )}
+            </td>
+
+            <td class="amount money">
+
+              <strong>
+                ${money(
+                  row.writeoffValue
+                )}
+              </strong>
+
+            </td>
+
+            <td>
+              ${esc(
+                row.referenceNo ||
+                "-"
+              )}
+            </td>
+
+            <td class="note">
+              ${esc(
+                row.note ||
+                "-"
+              )}
+            </td>
+
+          </tr>
+
+        `
+      )
+      .join("");
+
+}
+
+
+
+function render(){
+
+  renderKpis();
+
+  renderTable();
+
+
+  $("lastUpdate")
+    .textContent =
+
+      "Generated: "
+
+      +
+
+      (
+        report.generatedAt ||
+        "-"
+      )
+
+      +
+
+      (
+        report.revision
+
+          ? (
+              " · Revision " +
+              report.revision
+            )
+
+          : ""
+      );
+
+}
+
+
+
+async function loadData(){
+
+  if(
+    loading
+  ){
+
+    return;
+
+  }
+
+
+  loading =
+    true;
+
+
+  $("refreshBtn")
+    .disabled =
+      true;
+
+
+  setStatus(
+    "Loading Damage Accounting & Recovery Ledger from Supabase..."
+  );
+
+
+  try{
+
+
+    report =
+
+      await window
+        .BBDamagedStock
+        .rpc(
+          "bb_stock_damage_accounting_report",
+          {
+            p_limit:
+              2000
+          }
+        )
+
+      ||
+
+      {
+        rows:[],
+        totals:{}
+      };
+
+
+    render();
+
 
     const totals =
       report.totals || {};
 
 
-    $("kpiTotalCost")
-      .textContent =
-        money(
-          totals.totalStockCost
-        );
+    setStatus(
 
+      "Damage Accounting Ledger is live · "
 
-    $("kpiExpensePending")
-      .textContent =
-        money(
-          totals.expensePendingValue
-        );
+      +
 
-
-    $("kpiRecoveryPending")
-      .textContent =
-        money(
-          totals.buyBackPendingValue
-        );
-
-
-    $("kpiExchangePending")
-      .textContent =
-        money(
-          totals.exchangePendingValue
-        );
-
-
-    $("expenseQty")
-      .textContent =
-        qty(
-          totals.expensePendingQty
-        );
-
-
-    $("expenseValue")
-      .textContent =
-        money(
-          totals.expensePendingValue
-        );
-
-
-    $("buyBackQty")
-      .textContent =
-        qty(
-          totals.buyBackRecoveryQty
-        );
-
-
-    $("buyBackValue")
-      .textContent =
-        money(
-          totals.buyBackRecoveryValue
-        );
-
-
-    $("buyBackRecovered")
-      .textContent =
-        money(
-          totals.buyBackRecoveredValue
-        );
-
-
-    $("buyBackOutstanding")
-      .textContent =
-        money(
-          totals.buyBackPendingValue
-        );
-
-
-    $("legacyBuyBackQty")
-      .textContent =
-        qty(
-          totals.legacyBuyBackQty
-        );
-
-
-    $("legacyBuyBackValue")
-      .textContent =
-        money(
-          totals.legacyBuyBackValue
-        );
-
-
-    $("exchangeRecoveryValue")
-      .textContent =
-        money(
-          totals.exchangeRecoveryValue
-        );
-
-
-    $("exchangePendingValue")
-      .textContent =
-        money(
-          totals.exchangePendingValue
-        );
-
-  }
-
-
-
-  /* =========================================================
-     FILTER
-     ========================================================= */
-
-  function filteredRows() {
-
-    const query =
-      clean(
-        $("search").value
-      ).toLowerCase();
-
-
-    const status =
-      clean(
-        $("statusFilter").value
-      ).toUpperCase();
-
-
-    const type =
-      clean(
-        $("typeFilter").value
-      );
-
-
-    const dateFrom =
-      clean(
-        $("dateFrom").value
-      );
-
-
-    const dateTo =
-      clean(
-        $("dateTo").value
-      );
-
-
-    const rows =
-      Array.isArray(
-        report.rows
+      money(
+        totals.writeOffPendingValue
       )
-        ? report.rows
-        : [];
 
+      +
 
-    return rows.filter(
-      row => {
+      " Inventory Write-Off pending · "
 
+      +
 
-        const rowStatus =
-          clean(
-            row.accountingStatus
-          ).toUpperCase();
+      money(
+        totals.writeOffPostedValue
+      )
 
+      +
 
-        const rowType =
-          clean(
-            row.clearanceType
-          );
+      " posted · "
 
+      +
 
-        const rowDate =
-          clean(
-            row.activityDate
-          );
+      money(
+        totals.buyBackPendingValue
+      )
 
+      +
 
-        if (
-          status &&
-          rowStatus !== status
-        ) {
+      " Buy Back recovery outstanding · "
 
-          return false;
+      +
 
-        }
+      money(
+        totals.exchangePendingValue
+      )
 
+      +
 
-        if (
-          type &&
-          rowType !== type
-        ) {
+      " exchange recovery still pending.",
 
-          return false;
+      "success"
 
-        }
-
-
-        if (
-          dateFrom &&
-          rowDate &&
-          rowDate < dateFrom
-        ) {
-
-          return false;
-
-        }
-
-
-        if (
-          dateTo &&
-          rowDate &&
-          rowDate > dateTo
-        ) {
-
-          return false;
-
-        }
-
-
-        const haystack =
-          [
-
-            row.productName,
-            row.productCode,
-
-            row.movementId,
-            row.transactionId,
-
-            row.accountingStatus,
-            row.accountingTreatment,
-
-            row.clearanceType,
-            row.clearanceTypeLabel,
-
-            row.clientName,
-            row.clientId,
-
-            row.recoveryDocumentNo,
-            row.exchangeDocumentNo,
-
-            row.locationName,
-            row.locationCode,
-
-            row.controllerName,
-
-            row.referenceNo,
-            row.note
-
-          ]
-            .join(" ")
-            .toLowerCase();
-
-
-        if (
-          query &&
-          !haystack.includes(
-            query
-          )
-        ) {
-
-          return false;
-
-        }
-
-
-        return true;
-
-      }
     );
 
-  }
+
+  }catch(
+    error
+  ){
 
 
-
-  /* =========================================================
-     LEDGER TABLE
-     ========================================================= */
-
-  function renderTable() {
-
-    const rows =
-      filteredRows();
+    console.error(
+      error
+    );
 
 
-    if (
-      !rows.length
-    ) {
-
-      $("rows")
-        .innerHTML =
-
-          '<tr>' +
-
-          '<td colspan="25" class="empty">' +
-
-          "No Damage Accounting records found." +
-
-          "</td>" +
-
-          "</tr>";
-
-
-      return;
-
-    }
+    setStatus(
+      clean(
+        error?.message ||
+        error
+      ),
+      "error"
+    );
 
 
     $("rows")
       .innerHTML =
 
-        rows.map(
-          row => `
+        '<tr>' +
 
-            <tr>
+        '<td colspan="26" class="empty">' +
 
-              <td>
-                ${esc(
-                  row.activityDate ||
-                  "-"
-                )}
-              </td>
+        'Could not load Damage Accounting & Recovery Ledger.' +
 
-              <td>
-                ${accountingStatusBadge(
-                  row.accountingStatus
-                )}
-              </td>
+        '</td>' +
 
-              <td>
-                ${clearanceBadge(
-                  row
-                )}
-              </td>
+        '</tr>';
 
-              <td class="code">
-                ${esc(
-                  row.movementId ||
-                  "-"
-                )}
-              </td>
 
-              <td>
-                <span class="product">
-                  ${esc(
-                    row.productName ||
-                    "-"
-                  )}
-                </span>
-              </td>
+  }finally{
 
-              <td class="code">
-                ${esc(
-                  row.productCode ||
-                  "-"
-                )}
-              </td>
 
-              <td class="amount">
-                <strong>
-                  ${qty(
-                    row.qty
-                  )}
-                </strong>
-              </td>
+    loading =
+      false;
 
-              <td>
-                ${esc(
-                  row.unit ||
-                  "-"
-                )}
-              </td>
 
-              <td class="amount money">
-                ${money(
-                  row.unitCost
-                )}
-              </td>
+    $("refreshBtn")
+      .disabled =
+        false;
 
-              <td class="amount money">
-                <strong>
-                  ${money(
-                    row.stockCost
-                  )}
-                </strong>
-              </td>
+  }
 
-              <td>
-                ${clientHtml(
-                  row
-                )}
-              </td>
+}
 
-              <td>
-                ${documentHtml(
-                  row.recoveryDocumentNo
-                )}
-              </td>
 
-              <td class="amount money">
 
-                ${
-                  clean(
-                    row.clearanceType
-                  ) ===
-                  "CLIENT_BUY_BACK"
+async function loadPaymentHistory(){
 
-                    ? money(
-                        row.recoveryValue
-                      )
+  if(
+    paymentLoading
+  ){
 
-                    : "-"
-                }
-
-              </td>
-
-              <td class="amount money">
-
-                ${
-                  clean(
-                    row.clearanceType
-                  ) ===
-                  "CLIENT_BUY_BACK"
-
-                    ? money(
-                        row.recoveredAmount
-                      )
-
-                    : "-"
-                }
-
-              </td>
-
-              <td class="amount money">
-
-                ${
-                  clean(
-                    row.clearanceType
-                  ) ===
-                  "CLIENT_BUY_BACK"
-
-                    ? (
-                        row.legacyRecovery
-
-                          ? "-"
-
-                          : money(
-                              row.recoveryOutstandingValue
-                            )
-                      )
-
-                    : "-"
-                }
-
-              </td>
-
-              <td>
-                ${recoveryActionHtml(
-                  row
-                )}
-              </td>
-
-              <td>
-                ${documentHtml(
-                  row.exchangeDocumentNo
-                )}
-              </td>
-
-              <td class="amount">
-                ${qty(
-                  row.exchangeReceivedQty
-                )}
-              </td>
-
-              <td class="amount">
-                <strong>
-                  ${qty(
-                    row.exchangePendingQty
-                  )}
-                </strong>
-              </td>
-
-              <td>
-                ${legacyHtml(
-                  row
-                )}
-              </td>
-
-              <td>
-                <div class="treatment">
-                  ${esc(
-                    row.accountingTreatment ||
-                    "-"
-                  )}
-                </div>
-              </td>
-
-              <td>
-                ${esc(
-                  row.locationName ||
-                  row.locationCode ||
-                  "-"
-                )}
-              </td>
-
-              <td>
-                ${esc(
-                  row.controllerName ||
-                  "-"
-                )}
-              </td>
-
-              <td>
-                ${esc(
-                  row.referenceNo ||
-                  "-"
-                )}
-              </td>
-
-              <td class="note">
-                ${esc(
-                  row.note ||
-                  "-"
-                )}
-              </td>
-
-            </tr>
-
-          `
-        )
-        .join("");
+    return;
 
   }
 
 
-
-  /* =========================================================
-     PAYMENT HISTORY
-     ========================================================= */
-
-  function renderPaymentHistory() {
-
-    const rows =
-      Array.isArray(
-        paymentHistory.rows
-      )
-        ? paymentHistory.rows
-        : [];
+  paymentLoading =
+    true;
 
 
-    if (
-      !rows.length
-    ) {
-
-      $("paymentRows")
-        .innerHTML =
-
-          '<tr>' +
-
-          '<td colspan="12" class="empty">' +
-
-          "No Recovery Settlement has been recorded yet." +
-
-          "</td>" +
-
-          "</tr>";
+  try{
 
 
-      return;
+    paymentHistory =
 
-    }
+      await window
+        .BBDamagedStock
+        .rpc(
+          "bb_stock_damage_recovery_payment_history",
+          {
+
+            p_recovery_item_id:
+              null,
+
+            p_limit:
+              2000
+
+          }
+        )
+
+      ||
+
+      {
+        rows:[]
+      };
+
+
+    renderPaymentHistory();
+
+
+    $("paymentHistoryStatus")
+      .textContent =
+
+        (
+          Array.isArray(
+            paymentHistory.rows
+          )
+
+            ? paymentHistory.rows.length
+
+            : 0
+        )
+
+        +
+
+        " Recovery Settlement record(s).";
+
+
+  }catch(
+    error
+  ){
+
+
+    console.error(
+      error
+    );
 
 
     $("paymentRows")
       .innerHTML =
 
-        rows.map(
-          row => `
+        '<tr>' +
 
-            <tr>
+        '<td colspan="12" class="empty">' +
 
-              <td class="code">
-                ${esc(
-                  row.paymentId ||
-                  "-"
-                )}
-              </td>
+        'Recovery Settlement History is unavailable for this account.' +
 
-              <td>
-                ${esc(
-                  row.paymentDate ||
-                  "-"
-                )}
-              </td>
+        '</td>' +
 
-              <td class="code">
-                ${esc(
-                  row.movementId ||
-                  "-"
-                )}
-              </td>
+        '</tr>';
 
-              <td>
 
-                <div class="audit-main">
-                  ${esc(
-                    row.clientName ||
-                    row.clientId ||
-                    "-"
-                  )}
-                </div>
+    $("paymentHistoryStatus")
+      .textContent =
+        clean(
+          error?.message ||
+          error
+        );
 
-                ${
-                  clean(
-                    row.clientId
-                  )
-                    ? (
-                        '<div class="audit-sub">' +
-                        esc(
-                          row.clientId
-                        ) +
-                        '</div>'
-                      )
-                    : ""
-                }
 
-              </td>
+  }finally{
 
-              <td>
-                ${documentHtml(
-                  row.recoveryDocumentNo
-                )}
-              </td>
 
-              <td>
+    paymentLoading =
+      false;
 
-                <span class="product">
+  }
 
-                  ${esc(
-                    row.productName ||
-                    row.productCode ||
-                    "-"
-                  )}
+}
 
-                </span>
 
-              </td>
 
-              <td>
-                ${esc(
-                  row.currency ||
-                  "-"
-                )}
-              </td>
+async function loadWriteOffHistory(){
 
-              <td class="amount money">
+  if(
+    writeOffHistoryLoading
+  ){
 
-                ${
-                  clean(
-                    row.currency
-                  ) === "KHR"
-
-                    ? "៛" +
-                      Number(
-                        row.paymentAmount ||
-                        0
-                      ).toLocaleString()
-
-                    : money(
-                        row.paymentAmount
-                      )
-                }
-
-              </td>
-
-              <td class="amount money">
-
-                <strong>
-                  ${money(
-                    row.paymentAmountUSD
-                  )}
-                </strong>
-
-              </td>
-
-              <td>
-
-                <span class="payment-method">
-
-                  ${esc(
-                    row.paymentMethod ||
-                    "-"
-                  )}
-
-                </span>
-
-              </td>
-
-              <td>
-                ${esc(
-                  row.referenceNo ||
-                  "-"
-                )}
-              </td>
-
-              <td class="note">
-                ${esc(
-                  row.note ||
-                  "-"
-                )}
-              </td>
-
-            </tr>
-
-          `
-        )
-        .join("");
+    return;
 
   }
 
 
-
-  /* =========================================================
-     RENDER
-     ========================================================= */
-
-  function render() {
-
-    renderKpis();
-
-    renderTable();
+  writeOffHistoryLoading =
+    true;
 
 
-    $("lastUpdate")
+  try{
+
+
+    writeOffHistory =
+
+      await window
+        .BBDamagedStock
+        .rpc(
+          "bb_stock_damage_inventory_writeoff_history",
+          {
+            p_limit:
+              2000
+          }
+        )
+
+      ||
+
+      {
+        rows:[]
+      };
+
+
+    renderWriteOffHistory();
+
+
+    $("writeOffHistoryStatus")
       .textContent =
 
-        "Generated: " +
-
         (
-          report.generatedAt ||
-          "-"
+          Array.isArray(
+            writeOffHistory.rows
+          )
+
+            ? writeOffHistory.rows.length
+
+            : 0
         )
 
         +
 
-        (
-          report.revision
-
-            ? " · Revision " +
-              report.revision
-
-            : ""
-        );
-
-  }
+        " Inventory Write-Off record(s).";
 
 
-
-  /* =========================================================
-     LOAD ACCOUNTING REPORT
-     ========================================================= */
-
-  async function loadData() {
-
-    if (
-      loading
-    ) {
-
-      return;
-
-    }
+  }catch(
+    error
+  ){
 
 
-    loading =
-      true;
-
-
-    $("refreshBtn")
-      .disabled =
-        true;
-
-
-    setStatus(
-      "Loading Damage Accounting & Recovery Ledger from Supabase..."
+    console.error(
+      error
     );
 
 
-    try {
+    $("writeOffRows")
+      .innerHTML =
+
+        '<tr>' +
+
+        '<td colspan="11" class="empty">' +
+
+        'Inventory Write-Off History is unavailable for this account.' +
+
+        '</td>' +
+
+        '</tr>';
 
 
-      report =
-
-        await window
-          .BBDamagedStock
-          .rpc(
-            "bb_stock_damage_accounting_report",
-            {
-              p_limit:
-                2000
-            }
-          );
-
-
-      report =
-        report || {
-          rows:[],
-          totals:{}
-        };
-
-
-      render();
-
-
-      const totals =
-        report.totals || {};
-
-
-      setStatus(
-
-        "Damage Accounting Ledger is live · " +
-
-        money(
-          totals.expensePendingValue
-        ) +
-
-        " expense pending · " +
-
-        money(
-          totals.buyBackPendingValue
-        ) +
-
-        " Buy Back recovery outstanding · " +
-
-        money(
-          totals.buyBackRecoveredValue
-        ) +
-
-        " already recovered · " +
-
-        money(
-          totals.exchangePendingValue
-        ) +
-
-        " exchange recovery still pending.",
-
-        "success"
-
-      );
-
-
-    } catch (
-      error
-    ) {
-
-
-      console.error(
-        error
-      );
-
-
-      setStatus(
-
+    $("writeOffHistoryStatus")
+      .textContent =
         clean(
           error?.message ||
           error
-        ),
-
-        "error"
-
-      );
-
-
-      $("rows")
-        .innerHTML =
-
-          '<tr>' +
-
-          '<td colspan="25" class="empty">' +
-
-          "Could not load Damage Accounting & Recovery Ledger." +
-
-          "</td>" +
-
-          "</tr>";
-
-
-    } finally {
-
-
-      loading =
-        false;
-
-
-      $("refreshBtn")
-        .disabled =
-          false;
-
-    }
-
-  }
-
-
-
-  /* =========================================================
-     LOAD PAYMENT HISTORY
-     ========================================================= */
-
-  async function loadPaymentHistory() {
-
-    if (
-      paymentLoading
-    ) {
-
-      return;
-
-    }
-
-
-    paymentLoading =
-      true;
-
-
-    try {
-
-
-      paymentHistory =
-
-        await window
-          .BBDamagedStock
-          .rpc(
-            "bb_stock_damage_recovery_payment_history",
-            {
-              p_recovery_item_id:
-                null,
-
-              p_limit:
-                2000
-            }
-          );
-
-
-      paymentHistory =
-        paymentHistory || {
-          rows:[]
-        };
-
-
-      renderPaymentHistory();
-
-
-      $("paymentHistoryStatus")
-        .textContent =
-
-          (
-            Array.isArray(
-              paymentHistory.rows
-            )
-
-              ? paymentHistory.rows.length
-
-              : 0
-          )
-
-          +
-
-          " Recovery Settlement record(s).";
-
-
-    } catch (
-      error
-    ) {
-
-
-      console.error(
-        error
-      );
-
-
-      $("paymentRows")
-        .innerHTML =
-
-          '<tr>' +
-
-          '<td colspan="12" class="empty">' +
-
-          "Recovery Settlement History is unavailable for this account." +
-
-          "</td>" +
-
-          "</tr>";
-
-
-      $("paymentHistoryStatus")
-        .textContent =
-
-          clean(
-            error?.message ||
-            error
-          );
-
-
-    } finally {
-
-
-      paymentLoading =
-        false;
-
-    }
-
-  }
-
-
-
-  /* =========================================================
-     OPEN RECOVERY SETTLEMENT
-     ========================================================= */
-
-  window.openRecoverySettlement =
-    function (
-      recoveryItemId
-    ) {
-
-
-      const row =
-
-        (
-          Array.isArray(
-            report.rows
-          )
-
-            ? report.rows
-
-            : []
-        )
-        .find(
-          item =>
-
-            String(
-              item.recoveryItemId
-            )
-
-            ===
-
-            String(
-              recoveryItemId
-            )
         );
 
 
-      if (
-        !row
-      ) {
-
-        return;
-
-      }
+  }finally{
 
 
-      if (
-        row.legacyRecovery
-      ) {
+    writeOffHistoryLoading =
+      false;
 
-        return;
+  }
 
-      }
+}
 
 
-      if (
-        num(
-          row.recoveryOutstandingValue
+
+/* =========================================================
+   INVENTORY WRITE-OFF
+   ========================================================= */
+
+function openWriteOff(
+  transactionId
+){
+
+  const row =
+
+    (
+      Array.isArray(
+        report.rows
+      )
+
+        ? report.rows
+
+        : []
+    )
+    .find(
+      item =>
+
+        clean(
+          item.transactionId
         )
-        <=
-        0.005
-      ) {
 
-        return;
+        ===
 
-      }
-
-
-      activeRecoveryRow =
-        row;
+        clean(
+          transactionId
+        )
+    );
 
 
-      $("recoveryModalSub")
+  if(
+    !row
+
+    ||
+
+    row.writeoffPosted
+
+    ||
+
+    clean(
+      row.clearanceType
+    ) !==
+    "DEDUCT_AS_COST"
+  ){
+
+    return;
+
+  }
+
+
+  activeWriteOffRow =
+    row;
+
+
+  $("writeOffModalSub")
+    .textContent =
+
+      clean(
+        row.productName
+      )
+
+      +
+
+      " · "
+
+      +
+
+      clean(
+        row.movementId
+      );
+
+
+  $("woMovement")
+    .textContent =
+      clean(
+        row.movementId
+      )
+      ||
+      "-";
+
+
+  $("woQty")
+    .textContent =
+      qty(
+        row.qty
+      );
+
+
+  $("woUnitCost")
+    .textContent =
+      money(
+        row.unitCost
+      );
+
+
+  $("woValue")
+    .textContent =
+      money(
+        row.stockCost
+      );
+
+
+  $("writeOffDate")
+    .value =
+      localDateValue();
+
+
+  $("writeOffReference")
+    .value =
+      "";
+
+
+  $("writeOffNote")
+    .value =
+      "";
+
+
+  $("writeOffError")
+    .hidden =
+      true;
+
+
+  $("writeOffError")
+    .textContent =
+      "";
+
+
+  $("writeOffModalBackdrop")
+    .hidden =
+      false;
+
+}
+
+
+
+function closeWriteOff(){
+
+  if(
+    writeOffSaving
+  ){
+
+    return;
+
+  }
+
+
+  activeWriteOffRow =
+    null;
+
+
+  $("writeOffModalBackdrop")
+    .hidden =
+      true;
+
+}
+
+
+
+async function saveWriteOff(){
+
+  if(
+    writeOffSaving
+
+    ||
+
+    !activeWriteOffRow
+  ){
+
+    return;
+
+  }
+
+
+  const writeoffDate =
+    clean(
+      $("writeOffDate").value
+    );
+
+
+  const referenceNo =
+    clean(
+      $("writeOffReference").value
+    );
+
+
+  const note =
+    clean(
+      $("writeOffNote").value
+    );
+
+
+  const modalError =
+    message => {
+
+
+      $("writeOffError")
         .textContent =
-
-          clean(
-            row.clientName
-          )
-
-          +
-
-          " · "
-
-          +
-
-          clean(
-            row.productName
-          )
-
-          +
-
-          " · "
-
-          +
-
-          clean(
-            row.movementId
-          );
+          message;
 
 
-      $("modalRecoveryValue")
-        .textContent =
-          money(
-            row.recoveryValue
-          );
-
-
-      $("modalRecovered")
-        .textContent =
-          money(
-            row.recoveredAmount
-          );
-
-
-      $("modalOutstanding")
-        .textContent =
-          money(
-            row.recoveryOutstandingValue
-          );
-
-
-      $("modalRecoveryDocument")
-        .textContent =
-
-          clean(
-            row.recoveryDocumentNo
-          )
-
-          ||
-
-          "-";
-
-
-      $("settlementDate")
-        .value =
-          localDateValue();
-
-
-      $("settlementMethod")
-        .value =
-          "";
-
-
-      $("settlementCurrency")
-        .value =
-          "USD";
-
-
-      $("settlementExchangeRate")
-        .value =
-          "1";
-
-
-      $("settlementExchangeRate")
-        .disabled =
-          true;
-
-
-      $("settlementAmount")
-        .value =
-          "";
-
-
-      $("settlementReference")
-        .value =
-          "";
-
-
-      $("settlementNote")
-        .value =
-          "";
-
-
-      $("settlementError")
-        .hidden =
-          true;
-
-
-      $("settlementError")
-        .textContent =
-          "";
-
-
-      updateSettlementPreview();
-
-
-      $("recoveryModalBackdrop")
+      $("writeOffError")
         .hidden =
           false;
-
-
-      setTimeout(
-        () =>
-          $("settlementAmount")
-            .focus(),
-        20
-      );
 
     };
 
 
-
-  /* =========================================================
-     CLOSE MODAL
-     ========================================================= */
-
-  function closeRecoverySettlement() {
-
-    if (
-      settlementSaving
-    ) {
-
-      return;
-
-    }
+  $("writeOffError")
+    .hidden =
+      true;
 
 
-    activeRecoveryRow =
-      null;
+  if(
+    !writeoffDate
+  ){
+
+    return modalError(
+      "Inventory Write-Off Date is required."
+    );
+
+  }
 
 
-    $("recoveryModalBackdrop")
+  writeOffSaving =
+    true;
+
+
+  $("saveWriteOffBtn")
+    .disabled =
+      true;
+
+
+  $("cancelWriteOffBtn")
+    .disabled =
+      true;
+
+
+  $("writeOffModalClose")
+    .disabled =
+      true;
+
+
+  $("saveWriteOffBtn")
+    .textContent =
+      "Posting...";
+
+
+  try{
+
+
+    const result =
+
+      await window
+        .BBDamagedStock
+        .rpc(
+          "bb_stock_damage_post_inventory_writeoff",
+          {
+
+            p_payload:{
+
+              transactionId:
+                clean(
+                  activeWriteOffRow.transactionId
+                ),
+
+              writeoffDate,
+
+              referenceNo,
+
+              note
+
+            }
+
+          }
+        );
+
+
+    $("writeOffModalBackdrop")
       .hidden =
         true;
 
+
+    activeWriteOffRow =
+      null;
+
+
+    setStatus(
+
+      "Inventory Write-Off posted · "
+
+      +
+
+      clean(
+        result?.writeoffId
+      )
+
+      +
+
+      " · "
+
+      +
+
+      money(
+        result?.writeoffValue
+      )
+
+      +
+
+      ".",
+
+      "success"
+
+    );
+
+
+    await loadData();
+
+    await loadWriteOffHistory();
+
+
+  }catch(
+    error
+  ){
+
+
+    console.error(
+      error
+    );
+
+
+    modalError(
+      clean(
+        error?.message ||
+        error
+      )
+    );
+
+
+  }finally{
+
+
+    writeOffSaving =
+      false;
+
+
+    $("saveWriteOffBtn")
+      .disabled =
+        false;
+
+
+    $("cancelWriteOffBtn")
+      .disabled =
+        false;
+
+
+    $("writeOffModalClose")
+      .disabled =
+        false;
+
+
+    $("saveWriteOffBtn")
+      .textContent =
+        "Post Inventory Write-Off";
+
+  }
+
+}
+
+
+
+/* =========================================================
+   RECOVERY SETTLEMENT
+   ========================================================= */
+
+function openRecovery(
+  recoveryItemId
+){
+
+  const row =
+
+    (
+      Array.isArray(
+        report.rows
+      )
+
+        ? report.rows
+
+        : []
+    )
+    .find(
+      item =>
+
+        String(
+          item.recoveryItemId
+        )
+
+        ===
+
+        String(
+          recoveryItemId
+        )
+    );
+
+
+  if(
+    !row
+
+    ||
+
+    row.legacyRecovery
+
+    ||
+
+    num(
+      row.recoveryOutstandingValue
+    )
+    <=
+    0.005
+  ){
+
+    return;
+
   }
 
 
-
-  /* =========================================================
-     SETTLEMENT PREVIEW
-     ========================================================= */
-
-  function settlementUsdValue() {
-
-    const amount =
-      num(
-        $("settlementAmount")
-          .value
-      );
+  activeRecoveryRow =
+    row;
 
 
-    const currency =
+  $("recoveryModalSub")
+    .textContent =
+
       clean(
-        $("settlementCurrency")
-          .value
+        row.clientName
+      )
+
+      +
+
+      " · "
+
+      +
+
+      clean(
+        row.productName
+      )
+
+      +
+
+      " · "
+
+      +
+
+      clean(
+        row.movementId
       );
 
 
-    const rate =
-      num(
-        $("settlementExchangeRate")
-          .value
+  $("modalRecoveryValue")
+    .textContent =
+      money(
+        row.recoveryValue
       );
 
 
-    if (
-      !(amount > 0)
-    ) {
-
-      return 0;
-
-    }
+  $("modalRecovered")
+    .textContent =
+      money(
+        row.recoveredAmount
+      );
 
 
-    if (
+  $("modalOutstanding")
+    .textContent =
+      money(
+        row.recoveryOutstandingValue
+      );
+
+
+  $("modalRecoveryDocument")
+    .textContent =
+      clean(
+        row.recoveryDocumentNo
+      )
+      ||
+      "-";
+
+
+  $("settlementDate")
+    .value =
+      localDateValue();
+
+
+  $("settlementMethod")
+    .value =
+      "";
+
+
+  $("settlementCurrency")
+    .value =
+      "USD";
+
+
+  $("settlementExchangeRate")
+    .value =
+      "1";
+
+
+  $("settlementExchangeRate")
+    .disabled =
+      true;
+
+
+  $("settlementAmount")
+    .value =
+      "";
+
+
+  $("settlementReference")
+    .value =
+      "";
+
+
+  $("settlementNote")
+    .value =
+      "";
+
+
+  $("settlementError")
+    .hidden =
+      true;
+
+
+  updateSettlementPreview();
+
+
+  $("recoveryModalBackdrop")
+    .hidden =
+      false;
+
+
+  setTimeout(
+    () =>
+      $("settlementAmount")
+        .focus(),
+    20
+  );
+
+}
+
+
+
+function closeRecovery(){
+
+  if(
+    settlementSaving
+  ){
+
+    return;
+
+  }
+
+
+  activeRecoveryRow =
+    null;
+
+
+  $("recoveryModalBackdrop")
+    .hidden =
+      true;
+
+}
+
+
+
+function settlementUsdValue(){
+
+  const amount =
+    num(
+      $("settlementAmount").value
+    );
+
+
+  const currency =
+    clean(
+      $("settlementCurrency").value
+    );
+
+
+  const rate =
+    num(
+      $("settlementExchangeRate").value
+    );
+
+
+  if(
+    !(amount > 0)
+  ){
+
+    return 0;
+
+  }
+
+
+  if(
+    currency ===
+    "KHR"
+  ){
+
+    return rate > 0
+
+      ? amount / rate
+
+      : 0;
+
+  }
+
+
+  return amount;
+
+}
+
+
+
+function updateSettlementPreview(){
+
+  if(
+    !activeRecoveryRow
+  ){
+
+    return;
+
+  }
+
+
+  const currency =
+    clean(
+      $("settlementCurrency").value
+    );
+
+
+  const amount =
+    num(
+      $("settlementAmount").value
+    );
+
+
+  const rate =
+    num(
+      $("settlementExchangeRate").value
+    );
+
+
+  const usd =
+    settlementUsdValue();
+
+
+  const outstanding =
+    num(
+      activeRecoveryRow
+        .recoveryOutstandingValue
+    );
+
+
+  const after =
+    Math.max(
+      outstanding -
+      usd,
+      0
+    );
+
+
+  $("settlementAmountHelp")
+    .textContent =
+
       currency ===
       "KHR"
-    ) {
+
+        ? (
+            "Enter KHR amount. Outstanding is " +
+            money(
+              outstanding
+            ) +
+            " USD."
+          )
+
+        : (
+            "Current outstanding is " +
+            money(
+              outstanding
+            ) +
+            "."
+          );
 
 
-      if (
-        !(rate > 0)
-      ) {
-
-        return 0;
-
-      }
-
-
-      return (
-        amount /
-        rate
-      );
-
-    }
-
-
-    return amount;
-
-  }
-
-
-
-  function updateSettlementPreview() {
-
-    if (
-      !activeRecoveryRow
-    ) {
-
-      return;
-
-    }
-
-
-    const currency =
-      clean(
-        $("settlementCurrency")
-          .value
-      );
-
-
-    const amount =
-      num(
-        $("settlementAmount")
-          .value
-      );
-
-
-    const rate =
-      num(
-        $("settlementExchangeRate")
-          .value
-      );
-
-
-    const usd =
-      settlementUsdValue();
-
-
-    const outstanding =
-      num(
-        activeRecoveryRow
-          .recoveryOutstandingValue
-      );
-
-
-    const after =
-      Math.max(
-        outstanding -
-        usd,
-        0
-      );
-
-
-    $("settlementAmountHelp")
-      .textContent =
-
-        currency === "KHR"
-
-          ? (
-              "Enter KHR amount. Current outstanding is " +
-              money(
-                outstanding
-              ) +
-              " USD."
-            )
-
-          : (
-              "Current outstanding is " +
-              money(
-                outstanding
-              ) +
-              "."
-            );
-
-
-    if (
-      !(amount > 0)
-    ) {
-
-
-      $("settlementPreview")
-        .textContent =
-
-          "Enter settlement amount.";
-
-
-      return;
-
-    }
-
-
-    if (
-      currency === "KHR"
-      &&
-      !(rate > 0)
-    ) {
-
-
-      $("settlementPreview")
-        .textContent =
-
-          "Enter a valid KHR exchange rate.";
-
-
-      return;
-
-    }
-
+  if(
+    !(amount > 0)
+  ){
 
     $("settlementPreview")
       .textContent =
+        "Enter settlement amount.";
 
-        currency === "KHR"
 
-          ? (
-              "៛" +
-              amount.toLocaleString() +
-              " ÷ " +
-              rate.toLocaleString() +
-              " = approximately " +
-              money(
-                usd
-              ) +
-              " recovery. Outstanding after settlement: " +
-              money(
-                after
-              ) +
-              "."
-            )
-
-          : (
-              money(
-                amount
-              ) +
-              " recovery. Outstanding after settlement: " +
-              money(
-                after
-              ) +
-              "."
-            );
+    return;
 
   }
 
 
+  if(
+    currency ===
+    "KHR"
 
-  /* =========================================================
-     SAVE RECOVERY
-     ========================================================= */
+    &&
 
-  async function saveRecoverySettlement() {
+    !(rate > 0)
+  ){
 
-    if (
-      settlementSaving
-      ||
-      !activeRecoveryRow
-    ) {
-
-      return;
-
-    }
+    $("settlementPreview")
+      .textContent =
+        "Enter a valid KHR exchange rate.";
 
 
-    const paymentDate =
-      clean(
-        $("settlementDate")
-          .value
-      );
+    return;
+
+  }
 
 
-    const method =
-      clean(
-        $("settlementMethod")
-          .value
-      );
+  $("settlementPreview")
+    .textContent =
+
+      currency ===
+      "KHR"
+
+        ? (
+            "៛" +
+            amount.toLocaleString() +
+            " ÷ " +
+            rate.toLocaleString() +
+            " = approximately " +
+            money(
+              usd
+            ) +
+            " recovery. Outstanding after: " +
+            money(
+              after
+            ) +
+            "."
+          )
+
+        : (
+            money(
+              amount
+            ) +
+            " recovery. Outstanding after: " +
+            money(
+              after
+            ) +
+            "."
+          );
+
+}
 
 
-    const currency =
-      clean(
-        $("settlementCurrency")
-          .value
-      );
+
+async function saveRecovery(){
+
+  if(
+    settlementSaving
+
+    ||
+
+    !activeRecoveryRow
+  ){
+
+    return;
+
+  }
 
 
-    const exchangeRate =
-      num(
-        $("settlementExchangeRate")
-          .value
-      );
+  const paymentDate =
+    clean(
+      $("settlementDate").value
+    );
 
 
-    const amount =
-      num(
-        $("settlementAmount")
-          .value
-      );
+  const paymentMethod =
+    clean(
+      $("settlementMethod").value
+    );
 
 
-    const referenceNo =
-      clean(
-        $("settlementReference")
-          .value
-      );
+  const currency =
+    clean(
+      $("settlementCurrency").value
+    );
 
 
-    const note =
-      clean(
-        $("settlementNote")
-          .value
-      );
+  const exchangeRate =
+    num(
+      $("settlementExchangeRate").value
+    );
 
 
-    const outstanding =
-      num(
-        activeRecoveryRow
-          .recoveryOutstandingValue
-      );
+  const paymentAmount =
+    num(
+      $("settlementAmount").value
+    );
 
 
-    const usd =
-      settlementUsdValue();
+  const referenceNo =
+    clean(
+      $("settlementReference").value
+    );
 
 
-    function modalError(
-      message
-    ) {
+  const note =
+    clean(
+      $("settlementNote").value
+    );
+
+
+  const outstanding =
+    num(
+      activeRecoveryRow
+        .recoveryOutstandingValue
+    );
+
+
+  const usd =
+    settlementUsdValue();
+
+
+  const modalError =
+    message => {
+
 
       $("settlementError")
         .textContent =
@@ -4015,500 +4732,562 @@ function recoveryActionHtml(
         .hidden =
           false;
 
-    }
+    };
 
 
-    $("settlementError")
-      .hidden =
-        true;
-
-
-    if (
-      !paymentDate
-    ) {
-
-      return modalError(
-        "Settlement Date is required."
-      );
-
-    }
-
-
-    if (
-      !method
-    ) {
-
-      return modalError(
-        "Settlement Method is required."
-      );
-
-    }
-
-
-    if (
-      currency !== "USD"
-      &&
-      currency !== "KHR"
-    ) {
-
-      return modalError(
-        "Currency must be USD or KHR."
-      );
-
-    }
-
-
-    if (
-      !(amount > 0)
-    ) {
-
-      return modalError(
-        "Settlement Amount must be greater than zero."
-      );
-
-    }
-
-
-    if (
-      currency === "KHR"
-      &&
-      !(exchangeRate > 0)
-    ) {
-
-      return modalError(
-        "Exchange Rate is required for KHR."
-      );
-
-    }
-
-
-    if (
-      usd >
-      outstanding +
-      0.005
-    ) {
-
-      return modalError(
-        "Settlement exceeds the current outstanding amount."
-      );
-
-    }
-
-
-    settlementSaving =
+  $("settlementError")
+    .hidden =
       true;
 
 
-    $("saveSettlementBtn")
-      .disabled =
-        true;
+  if(
+    !paymentDate
+  ){
 
-
-    $("cancelSettlementBtn")
-      .disabled =
-        true;
-
-
-    $("recoveryModalClose")
-      .disabled =
-        true;
-
-
-    $("saveSettlementBtn")
-      .textContent =
-        "Saving...";
-
-
-    try {
-
-
-      const result =
-
-        await window
-          .BBDamagedStock
-          .rpc(
-            "bb_stock_damage_record_recovery_payment",
-            {
-
-              p_payload:{
-
-                recoveryItemId:
-                  String(
-                    activeRecoveryRow
-                      .recoveryItemId
-                  ),
-
-                paymentDate,
-
-                currency,
-
-                exchangeRate:
-                  currency === "KHR"
-                    ? exchangeRate
-                    : 1,
-
-                paymentAmount:
-                  amount,
-
-                paymentMethod:
-                  method,
-
-                referenceNo,
-
-                note
-
-              }
-
-            }
-          );
-
-
-      const newStatus =
-        clean(
-          result?.status
-        );
-
-
-      const outstandingAfter =
-        num(
-          result?.outstandingAfter
-        );
-
-
-      $("recoveryModalBackdrop")
-        .hidden =
-          true;
-
-
-      activeRecoveryRow =
-        null;
-
-
-      setStatus(
-
-        "Recovery Settlement saved · " +
-
-        clean(
-          result?.paymentId
-        ) +
-
-        " · Status " +
-
-        newStatus +
-
-        " · Outstanding " +
-
-        money(
-          outstandingAfter
-        ) +
-
-        ".",
-
-        "success"
-
-      );
-
-
-      await loadData();
-
-      await loadPaymentHistory();
-
-
-    } catch (
-      error
-    ) {
-
-
-      console.error(
-        error
-      );
-
-
-      modalError(
-        clean(
-          error?.message ||
-          error
-        )
-      );
-
-
-    } finally {
-
-
-      settlementSaving =
-        false;
-
-
-      $("saveSettlementBtn")
-        .disabled =
-          false;
-
-
-      $("cancelSettlementBtn")
-        .disabled =
-          false;
-
-
-      $("recoveryModalClose")
-        .disabled =
-          false;
-
-
-      $("saveSettlementBtn")
-        .textContent =
-          "Record Recovery";
-
-    }
+    return modalError(
+      "Settlement Date is required."
+    );
 
   }
 
 
+  if(
+    !paymentMethod
+  ){
 
-  /* =========================================================
-     NAVIGATION
-     ========================================================= */
-
-  window.openDamageReport =
-    function () {
-
-
-      const embed =
-        new URLSearchParams(
-          location.search
-        ).get("embed") === "1";
-
-
-      location.href =
-
-        "index.html?v=2"
-
-        +
-
-        (
-          embed
-            ? "&embed=1"
-            : ""
-        );
-
-    };
-
-
-  window.openClearedReport =
-    function () {
-
-
-      const embed =
-        new URLSearchParams(
-          location.search
-        ).get("embed") === "1";
-
-
-      location.href =
-
-        "cleared.html?v=3"
-
-        +
-
-        (
-          embed
-            ? "&embed=1"
-            : ""
-        );
-
-    };
-
-
-
-  /* =========================================================
-     EVENTS
-     ========================================================= */
-
-  $("search")
-    .addEventListener(
-      "input",
-      renderTable
+    return modalError(
+      "Settlement Method is required."
     );
 
+  }
 
-  $("statusFilter")
-    .addEventListener(
-      "change",
-      renderTable
+
+  if(
+    !(paymentAmount > 0)
+  ){
+
+    return modalError(
+      "Settlement Amount must be greater than zero."
     );
 
+  }
 
-  $("typeFilter")
-    .addEventListener(
-      "change",
-      renderTable
+
+  if(
+    currency ===
+    "KHR"
+
+    &&
+
+    !(exchangeRate > 0)
+  ){
+
+    return modalError(
+      "Exchange Rate is required for KHR."
     );
 
+  }
 
-  $("dateFrom")
-    .addEventListener(
-      "change",
-      renderTable
+
+  if(
+    usd >
+    outstanding +
+    0.005
+  ){
+
+    return modalError(
+      "Settlement exceeds the current outstanding amount."
     );
 
-
-  $("dateTo")
-    .addEventListener(
-      "change",
-      renderTable
-    );
+  }
 
 
-  $("refreshBtn")
-    .addEventListener(
-      "click",
-      async function () {
-
-        await loadData();
-
-        await loadPaymentHistory();
-
-      }
-    );
-
-
-  $("recoveryModalClose")
-    .addEventListener(
-      "click",
-      closeRecoverySettlement
-    );
-
-
-  $("cancelSettlementBtn")
-    .addEventListener(
-      "click",
-      closeRecoverySettlement
-    );
+  settlementSaving =
+    true;
 
 
   $("saveSettlementBtn")
-    .addEventListener(
-      "click",
-      saveRecoverySettlement
+    .disabled =
+      true;
+
+
+  $("cancelSettlementBtn")
+    .disabled =
+      true;
+
+
+  $("recoveryModalClose")
+    .disabled =
+      true;
+
+
+  $("saveSettlementBtn")
+    .textContent =
+      "Saving...";
+
+
+  try{
+
+
+    const result =
+
+      await window
+        .BBDamagedStock
+        .rpc(
+          "bb_stock_damage_record_recovery_payment",
+          {
+
+            p_payload:{
+
+              recoveryItemId:
+                String(
+                  activeRecoveryRow
+                    .recoveryItemId
+                ),
+
+              paymentDate,
+
+              currency,
+
+              exchangeRate:
+                currency === "KHR"
+                  ? exchangeRate
+                  : 1,
+
+              paymentAmount,
+
+              paymentMethod,
+
+              referenceNo,
+
+              note
+
+            }
+
+          }
+        );
+
+
+    $("recoveryModalBackdrop")
+      .hidden =
+        true;
+
+
+    activeRecoveryRow =
+      null;
+
+
+    setStatus(
+
+      "Recovery Settlement saved · "
+
+      +
+
+      clean(
+        result?.paymentId
+      )
+
+      +
+
+      " · Status "
+
+      +
+
+      clean(
+        result?.status
+      )
+
+      +
+
+      " · Outstanding "
+
+      +
+
+      money(
+        result?.outstandingAfter
+      )
+
+      +
+
+      ".",
+
+      "success"
+
     );
 
 
-  $("settlementCurrency")
-    .addEventListener(
+    await loadData();
+
+    await loadPaymentHistory();
+
+
+  }catch(
+    error
+  ){
+
+
+    console.error(
+      error
+    );
+
+
+    modalError(
+      clean(
+        error?.message ||
+        error
+      )
+    );
+
+
+  }finally{
+
+
+    settlementSaving =
+      false;
+
+
+    $("saveSettlementBtn")
+      .disabled =
+        false;
+
+
+    $("cancelSettlementBtn")
+      .disabled =
+        false;
+
+
+    $("recoveryModalClose")
+      .disabled =
+        false;
+
+
+    $("saveSettlementBtn")
+      .textContent =
+        "Record Recovery";
+
+  }
+
+}
+
+
+
+/* =========================================================
+   EVENTS
+   ========================================================= */
+
+$("rows")
+  .addEventListener(
+    "click",
+    event => {
+
+
+      const writeOffButton =
+        event.target.closest(
+          "button.js-writeoff"
+        );
+
+
+      if(
+        writeOffButton
+      ){
+
+        openWriteOff(
+          writeOffButton
+            .dataset
+            .transactionId
+        );
+
+
+        return;
+
+      }
+
+
+      const recoveryButton =
+        event.target.closest(
+          "button.js-recovery"
+        );
+
+
+      if(
+        recoveryButton
+      ){
+
+        openRecovery(
+          recoveryButton
+            .dataset
+            .recoveryId
+        );
+
+      }
+
+    }
+  );
+
+
+$("search")
+  .addEventListener(
+    "input",
+    renderTable
+  );
+
+
+[
+  $("statusFilter"),
+  $("typeFilter"),
+  $("dateFrom"),
+  $("dateTo")
+]
+.forEach(
+  element =>
+    element.addEventListener(
       "change",
-      function () {
+      renderTable
+    )
+);
 
 
-        const khr =
+$("refreshBtn")
+  .addEventListener(
+    "click",
+    async () => {
 
-          clean(
-            $("settlementCurrency")
-              .value
-          ) === "KHR";
+      await loadData();
 
+      await loadWriteOffHistory();
+
+      await loadPaymentHistory();
+
+    }
+  );
+
+
+$("writeOffModalClose")
+  .addEventListener(
+    "click",
+    closeWriteOff
+  );
+
+
+$("cancelWriteOffBtn")
+  .addEventListener(
+    "click",
+    closeWriteOff
+  );
+
+
+$("saveWriteOffBtn")
+  .addEventListener(
+    "click",
+    saveWriteOff
+  );
+
+
+$("recoveryModalClose")
+  .addEventListener(
+    "click",
+    closeRecovery
+  );
+
+
+$("cancelSettlementBtn")
+  .addEventListener(
+    "click",
+    closeRecovery
+  );
+
+
+$("saveSettlementBtn")
+  .addEventListener(
+    "click",
+    saveRecovery
+  );
+
+
+$("settlementCurrency")
+  .addEventListener(
+    "change",
+    () => {
+
+
+      const isKHR =
+
+        clean(
+          $("settlementCurrency").value
+        ) ===
+        "KHR";
+
+
+      $("settlementExchangeRate")
+        .disabled =
+          !isKHR;
+
+
+      if(
+        !isKHR
+      ){
 
         $("settlementExchangeRate")
-          .disabled =
-            !khr;
-
-
-        if (
-          !khr
-        ) {
-
-          $("settlementExchangeRate")
-            .value =
-              "1";
-
-        } else if (
-          num(
-            $("settlementExchangeRate")
-              .value
-          )
-          <=
-          1
-        ) {
-
-          $("settlementExchangeRate")
-            .value =
-              "";
-
-        }
-
-
-        updateSettlementPreview();
+          .value =
+            "1";
 
       }
-    );
 
+      else if(
+        num(
+          $("settlementExchangeRate").value
+        )
+        <=
+        1
+      ){
 
-  $("settlementExchangeRate")
-    .addEventListener(
-      "input",
-      updateSettlementPreview
-    );
-
-
-  $("settlementAmount")
-    .addEventListener(
-      "input",
-      updateSettlementPreview
-    );
-
-
-  $("recoveryModalBackdrop")
-    .addEventListener(
-      "click",
-      function (
-        event
-      ) {
-
-        if (
-          event.target ===
-          $("recoveryModalBackdrop")
-        ) {
-
-          closeRecoverySettlement();
-
-        }
+        $("settlementExchangeRate")
+          .value =
+            "";
 
       }
-    );
 
 
-  document
-    .addEventListener(
-      "keydown",
-      function (
-        event
-      ) {
+      updateSettlementPreview();
 
-        if (
-          event.key === "Escape"
-        ) {
+    }
+  );
 
-          closeRecoverySettlement();
 
-        }
+$("settlementExchangeRate")
+  .addEventListener(
+    "input",
+    updateSettlementPreview
+  );
+
+
+$("settlementAmount")
+  .addEventListener(
+    "input",
+    updateSettlementPreview
+  );
+
+
+$("writeOffModalBackdrop")
+  .addEventListener(
+    "click",
+    event => {
+
+      if(
+        event.target ===
+        $("writeOffModalBackdrop")
+      ){
+
+        closeWriteOff();
 
       }
-    );
+
+    }
+  );
+
+
+$("recoveryModalBackdrop")
+  .addEventListener(
+    "click",
+    event => {
+
+      if(
+        event.target ===
+        $("recoveryModalBackdrop")
+      ){
+
+        closeRecovery();
+
+      }
+
+    }
+  );
+
+
+document
+  .addEventListener(
+    "keydown",
+    event => {
+
+      if(
+        event.key ===
+        "Escape"
+      ){
+
+        closeWriteOff();
+
+        closeRecovery();
+
+      }
+
+    }
+  );
 
 
 
-  /* =========================================================
-     START
-     ========================================================= */
+window.openDamageReport =
+  function(){
 
-  loadData();
+    const embed =
 
-  loadPaymentHistory();
+      new URLSearchParams(
+        location.search
+      ).get("embed") ===
+      "1";
+
+
+    location.href =
+
+      "index.html?v=2"
+
+      +
+
+      (
+        embed
+          ? "&embed=1"
+          : ""
+      );
+
+  };
+
+
+window.openClearedReport =
+  function(){
+
+    const embed =
+
+      new URLSearchParams(
+        location.search
+      ).get("embed") ===
+      "1";
+
+
+    location.href =
+
+      "cleared.html?v=3"
+
+      +
+
+      (
+        embed
+          ? "&embed=1"
+          : ""
+      );
+
+  };
+
+
+
+loadData();
+
+loadWriteOffHistory();
+
+loadPaymentHistory();
 
 
 })();
 
 </script>
 
-
 </body>
-
 </html>
