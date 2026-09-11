@@ -1,1 +1,2323 @@
+<!doctype html>
+<html lang="en">
 
+<head>
+
+<meta charset="utf-8">
+
+<meta
+  name="viewport"
+  content="width=device-width,initial-scale=1"
+>
+
+<title>
+  BIG BROTHER — Damage Accounting & Recovery Ledger
+</title>
+
+
+<style>
+
+*{
+  box-sizing:border-box;
+}
+
+:root{
+  --navy:#17457a;
+  --blue:#245fae;
+  --green:#168652;
+  --red:#b43a3a;
+  --orange:#b56a13;
+  --purple:#7654a8;
+
+  --line:#d9e2ef;
+  --muted:#667085;
+  --text:#24384c;
+  --bg:#eef3f8;
+}
+
+html,
+body{
+  margin:0;
+  min-height:100%;
+
+  font-family:
+    Inter,
+    Arial,
+    Helvetica,
+    sans-serif;
+
+  background:var(--bg);
+  color:var(--text);
+}
+
+body.embed .page{
+  max-width:none;
+  padding:14px;
+}
+
+.page{
+  max-width:2000px;
+  margin:auto;
+  padding:24px;
+}
+
+
+/* =========================================================
+   HEADER
+   ========================================================= */
+
+.topbar{
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-start;
+
+  gap:16px;
+  margin-bottom:14px;
+}
+
+.title h1{
+  margin:0;
+  color:var(--navy);
+  font-size:28px;
+}
+
+.subtitle{
+  margin-top:5px;
+
+  color:var(--muted);
+
+  font-size:12px;
+  line-height:1.5;
+}
+
+.top-actions{
+  display:flex;
+  align-items:center;
+  justify-content:flex-end;
+
+  gap:8px;
+  flex-wrap:wrap;
+}
+
+.pill{
+  display:inline-flex;
+  align-items:center;
+
+  min-height:38px;
+
+  padding:8px 12px;
+
+  border:1px solid #cbead9;
+  border-radius:999px;
+
+  background:#e8f7ef;
+  color:var(--green);
+
+  font-size:10px;
+  font-weight:900;
+
+  white-space:nowrap;
+}
+
+.btn{
+  min-height:38px;
+
+  padding:9px 13px;
+
+  border:0;
+  border-radius:9px;
+
+  font:inherit;
+  font-size:11px;
+  font-weight:900;
+
+  cursor:pointer;
+}
+
+.btn.primary{
+  background:var(--navy);
+  color:#fff;
+}
+
+.btn.secondary{
+  background:#fff;
+  color:var(--navy);
+
+  border:1px solid var(--line);
+}
+
+.btn:disabled{
+  opacity:.55;
+  cursor:not-allowed;
+}
+
+
+/* =========================================================
+   STATUS
+   ========================================================= */
+
+.status{
+  margin-bottom:12px;
+
+  padding:10px 12px;
+
+  border:1px solid #ceddf0;
+  border-radius:10px;
+
+  background:#eef5ff;
+  color:#49627e;
+
+  font-size:11px;
+}
+
+.status.success{
+  background:#edf9f3;
+  border-color:#ccebdc;
+  color:#176d4b;
+}
+
+.status.error{
+  background:#fff1f1;
+  border-color:#f0cece;
+  color:#9d2f2f;
+}
+
+
+/* =========================================================
+   KPI
+   ========================================================= */
+
+.kpis{
+  display:grid;
+
+  grid-template-columns:
+    repeat(
+      4,
+      minmax(0,1fr)
+    );
+
+  gap:10px;
+
+  margin-bottom:12px;
+}
+
+.kpi{
+  background:#fff;
+
+  border:1px solid var(--line);
+  border-radius:14px;
+
+  padding:15px;
+
+  box-shadow:
+    0 5px 20px
+    rgba(23,69,122,.05);
+}
+
+.kpi small{
+  display:block;
+
+  color:#718096;
+
+  font-size:9px;
+  font-weight:900;
+
+  text-transform:uppercase;
+}
+
+.kpi strong{
+  display:block;
+
+  margin-top:6px;
+
+  color:var(--navy);
+
+  font-size:22px;
+}
+
+.kpi.expense strong{
+  color:var(--red);
+}
+
+.kpi.recovery strong{
+  color:var(--blue);
+}
+
+.kpi.exchange strong{
+  color:var(--orange);
+}
+
+
+/* =========================================================
+   SUMMARY CARDS
+   ========================================================= */
+
+.summary-grid{
+  display:grid;
+
+  grid-template-columns:
+    repeat(
+      3,
+      minmax(0,1fr)
+    );
+
+  gap:10px;
+
+  margin-bottom:12px;
+}
+
+.summary-card{
+  background:#fff;
+
+  border:1px solid var(--line);
+  border-radius:14px;
+
+  padding:15px;
+
+  box-shadow:
+    0 5px 20px
+    rgba(23,69,122,.05);
+}
+
+.summary-title{
+  color:var(--navy);
+
+  font-size:12px;
+  font-weight:900;
+}
+
+.summary-stats{
+  display:grid;
+
+  grid-template-columns:
+    repeat(
+      2,
+      minmax(0,1fr)
+    );
+
+  gap:8px;
+
+  margin-top:12px;
+}
+
+.summary-stat{
+  padding:9px;
+
+  border:1px solid #e8edf4;
+  border-radius:9px;
+
+  background:#fafcff;
+}
+
+.summary-stat small{
+  display:block;
+
+  color:#8090a2;
+
+  font-size:8px;
+  font-weight:900;
+
+  text-transform:uppercase;
+}
+
+.summary-stat strong{
+  display:block;
+
+  margin-top:4px;
+
+  color:#233e5e;
+
+  font-size:14px;
+}
+
+
+/* =========================================================
+   LEDGER CARD
+   ========================================================= */
+
+.card{
+  background:#fff;
+
+  border:1px solid var(--line);
+  border-radius:14px;
+
+  padding:15px;
+
+  margin-bottom:12px;
+
+  box-shadow:
+    0 5px 20px
+    rgba(23,69,122,.05);
+}
+
+.card-head{
+  display:flex;
+
+  align-items:flex-start;
+  justify-content:space-between;
+
+  gap:12px;
+
+  margin-bottom:11px;
+}
+
+.card-title{
+  color:var(--navy);
+
+  font-size:14px;
+  font-weight:900;
+}
+
+.card-sub{
+  margin-top:3px;
+
+  color:#8392a5;
+
+  font-size:9px;
+}
+
+
+/* =========================================================
+   FILTERS
+   ========================================================= */
+
+.controls{
+  display:flex;
+
+  gap:8px;
+  flex-wrap:wrap;
+}
+
+.controls input,
+.controls select{
+  min-height:38px;
+
+  padding:8px 10px;
+
+  border:1px solid #cbd8e7;
+  border-radius:9px;
+
+  background:#fff;
+  color:var(--text);
+
+  font:inherit;
+  font-size:11px;
+}
+
+.controls input[type="search"]{
+  min-width:290px;
+}
+
+
+/* =========================================================
+   TABLE
+   ========================================================= */
+
+.table-wrap{
+  overflow:auto;
+
+  border:1px solid var(--line);
+  border-radius:10px;
+}
+
+table{
+  width:100%;
+
+  min-width:2100px;
+
+  border-collapse:collapse;
+}
+
+th,
+td{
+  padding:10px;
+
+  border-bottom:1px solid #edf1f5;
+
+  text-align:left;
+  vertical-align:top;
+
+  font-size:10px;
+}
+
+th{
+  position:sticky;
+  top:0;
+
+  background:#f7f9fc;
+
+  color:#53677d;
+
+  font-size:8px;
+  font-weight:900;
+
+  text-transform:uppercase;
+
+  letter-spacing:.02em;
+}
+
+td.amount,
+th.amount{
+  text-align:right;
+}
+
+tbody tr:hover{
+  background:#fbfdff;
+}
+
+.product{
+  color:var(--navy);
+  font-weight:900;
+}
+
+.code{
+  font-family:
+    Consolas,
+    monospace;
+
+  font-size:9px;
+}
+
+.money{
+  font-variant-numeric:
+    tabular-nums;
+}
+
+.note{
+  max-width:250px;
+
+  white-space:normal;
+
+  line-height:1.4;
+}
+
+.empty{
+  padding:26px !important;
+
+  text-align:center !important;
+
+  color:#8090a1 !important;
+}
+
+
+/* =========================================================
+   BADGES
+   ========================================================= */
+
+.badge{
+  display:inline-block;
+
+  padding:5px 8px;
+
+  border-radius:999px;
+
+  font-size:8px;
+  font-weight:900;
+
+  white-space:nowrap;
+}
+
+.badge.expense{
+  background:#fff0f0;
+  color:#a63a3a;
+}
+
+.badge.recovery{
+  background:#eef5ff;
+  color:#245fae;
+}
+
+.badge.exchange-pending{
+  background:#fff4df;
+  color:#9b610e;
+}
+
+.badge.exchange-partial{
+  background:#eef5ff;
+  color:#245fae;
+}
+
+.badge.exchange-complete{
+  background:#edf9f3;
+  color:#168652;
+}
+
+.badge.review{
+  background:#f3effa;
+  color:#7654a8;
+}
+
+.badge.type-cost{
+  background:#fff0f0;
+  color:#a63a3a;
+}
+
+.badge.type-buyback{
+  background:#eef5ff;
+  color:#245fae;
+}
+
+.badge.type-exchange{
+  background:#edf9f3;
+  color:#168652;
+}
+
+
+/* =========================================================
+   AUDIT
+   ========================================================= */
+
+.audit-main{
+  color:#17457a;
+  font-weight:900;
+  white-space:nowrap;
+}
+
+.audit-sub{
+  margin-top:3px;
+
+  color:#7b8797;
+
+  font-size:8px;
+  white-space:nowrap;
+}
+
+.treatment{
+  max-width:250px;
+
+  color:#53677d;
+
+  font-size:9px;
+  font-weight:800;
+
+  line-height:1.4;
+}
+
+.last-update{
+  margin-top:9px;
+
+  color:#8291a1;
+
+  font-size:9px;
+}
+
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media(max-width:1000px){
+
+  .kpis{
+    grid-template-columns:
+      1fr 1fr;
+  }
+
+  .summary-grid{
+    grid-template-columns:1fr;
+  }
+
+  .card-head{
+    flex-direction:column;
+  }
+
+}
+
+@media(max-width:650px){
+
+  .page{
+    padding:12px;
+  }
+
+  .topbar{
+    display:block;
+  }
+
+  .top-actions{
+    margin-top:10px;
+    justify-content:flex-start;
+  }
+
+  .title h1{
+    font-size:23px;
+  }
+
+  .kpis{
+    grid-template-columns:1fr;
+  }
+
+  .controls{
+    width:100%;
+  }
+
+  .controls input,
+  .controls select,
+  .controls .btn{
+    width:100%;
+  }
+
+  .controls input[type="search"]{
+    min-width:0;
+  }
+
+}
+
+</style>
+
+
+<script src="supabase-damaged-stock.js?v=1"></script>
+
+</head>
+
+
+<body>
+
+
+<main class="page">
+
+
+  <!-- =====================================================
+       HEADER
+       ===================================================== -->
+
+  <div class="topbar">
+
+
+    <div class="title">
+
+      <h1>
+        💰 Damage Accounting & Recovery Ledger
+      </h1>
+
+      <div class="subtitle">
+
+        BIG BROTHER · Accounting ·
+        Financial classification of Damaged Stock clearances,
+        supplier recoveries and replacement-stock recovery.
+
+      </div>
+
+    </div>
+
+
+    <div class="top-actions">
+
+      <div class="pill">
+        SUPABASE LIVE · READ ONLY
+      </div>
+
+
+      <button
+        type="button"
+        class="btn secondary"
+        onclick="openDamageReport()"
+      >
+        ⚠️ Damage Stock Report
+      </button>
+
+
+      <button
+        type="button"
+        class="btn secondary"
+        onclick="openClearedReport()"
+      >
+        ✅ Cleared Damaged Stock
+      </button>
+
+    </div>
+
+
+  </div>
+
+
+
+  <!-- =====================================================
+       STATUS
+       ===================================================== -->
+
+  <div
+    id="status"
+    class="status"
+  >
+    Loading Damage Accounting & Recovery Ledger...
+  </div>
+
+
+
+  <!-- =====================================================
+       KPI
+       ===================================================== -->
+
+  <section class="kpis">
+
+
+    <div class="kpi">
+
+      <small>
+        Total Cleared Stock Cost
+      </small>
+
+      <strong id="kpiTotalCost">
+        $0.00
+      </strong>
+
+    </div>
+
+
+    <div class="kpi expense">
+
+      <small>
+        Expense Pending
+      </small>
+
+      <strong id="kpiExpensePending">
+        $0.00
+      </strong>
+
+    </div>
+
+
+    <div class="kpi recovery">
+
+      <small>
+        Buy Back Recovery Pending
+      </small>
+
+      <strong id="kpiRecoveryPending">
+        $0.00
+      </strong>
+
+    </div>
+
+
+    <div class="kpi exchange">
+
+      <small>
+        Exchange Recovery Pending
+      </small>
+
+      <strong id="kpiExchangePending">
+        $0.00
+      </strong>
+
+    </div>
+
+
+  </section>
+
+
+
+  <!-- =====================================================
+       SUMMARY
+       ===================================================== -->
+
+  <section class="summary-grid">
+
+
+    <div class="summary-card">
+
+      <div class="summary-title">
+        💸 Damage / Spoilage Expense
+      </div>
+
+
+      <div class="summary-stats">
+
+        <div class="summary-stat">
+
+          <small>
+            Pending Qty
+          </small>
+
+          <strong id="expenseQty">
+            0
+          </strong>
+
+        </div>
+
+
+        <div class="summary-stat">
+
+          <small>
+            Pending Value
+          </small>
+
+          <strong id="expenseValue">
+            $0.00
+          </strong>
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+
+    <div class="summary-card">
+
+      <div class="summary-title">
+        💳 Client / Supplier Buy Back
+      </div>
+
+
+      <div class="summary-stats">
+
+        <div class="summary-stat">
+
+          <small>
+            Recovery Qty
+          </small>
+
+          <strong id="buyBackQty">
+            0
+          </strong>
+
+        </div>
+
+
+        <div class="summary-stat">
+
+          <small>
+            Recovery Value
+          </small>
+
+          <strong id="buyBackValue">
+            $0.00
+          </strong>
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+
+    <div class="summary-card">
+
+      <div class="summary-title">
+        🔄 Replacement Stock Recovery
+      </div>
+
+
+      <div class="summary-stats">
+
+        <div class="summary-stat">
+
+          <small>
+            Total Recovery Value
+          </small>
+
+          <strong id="exchangeRecoveryValue">
+            $0.00
+          </strong>
+
+        </div>
+
+
+        <div class="summary-stat">
+
+          <small>
+            Still Pending Value
+          </small>
+
+          <strong id="exchangePendingValue">
+            $0.00
+          </strong>
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+  </section>
+
+
+
+  <!-- =====================================================
+       LEDGER
+       ===================================================== -->
+
+  <section class="card">
+
+
+    <div class="card-head">
+
+
+      <div>
+
+        <div class="card-title">
+          Damage Accounting & Recovery Work Items
+        </div>
+
+        <div class="card-sub">
+
+          Read-only accounting classification.
+          No expense, payment or recovery settlement is posted from this page yet.
+
+        </div>
+
+      </div>
+
+
+      <div class="controls">
+
+
+        <input
+          id="search"
+          type="search"
+          placeholder="Search product / client / document / movement"
+        >
+
+
+        <select id="statusFilter">
+
+          <option value="">
+            All Accounting Status
+          </option>
+
+          <option value="EXPENSE PENDING">
+            Expense Pending
+          </option>
+
+          <option value="RECOVERY PENDING">
+            Recovery Pending
+          </option>
+
+          <option value="EXCHANGE PENDING">
+            Exchange Pending
+          </option>
+
+          <option value="EXCHANGE PARTIAL">
+            Exchange Partial
+          </option>
+
+          <option value="EXCHANGE COMPLETED">
+            Exchange Completed
+          </option>
+
+          <option value="REVIEW REQUIRED">
+            Review Required
+          </option>
+
+        </select>
+
+
+        <select id="typeFilter">
+
+          <option value="">
+            All Clearance Types
+          </option>
+
+          <option value="DEDUCT_AS_COST">
+            Deduct as Cost
+          </option>
+
+          <option value="CLIENT_BUY_BACK">
+            Client Buy Back
+          </option>
+
+          <option value="EXCHANGE_FOR_GOOD_PRODUCTS">
+            Exchange for Good products
+          </option>
+
+        </select>
+
+
+        <input
+          id="dateFrom"
+          type="date"
+          title="From date"
+        >
+
+
+        <input
+          id="dateTo"
+          type="date"
+          title="To date"
+        >
+
+
+        <button
+          id="refreshBtn"
+          type="button"
+          class="btn primary"
+        >
+          ↻ Refresh
+        </button>
+
+
+      </div>
+
+
+    </div>
+
+
+
+    <div class="table-wrap">
+
+
+      <table>
+
+
+        <thead>
+
+          <tr>
+
+            <th>
+              Date
+            </th>
+
+            <th>
+              Accounting Status
+            </th>
+
+            <th>
+              Clearance Type
+            </th>
+
+            <th>
+              Movement
+            </th>
+
+            <th>
+              Product
+            </th>
+
+            <th>
+              Code
+            </th>
+
+            <th class="amount">
+              Qty
+            </th>
+
+            <th>
+              Unit
+            </th>
+
+            <th class="amount">
+              Unit Cost
+            </th>
+
+            <th class="amount">
+              Stock Cost
+            </th>
+
+            <th>
+              Client / Supplier
+            </th>
+
+            <th>
+              Exchange Document
+            </th>
+
+            <th class="amount">
+              Exchange Received
+            </th>
+
+            <th class="amount">
+              Exchange Pending
+            </th>
+
+            <th>
+              Accounting Treatment
+            </th>
+
+            <th>
+              Location
+            </th>
+
+            <th>
+              Controller
+            </th>
+
+            <th>
+              Reference
+            </th>
+
+            <th>
+              Note
+            </th>
+
+          </tr>
+
+        </thead>
+
+
+        <tbody id="rows">
+
+          <tr>
+
+            <td
+              colspan="19"
+              class="empty"
+            >
+              Loading...
+            </td>
+
+          </tr>
+
+        </tbody>
+
+
+      </table>
+
+
+    </div>
+
+
+    <div
+      id="lastUpdate"
+      class="last-update"
+    ></div>
+
+
+  </section>
+
+
+</main>
+
+
+
+<script>
+
+(function () {
+
+  "use strict";
+
+
+  /* =========================================================
+     EMBED MODE
+     ========================================================= */
+
+  if (
+    new URLSearchParams(
+      location.search
+    ).get("embed") === "1"
+  ) {
+
+    document.body
+      .classList
+      .add("embed");
+
+  }
+
+
+
+  /* =========================================================
+     HELPERS
+     ========================================================= */
+
+  const $ =
+    id =>
+      document.getElementById(
+        id
+      );
+
+
+  const clean =
+    value =>
+      String(
+        value == null
+          ? ""
+          : value
+      ).trim();
+
+
+  const num =
+    value =>
+      Number(value) || 0;
+
+
+  const esc =
+    value =>
+      window
+        .BBDamagedStock
+        .escapeHtml(
+          value
+        );
+
+
+  const qty =
+    value =>
+      window
+        .BBDamagedStock
+        .qty(
+          value
+        );
+
+
+  const money =
+    value =>
+      window
+        .BBDamagedStock
+        .money(
+          value
+        );
+
+
+
+  /* =========================================================
+     STATE
+     ========================================================= */
+
+  let report = {
+
+    rows:[],
+    totals:{}
+
+  };
+
+
+  let loading =
+    false;
+
+
+
+  /* =========================================================
+     STATUS
+     ========================================================= */
+
+  function setStatus(
+    message,
+    type = ""
+  ) {
+
+    $("status")
+      .className =
+
+        "status" +
+
+        (
+          type
+            ? " " + type
+            : ""
+        );
+
+
+    $("status")
+      .textContent =
+        message || "";
+
+  }
+
+
+
+  /* =========================================================
+     ACCOUNTING STATUS BADGE
+     ========================================================= */
+
+  function accountingStatusBadge(
+    status
+  ) {
+
+    const value =
+      clean(
+        status
+      ).toUpperCase();
+
+
+    let cls =
+      "review";
+
+
+    if (
+      value ===
+      "EXPENSE PENDING"
+    ) {
+
+      cls =
+        "expense";
+
+    } else if (
+      value ===
+      "RECOVERY PENDING"
+    ) {
+
+      cls =
+        "recovery";
+
+    } else if (
+      value ===
+      "EXCHANGE PENDING"
+    ) {
+
+      cls =
+        "exchange-pending";
+
+    } else if (
+      value ===
+      "EXCHANGE PARTIAL"
+    ) {
+
+      cls =
+        "exchange-partial";
+
+    } else if (
+      value ===
+      "EXCHANGE COMPLETED"
+    ) {
+
+      cls =
+        "exchange-complete";
+
+    }
+
+
+    return (
+
+      '<span class="badge ' +
+      cls +
+      '">' +
+
+      esc(
+        value ||
+        "REVIEW REQUIRED"
+      ) +
+
+      "</span>"
+
+    );
+
+  }
+
+
+
+  /* =========================================================
+     CLEARANCE BADGE
+     ========================================================= */
+
+  function clearanceBadge(
+    row
+  ) {
+
+    const type =
+      clean(
+        row.clearanceType
+      );
+
+
+    let cls =
+      "review";
+
+
+    let label =
+      clean(
+        row.clearanceTypeLabel
+      );
+
+
+    if (
+      type ===
+      "DEDUCT_AS_COST"
+    ) {
+
+      cls =
+        "type-cost";
+
+      label =
+        label ||
+        "Deduct as Cost";
+
+    } else if (
+      type ===
+      "CLIENT_BUY_BACK"
+    ) {
+
+      cls =
+        "type-buyback";
+
+      label =
+        label ||
+        "Client Buy Back";
+
+    } else if (
+      type ===
+      "EXCHANGE_FOR_GOOD_PRODUCTS"
+    ) {
+
+      cls =
+        "type-exchange";
+
+      label =
+        label ||
+        "Exchange for Good products";
+
+    }
+
+
+    return (
+
+      '<span class="badge ' +
+      cls +
+      '">' +
+
+      esc(
+        label ||
+        type ||
+        "Unknown"
+      ) +
+
+      "</span>"
+
+    );
+
+  }
+
+
+
+  /* =========================================================
+     CLIENT
+     ========================================================= */
+
+  function clientHtml(
+    row
+  ) {
+
+    const name =
+      clean(
+        row.clientName
+      );
+
+
+    const id =
+      clean(
+        row.clientId
+      );
+
+
+    if (
+      !name &&
+      !id
+    ) {
+
+      return "-";
+
+    }
+
+
+    return (
+
+      '<div class="audit-main">' +
+
+      esc(
+        name ||
+        id
+      ) +
+
+      "</div>" +
+
+      (
+        id
+
+          ? (
+              '<div class="audit-sub">' +
+              esc(id) +
+              "</div>"
+            )
+
+          : ""
+      )
+
+    );
+
+  }
+
+
+
+  /* =========================================================
+     KPI
+     ========================================================= */
+
+  function renderKpis() {
+
+    const totals =
+      report.totals || {};
+
+
+    $("kpiTotalCost")
+      .textContent =
+        money(
+          totals.totalStockCost
+        );
+
+
+    $("kpiExpensePending")
+      .textContent =
+        money(
+          totals.expensePendingValue
+        );
+
+
+    $("kpiRecoveryPending")
+      .textContent =
+        money(
+          totals.buyBackPendingValue
+        );
+
+
+    $("kpiExchangePending")
+      .textContent =
+        money(
+          totals.exchangePendingValue
+        );
+
+
+    $("expenseQty")
+      .textContent =
+        qty(
+          totals.expensePendingQty
+        );
+
+
+    $("expenseValue")
+      .textContent =
+        money(
+          totals.expensePendingValue
+        );
+
+
+    $("buyBackQty")
+      .textContent =
+        qty(
+          totals.buyBackPendingQty
+        );
+
+
+    $("buyBackValue")
+      .textContent =
+        money(
+          totals.buyBackPendingValue
+        );
+
+
+    $("exchangeRecoveryValue")
+      .textContent =
+        money(
+          totals.exchangeRecoveryValue
+        );
+
+
+    $("exchangePendingValue")
+      .textContent =
+        money(
+          totals.exchangePendingValue
+        );
+
+  }
+
+
+
+  /* =========================================================
+     FILTER
+     ========================================================= */
+
+  function filteredRows() {
+
+    const query =
+      clean(
+        $("search").value
+      ).toLowerCase();
+
+
+    const status =
+      clean(
+        $("statusFilter").value
+      ).toUpperCase();
+
+
+    const type =
+      clean(
+        $("typeFilter").value
+      );
+
+
+    const dateFrom =
+      clean(
+        $("dateFrom").value
+      );
+
+
+    const dateTo =
+      clean(
+        $("dateTo").value
+      );
+
+
+    const rows =
+      Array.isArray(
+        report.rows
+      )
+        ? report.rows
+        : [];
+
+
+    return rows.filter(
+      row => {
+
+
+        const rowStatus =
+          clean(
+            row.accountingStatus
+          ).toUpperCase();
+
+
+        const rowType =
+          clean(
+            row.clearanceType
+          );
+
+
+        const rowDate =
+          clean(
+            row.activityDate
+          );
+
+
+        if (
+          status &&
+          rowStatus !== status
+        ) {
+
+          return false;
+
+        }
+
+
+        if (
+          type &&
+          rowType !== type
+        ) {
+
+          return false;
+
+        }
+
+
+        if (
+          dateFrom &&
+          rowDate &&
+          rowDate < dateFrom
+        ) {
+
+          return false;
+
+        }
+
+
+        if (
+          dateTo &&
+          rowDate &&
+          rowDate > dateTo
+        ) {
+
+          return false;
+
+        }
+
+
+        const haystack =
+          [
+
+            row.productName,
+            row.productCode,
+
+            row.movementId,
+            row.transactionId,
+
+            row.accountingStatus,
+            row.accountingTreatment,
+
+            row.clearanceType,
+            row.clearanceTypeLabel,
+
+            row.clientName,
+            row.clientId,
+
+            row.exchangeDocumentNo,
+
+            row.locationName,
+            row.locationCode,
+
+            row.controllerName,
+
+            row.referenceNo,
+            row.note
+
+          ]
+            .join(" ")
+            .toLowerCase();
+
+
+        if (
+          query &&
+          !haystack.includes(
+            query
+          )
+        ) {
+
+          return false;
+
+        }
+
+
+        return true;
+
+      }
+    );
+
+  }
+
+
+
+  /* =========================================================
+     TABLE
+     ========================================================= */
+
+  function renderTable() {
+
+    const rows =
+      filteredRows();
+
+
+    if (
+      !rows.length
+    ) {
+
+      $("rows")
+        .innerHTML =
+
+          '<tr>' +
+
+          '<td colspan="19" class="empty">' +
+
+          "No Damage Accounting records found." +
+
+          "</td>" +
+
+          "</tr>";
+
+
+      return;
+
+    }
+
+
+    $("rows")
+      .innerHTML =
+
+        rows.map(
+          row => {
+
+            return `
+
+              <tr>
+
+
+                <td>
+
+                  ${esc(
+                    row.activityDate ||
+                    "-"
+                  )}
+
+                </td>
+
+
+                <td>
+
+                  ${accountingStatusBadge(
+                    row.accountingStatus
+                  )}
+
+                </td>
+
+
+                <td>
+
+                  ${clearanceBadge(
+                    row
+                  )}
+
+                </td>
+
+
+                <td class="code">
+
+                  ${esc(
+                    row.movementId ||
+                    "-"
+                  )}
+
+                </td>
+
+
+                <td>
+
+                  <span class="product">
+
+                    ${esc(
+                      row.productName ||
+                      "-"
+                    )}
+
+                  </span>
+
+                </td>
+
+
+                <td class="code">
+
+                  ${esc(
+                    row.productCode ||
+                    "-"
+                  )}
+
+                </td>
+
+
+                <td class="amount">
+
+                  <strong>
+                    ${qty(
+                      row.qty
+                    )}
+                  </strong>
+
+                </td>
+
+
+                <td>
+
+                  ${esc(
+                    row.unit ||
+                    "-"
+                  )}
+
+                </td>
+
+
+                <td class="amount money">
+
+                  ${money(
+                    row.unitCost
+                  )}
+
+                </td>
+
+
+                <td class="amount money">
+
+                  <strong>
+
+                    ${money(
+                      row.stockCost
+                    )}
+
+                  </strong>
+
+                </td>
+
+
+                <td>
+
+                  ${clientHtml(
+                    row
+                  )}
+
+                </td>
+
+
+                <td class="code">
+
+                  ${esc(
+                    row.exchangeDocumentNo ||
+                    "-"
+                  )}
+
+                </td>
+
+
+                <td class="amount">
+
+                  ${qty(
+                    row.exchangeReceivedQty
+                  )}
+
+                </td>
+
+
+                <td class="amount">
+
+                  <strong>
+
+                    ${qty(
+                      row.exchangePendingQty
+                    )}
+
+                  </strong>
+
+                </td>
+
+
+                <td>
+
+                  <div class="treatment">
+
+                    ${esc(
+                      row.accountingTreatment ||
+                      "-"
+                    )}
+
+                  </div>
+
+                </td>
+
+
+                <td>
+
+                  ${esc(
+                    row.locationName ||
+                    row.locationCode ||
+                    "-"
+                  )}
+
+                </td>
+
+
+                <td>
+
+                  ${esc(
+                    row.controllerName ||
+                    "-"
+                  )}
+
+                </td>
+
+
+                <td>
+
+                  ${esc(
+                    row.referenceNo ||
+                    "-"
+                  )}
+
+                </td>
+
+
+                <td class="note">
+
+                  ${esc(
+                    row.note ||
+                    "-"
+                  )}
+
+                </td>
+
+
+              </tr>
+
+            `;
+
+          }
+        )
+        .join("");
+
+  }
+
+
+
+  /* =========================================================
+     RENDER
+     ========================================================= */
+
+  function render() {
+
+    renderKpis();
+
+    renderTable();
+
+
+    $("lastUpdate")
+      .textContent =
+
+        "Generated: " +
+
+        (
+          report.generatedAt ||
+          "-"
+        )
+
+        +
+
+        (
+          report.revision
+
+            ? " · Revision " +
+              report.revision
+
+            : ""
+        );
+
+  }
+
+
+
+  /* =========================================================
+     LOAD
+     ========================================================= */
+
+  async function loadData() {
+
+    if (
+      loading
+    ) {
+
+      return;
+
+    }
+
+
+    loading =
+      true;
+
+
+    $("refreshBtn")
+      .disabled =
+        true;
+
+
+    setStatus(
+      "Loading Damage Accounting & Recovery Ledger from Supabase..."
+    );
+
+
+    try {
+
+
+      report =
+
+        await window
+          .BBDamagedStock
+          .rpc(
+            "bb_stock_damage_accounting_report",
+            {
+              p_limit:
+                2000
+            }
+          );
+
+
+      report =
+        report || {
+          rows:[],
+          totals:{}
+        };
+
+
+      render();
+
+
+      const totals =
+        report.totals || {};
+
+
+      setStatus(
+
+        "Damage Accounting Ledger is live · " +
+
+        money(
+          totals.expensePendingValue
+        ) +
+
+        " expense pending · " +
+
+        money(
+          totals.buyBackPendingValue
+        ) +
+
+        " recovery pending · " +
+
+        money(
+          totals.exchangePendingValue
+        ) +
+
+        " exchange recovery still pending.",
+
+        "success"
+
+      );
+
+
+    } catch (
+      error
+    ) {
+
+
+      console.error(
+        error
+      );
+
+
+      setStatus(
+
+        clean(
+          error?.message ||
+          error
+        ),
+
+        "error"
+
+      );
+
+
+      $("rows")
+        .innerHTML =
+
+          '<tr>' +
+
+          '<td colspan="19" class="empty">' +
+
+          "Could not load Damage Accounting & Recovery Ledger." +
+
+          "</td>" +
+
+          "</tr>";
+
+
+    } finally {
+
+
+      loading =
+        false;
+
+
+      $("refreshBtn")
+        .disabled =
+          false;
+
+    }
+
+  }
+
+
+
+  /* =========================================================
+     NAVIGATION
+     ========================================================= */
+
+  window.openDamageReport =
+    function () {
+
+      const embed =
+        new URLSearchParams(
+          location.search
+        ).get("embed") === "1";
+
+
+      location.href =
+
+        "index.html?v=2"
+
+        +
+
+        (
+          embed
+            ? "&embed=1"
+            : ""
+        );
+
+    };
+
+
+  window.openClearedReport =
+    function () {
+
+      const embed =
+        new URLSearchParams(
+          location.search
+        ).get("embed") === "1";
+
+
+      location.href =
+
+        "cleared.html?v=3"
+
+        +
+
+        (
+          embed
+            ? "&embed=1"
+            : ""
+        );
+
+    };
+
+
+
+  /* =========================================================
+     EVENTS
+     ========================================================= */
+
+  $("search")
+    .addEventListener(
+      "input",
+      renderTable
+    );
+
+
+  $("statusFilter")
+    .addEventListener(
+      "change",
+      renderTable
+    );
+
+
+  $("typeFilter")
+    .addEventListener(
+      "change",
+      renderTable
+    );
+
+
+  $("dateFrom")
+    .addEventListener(
+      "change",
+      renderTable
+    );
+
+
+  $("dateTo")
+    .addEventListener(
+      "change",
+      renderTable
+    );
+
+
+  $("refreshBtn")
+    .addEventListener(
+      "click",
+      loadData
+    );
+
+
+
+  /* =========================================================
+     START
+     ========================================================= */
+
+  loadData();
+
+
+})();
+
+</script>
+
+
+</body>
+
+</html>
