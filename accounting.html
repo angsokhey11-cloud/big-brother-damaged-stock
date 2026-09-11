@@ -56,7 +56,7 @@ body.embed .page{
 }
 
 .page{
-  max-width:2000px;
+  max-width:2200px;
   margin:auto;
   padding:24px;
 }
@@ -77,7 +77,9 @@ body.embed .page{
 
 .title h1{
   margin:0;
+
   color:var(--navy);
+
   font-size:28px;
 }
 
@@ -249,7 +251,7 @@ body.embed .page{
 
 
 /* =========================================================
-   SUMMARY CARDS
+   SUMMARY
    ========================================================= */
 
 .summary-grid{
@@ -330,9 +332,17 @@ body.embed .page{
   font-size:14px;
 }
 
+.summary-stat.warning strong{
+  color:var(--purple);
+}
+
+.summary-stat.success strong{
+  color:var(--green);
+}
+
 
 /* =========================================================
-   LEDGER CARD
+   CARD
    ========================================================= */
 
 .card{
@@ -405,7 +415,7 @@ body.embed .page{
 }
 
 .controls input[type="search"]{
-  min-width:290px;
+  min-width:300px;
 }
 
 
@@ -423,7 +433,7 @@ body.embed .page{
 table{
   width:100%;
 
-  min-width:2100px;
+  min-width:2650px;
 
   border-collapse:collapse;
 }
@@ -522,9 +532,24 @@ tbody tr:hover{
   color:#a63a3a;
 }
 
-.badge.recovery{
+.badge.recovery-pending{
   background:#eef5ff;
   color:#245fae;
+}
+
+.badge.recovery-partial{
+  background:#fff4df;
+  color:#9b610e;
+}
+
+.badge.recovery-settled{
+  background:#edf9f3;
+  color:#168652;
+}
+
+.badge.recovery-review{
+  background:#f3effa;
+  color:#7654a8;
 }
 
 .badge.exchange-pending{
@@ -569,7 +594,9 @@ tbody tr:hover{
 
 .audit-main{
   color:#17457a;
+
   font-weight:900;
+
   white-space:nowrap;
 }
 
@@ -579,6 +606,19 @@ tbody tr:hover{
   color:#7b8797;
 
   font-size:8px;
+
+  white-space:nowrap;
+}
+
+.document{
+  font-family:
+    Consolas,
+    monospace;
+
+  color:#244f82;
+
+  font-weight:800;
+
   white-space:nowrap;
 }
 
@@ -588,6 +628,22 @@ tbody tr:hover{
   color:#53677d;
 
   font-size:9px;
+  font-weight:800;
+
+  line-height:1.4;
+}
+
+.legacy-note{
+  max-width:230px;
+
+  padding:6px 8px;
+
+  border-radius:7px;
+
+  background:#f6f1fb;
+  color:#7654a8;
+
+  font-size:8px;
   font-weight:800;
 
   line-height:1.4;
@@ -692,8 +748,10 @@ tbody tr:hover{
       <div class="subtitle">
 
         BIG BROTHER · Accounting ·
-        Financial classification of Damaged Stock clearances,
-        supplier recoveries and replacement-stock recovery.
+        Damage expense,
+        Client / Supplier recovery,
+        replacement-stock recovery
+        and financial settlement audit.
 
       </div>
 
@@ -745,7 +803,7 @@ tbody tr:hover{
 
 
   <!-- =====================================================
-       KPI
+       MAIN KPI
        ===================================================== -->
 
   <section class="kpis">
@@ -780,7 +838,7 @@ tbody tr:hover{
     <div class="kpi recovery">
 
       <small>
-        Buy Back Recovery Pending
+        Buy Back Recovery Outstanding
       </small>
 
       <strong id="kpiRecoveryPending">
@@ -814,6 +872,8 @@ tbody tr:hover{
   <section class="summary-grid">
 
 
+    <!-- EXPENSE -->
+
     <div class="summary-card">
 
       <div class="summary-title">
@@ -822,6 +882,7 @@ tbody tr:hover{
 
 
       <div class="summary-stats">
+
 
         <div class="summary-stat">
 
@@ -848,20 +909,24 @@ tbody tr:hover{
 
         </div>
 
+
       </div>
 
     </div>
 
 
 
+    <!-- BUY BACK -->
+
     <div class="summary-card">
 
       <div class="summary-title">
-        💳 Client / Supplier Buy Back
+        💳 Client / Supplier Buy Back Recovery
       </div>
 
 
       <div class="summary-stats">
+
 
         <div class="summary-stat">
 
@@ -888,11 +953,66 @@ tbody tr:hover{
 
         </div>
 
+
+        <div class="summary-stat success">
+
+          <small>
+            Recovered
+          </small>
+
+          <strong id="buyBackRecovered">
+            $0.00
+          </strong>
+
+        </div>
+
+
+        <div class="summary-stat">
+
+          <small>
+            Outstanding
+          </small>
+
+          <strong id="buyBackOutstanding">
+            $0.00
+          </strong>
+
+        </div>
+
+
+        <div class="summary-stat warning">
+
+          <small>
+            Legacy Review Qty
+          </small>
+
+          <strong id="legacyBuyBackQty">
+            0
+          </strong>
+
+        </div>
+
+
+        <div class="summary-stat warning">
+
+          <small>
+            Legacy Review Value
+          </small>
+
+          <strong id="legacyBuyBackValue">
+            $0.00
+          </strong>
+
+        </div>
+
+
       </div>
 
     </div>
 
 
+
+    <!-- EXCHANGE -->
 
     <div class="summary-card">
 
@@ -902,6 +1022,7 @@ tbody tr:hover{
 
 
       <div class="summary-stats">
+
 
         <div class="summary-stat">
 
@@ -927,6 +1048,7 @@ tbody tr:hover{
           </strong>
 
         </div>
+
 
       </div>
 
@@ -955,8 +1077,9 @@ tbody tr:hover{
 
         <div class="card-sub">
 
-          Read-only accounting classification.
-          No expense, payment or recovery settlement is posted from this page yet.
+          Read-only accounting audit.
+          Recovery settlement and Expense posting
+          are not enabled on this page yet.
 
         </div>
 
@@ -969,7 +1092,7 @@ tbody tr:hover{
         <input
           id="search"
           type="search"
-          placeholder="Search product / client / document / movement"
+          placeholder="Search product / client / recovery document / exchange document / movement"
         >
 
 
@@ -985,6 +1108,18 @@ tbody tr:hover{
 
           <option value="RECOVERY PENDING">
             Recovery Pending
+          </option>
+
+          <option value="RECOVERY PARTIAL">
+            Recovery Partial
+          </option>
+
+          <option value="RECOVERY SETTLED">
+            Recovery Settled
+          </option>
+
+          <option value="RECOVERY REVIEW REQUIRED">
+            Recovery Review Required
           </option>
 
           <option value="EXCHANGE PENDING">
@@ -1067,37 +1202,23 @@ tbody tr:hover{
 
           <tr>
 
-            <th>
-              Date
-            </th>
+            <th>Date</th>
 
-            <th>
-              Accounting Status
-            </th>
+            <th>Accounting Status</th>
 
-            <th>
-              Clearance Type
-            </th>
+            <th>Clearance Type</th>
 
-            <th>
-              Movement
-            </th>
+            <th>Movement</th>
 
-            <th>
-              Product
-            </th>
+            <th>Product</th>
 
-            <th>
-              Code
-            </th>
+            <th>Code</th>
 
             <th class="amount">
               Qty
             </th>
 
-            <th>
-              Unit
-            </th>
+            <th>Unit</th>
 
             <th class="amount">
               Unit Cost
@@ -1112,6 +1233,22 @@ tbody tr:hover{
             </th>
 
             <th>
+              Recovery Document
+            </th>
+
+            <th class="amount">
+              Recovery Value
+            </th>
+
+            <th class="amount">
+              Recovered
+            </th>
+
+            <th class="amount">
+              Outstanding
+            </th>
+
+            <th>
               Exchange Document
             </th>
 
@@ -1121,6 +1258,10 @@ tbody tr:hover{
 
             <th class="amount">
               Exchange Pending
+            </th>
+
+            <th>
+              Legacy Review
             </th>
 
             <th>
@@ -1153,7 +1294,7 @@ tbody tr:hover{
           <tr>
 
             <td
-              colspan="19"
+              colspan="24"
               class="empty"
             >
               Loading...
@@ -1191,7 +1332,7 @@ tbody tr:hover{
 
 
   /* =========================================================
-     EMBED MODE
+     EMBED
      ========================================================= */
 
   if (
@@ -1339,7 +1480,31 @@ tbody tr:hover{
     ) {
 
       cls =
-        "recovery";
+        "recovery-pending";
+
+    } else if (
+      value ===
+      "RECOVERY PARTIAL"
+    ) {
+
+      cls =
+        "recovery-partial";
+
+    } else if (
+      value ===
+      "RECOVERY SETTLED"
+    ) {
+
+      cls =
+        "recovery-settled";
+
+    } else if (
+      value ===
+      "RECOVERY REVIEW REQUIRED"
+    ) {
+
+      cls =
+        "recovery-review";
 
     } else if (
       value ===
@@ -1513,15 +1678,84 @@ tbody tr:hover{
 
       (
         id
-
           ? (
               '<div class="audit-sub">' +
               esc(id) +
               "</div>"
             )
-
           : ""
       )
+
+    );
+
+  }
+
+
+
+  /* =========================================================
+     DOCUMENT
+     ========================================================= */
+
+  function documentHtml(
+    value
+  ) {
+
+    const documentNo =
+      clean(
+        value
+      );
+
+
+    if (
+      !documentNo
+    ) {
+
+      return "-";
+
+    }
+
+
+    return (
+
+      '<span class="document">' +
+
+      esc(
+        documentNo
+      ) +
+
+      "</span>"
+
+    );
+
+  }
+
+
+
+  /* =========================================================
+     LEGACY
+     ========================================================= */
+
+  function legacyHtml(
+    row
+  ) {
+
+    if (
+      !row.legacyRecovery
+    ) {
+
+      return "-";
+
+    }
+
+
+    return (
+
+      '<div class="legacy-note">' +
+
+      "Legacy Buy Back · no Recovery work item exists. " +
+      "Accounting review required before settlement." +
+
+      "</div>"
 
     );
 
@@ -1567,6 +1801,11 @@ tbody tr:hover{
         );
 
 
+
+    /* =====================================================
+       EXPENSE
+       ===================================================== */
+
     $("expenseQty")
       .textContent =
         qty(
@@ -1581,19 +1820,57 @@ tbody tr:hover{
         );
 
 
+
+    /* =====================================================
+       BUY BACK
+       ===================================================== */
+
     $("buyBackQty")
       .textContent =
         qty(
-          totals.buyBackPendingQty
+          totals.buyBackRecoveryQty
         );
 
 
     $("buyBackValue")
       .textContent =
         money(
+          totals.buyBackRecoveryValue
+        );
+
+
+    $("buyBackRecovered")
+      .textContent =
+        money(
+          totals.buyBackRecoveredValue
+        );
+
+
+    $("buyBackOutstanding")
+      .textContent =
+        money(
           totals.buyBackPendingValue
         );
 
+
+    $("legacyBuyBackQty")
+      .textContent =
+        qty(
+          totals.legacyBuyBackQty
+        );
+
+
+    $("legacyBuyBackValue")
+      .textContent =
+        money(
+          totals.legacyBuyBackValue
+        );
+
+
+
+    /* =====================================================
+       EXCHANGE
+       ===================================================== */
 
     $("exchangeRecoveryValue")
       .textContent =
@@ -1724,28 +2001,37 @@ tbody tr:hover{
           [
 
             row.productName,
+
             row.productCode,
 
             row.movementId,
+
             row.transactionId,
 
             row.accountingStatus,
+
             row.accountingTreatment,
 
             row.clearanceType,
+
             row.clearanceTypeLabel,
 
             row.clientName,
+
             row.clientId,
+
+            row.recoveryDocumentNo,
 
             row.exchangeDocumentNo,
 
             row.locationName,
+
             row.locationCode,
 
             row.controllerName,
 
             row.referenceNo,
+
             row.note
 
           ]
@@ -1793,7 +2079,7 @@ tbody tr:hover{
 
           '<tr>' +
 
-          '<td colspan="19" class="empty">' +
+          '<td colspan="24" class="empty">' +
 
           "No Damage Accounting records found." +
 
@@ -1812,6 +2098,7 @@ tbody tr:hover{
 
         rows.map(
           row => {
+
 
             return `
 
@@ -1883,9 +2170,11 @@ tbody tr:hover{
                 <td class="amount">
 
                   <strong>
+
                     ${qty(
                       row.qty
                     )}
+
                   </strong>
 
                 </td>
@@ -1932,11 +2221,77 @@ tbody tr:hover{
                 </td>
 
 
-                <td class="code">
+                <td>
 
-                  ${esc(
-                    row.exchangeDocumentNo ||
-                    "-"
+                  ${documentHtml(
+                    row.recoveryDocumentNo
+                  )}
+
+                </td>
+
+
+                <td class="amount money">
+
+                  ${
+                    clean(
+                      row.clearanceType
+                    ) ===
+                    "CLIENT_BUY_BACK"
+
+                      ? money(
+                          row.recoveryValue
+                        )
+
+                      : "-"
+                  }
+
+                </td>
+
+
+                <td class="amount money">
+
+                  ${
+                    clean(
+                      row.clearanceType
+                    ) ===
+                    "CLIENT_BUY_BACK"
+
+                      ? money(
+                          row.recoveredAmount
+                        )
+
+                      : "-"
+                  }
+
+                </td>
+
+
+                <td class="amount money">
+
+                  ${
+                    clean(
+                      row.clearanceType
+                    ) ===
+                    "CLIENT_BUY_BACK"
+
+                      ? (
+                          row.legacyRecovery
+                            ? "-"
+                            : money(
+                                row.recoveryOutstandingValue
+                              )
+                        )
+
+                      : "-"
+                  }
+
+                </td>
+
+
+                <td>
+
+                  ${documentHtml(
+                    row.exchangeDocumentNo
                   )}
 
                 </td>
@@ -1960,6 +2315,15 @@ tbody tr:hover{
                     )}
 
                   </strong>
+
+                </td>
+
+
+                <td>
+
+                  ${legacyHtml(
+                    row
+                  )}
 
                 </td>
 
@@ -2140,7 +2504,13 @@ tbody tr:hover{
           totals.buyBackPendingValue
         ) +
 
-        " recovery pending · " +
+        " Buy Back recovery outstanding · " +
+
+        money(
+          totals.buyBackRecoveredValue
+        ) +
+
+        " already recovered · " +
 
         money(
           totals.exchangePendingValue
@@ -2180,7 +2550,7 @@ tbody tr:hover{
 
           '<tr>' +
 
-          '<td colspan="19" class="empty">' +
+          '<td colspan="24" class="empty">' +
 
           "Could not load Damage Accounting & Recovery Ledger." +
 
@@ -2213,6 +2583,7 @@ tbody tr:hover{
   window.openDamageReport =
     function () {
 
+
       const embed =
         new URLSearchParams(
           location.search
@@ -2236,6 +2607,7 @@ tbody tr:hover{
 
   window.openClearedReport =
     function () {
+
 
       const embed =
         new URLSearchParams(
