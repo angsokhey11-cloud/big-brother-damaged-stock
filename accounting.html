@@ -2362,11 +2362,11 @@ tbody tr:hover{
 
 
 
-  /* =========================================================
-     RECOVERY ACTION
-     ========================================================= */
+/* =========================================================
+   RECOVERY ACTION
+   ========================================================= */
 
-  function recoveryActionHtml(
+function recoveryActionHtml(
   row
 ) {
 
@@ -2382,6 +2382,10 @@ tbody tr:hover{
   }
 
 
+  /* -------------------------------------------------------
+     Legacy Buy Back
+     ------------------------------------------------------- */
+
   if (
     row.legacyRecovery
   ) {
@@ -2396,6 +2400,10 @@ tbody tr:hover{
 
   }
 
+
+  /* -------------------------------------------------------
+     Already settled
+     ------------------------------------------------------- */
 
   if (
     num(
@@ -2415,6 +2423,10 @@ tbody tr:hover{
 
   }
 
+
+  /* -------------------------------------------------------
+     Recovery Item ID
+     ------------------------------------------------------- */
 
   const recoveryItemId =
     Number(
@@ -2437,6 +2449,10 @@ tbody tr:hover{
   }
 
 
+  /* -------------------------------------------------------
+     Action Button
+     ------------------------------------------------------- */
+
   return (
 
     '<button' +
@@ -2453,80 +2469,11 @@ tbody tr:hover{
 
 }
 
-    if (
-      clean(
-        row.clearanceType
-      ) !==
-      "CLIENT_BUY_BACK"
-    ) {
-
-      return "-";
-
-    }
 
 
-    if (
-      row.legacyRecovery
-    ) {
-
-      return (
-
-        '<span class="badge recovery-review">' +
-        'REVIEW ONLY' +
-        '</span>'
-
-      );
-
-    }
-
-
-    if (
-      num(
-        row.recoveryOutstandingValue
-      )
-      <=
-      0.005
-    ) {
-
-      return (
-
-        '<span class="badge recovery-settled">' +
-        'SETTLED' +
-        '</span>'
-
-      );
-
-    }
-
-
-    if (
-      !row.recoveryItemId
-    ) {
-
-      return "-";
-
-    }
-
-
-    return (
-
-      '<button' +
-      ' type="button"' +
-      ' class="btn success small"' +
-      ' onclick="openRecoverySettlement(' +
-      JSON.stringify(
-        String(
-          row.recoveryItemId
-        )
-      ) +
-      ')' +
-      '>' +
-      '💵 Record Recovery' +
-      '</button>'
-
-    );
-
-  }
+/* =========================================================
+   KPI
+   ========================================================= */
 
 
 
