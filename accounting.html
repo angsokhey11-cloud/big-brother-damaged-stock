@@ -56,7 +56,7 @@ body.embed .page{
 }
 
 .page{
-  max-width:2200px;
+  max-width:2300px;
   margin:auto;
   padding:24px;
 }
@@ -70,24 +70,19 @@ body.embed .page{
   display:flex;
   justify-content:space-between;
   align-items:flex-start;
-
   gap:16px;
   margin-bottom:14px;
 }
 
 .title h1{
   margin:0;
-
   color:var(--navy);
-
   font-size:28px;
 }
 
 .subtitle{
   margin-top:5px;
-
   color:var(--muted);
-
   font-size:12px;
   line-height:1.5;
 }
@@ -96,7 +91,6 @@ body.embed .page{
   display:flex;
   align-items:center;
   justify-content:flex-end;
-
   gap:8px;
   flex-wrap:wrap;
 }
@@ -104,9 +98,7 @@ body.embed .page{
 .pill{
   display:inline-flex;
   align-items:center;
-
   min-height:38px;
-
   padding:8px 12px;
 
   border:1px solid #cbead9;
@@ -117,13 +109,11 @@ body.embed .page{
 
   font-size:10px;
   font-weight:900;
-
   white-space:nowrap;
 }
 
 .btn{
   min-height:38px;
-
   padding:9px 13px;
 
   border:0;
@@ -144,8 +134,18 @@ body.embed .page{
 .btn.secondary{
   background:#fff;
   color:var(--navy);
-
   border:1px solid var(--line);
+}
+
+.btn.success{
+  background:#168652;
+  color:#fff;
+}
+
+.btn.small{
+  min-height:30px;
+  padding:6px 9px;
+  font-size:9px;
 }
 
 .btn:disabled{
@@ -160,7 +160,6 @@ body.embed .page{
 
 .status{
   margin-bottom:12px;
-
   padding:10px 12px;
 
   border:1px solid #ceddf0;
@@ -191,15 +190,8 @@ body.embed .page{
 
 .kpis{
   display:grid;
-
-  grid-template-columns:
-    repeat(
-      4,
-      minmax(0,1fr)
-    );
-
+  grid-template-columns:repeat(4,minmax(0,1fr));
   gap:10px;
-
   margin-bottom:12px;
 }
 
@@ -218,22 +210,16 @@ body.embed .page{
 
 .kpi small{
   display:block;
-
   color:#718096;
-
   font-size:9px;
   font-weight:900;
-
   text-transform:uppercase;
 }
 
 .kpi strong{
   display:block;
-
   margin-top:6px;
-
   color:var(--navy);
-
   font-size:22px;
 }
 
@@ -256,15 +242,8 @@ body.embed .page{
 
 .summary-grid{
   display:grid;
-
-  grid-template-columns:
-    repeat(
-      3,
-      minmax(0,1fr)
-    );
-
+  grid-template-columns:repeat(3,minmax(0,1fr));
   gap:10px;
-
   margin-bottom:12px;
 }
 
@@ -283,22 +262,14 @@ body.embed .page{
 
 .summary-title{
   color:var(--navy);
-
   font-size:12px;
   font-weight:900;
 }
 
 .summary-stats{
   display:grid;
-
-  grid-template-columns:
-    repeat(
-      2,
-      minmax(0,1fr)
-    );
-
+  grid-template-columns:repeat(2,minmax(0,1fr));
   gap:8px;
-
   margin-top:12px;
 }
 
@@ -313,22 +284,16 @@ body.embed .page{
 
 .summary-stat small{
   display:block;
-
   color:#8090a2;
-
   font-size:8px;
   font-weight:900;
-
   text-transform:uppercase;
 }
 
 .summary-stat strong{
   display:block;
-
   margin-top:4px;
-
   color:#233e5e;
-
   font-size:14px;
 }
 
@@ -352,7 +317,6 @@ body.embed .page{
   border-radius:14px;
 
   padding:15px;
-
   margin-bottom:12px;
 
   box-shadow:
@@ -362,27 +326,21 @@ body.embed .page{
 
 .card-head{
   display:flex;
-
   align-items:flex-start;
   justify-content:space-between;
-
   gap:12px;
-
   margin-bottom:11px;
 }
 
 .card-title{
   color:var(--navy);
-
   font-size:14px;
   font-weight:900;
 }
 
 .card-sub{
   margin-top:3px;
-
   color:#8392a5;
-
   font-size:9px;
 }
 
@@ -393,7 +351,6 @@ body.embed .page{
 
 .controls{
   display:flex;
-
   gap:8px;
   flex-wrap:wrap;
 }
@@ -401,7 +358,6 @@ body.embed .page{
 .controls input,
 .controls select{
   min-height:38px;
-
   padding:8px 10px;
 
   border:1px solid #cbd8e7;
@@ -432,16 +388,13 @@ body.embed .page{
 
 table{
   width:100%;
-
-  min-width:2650px;
-
+  min-width:2850px;
   border-collapse:collapse;
 }
 
 th,
 td{
   padding:10px;
-
   border-bottom:1px solid #edf1f5;
 
   text-align:left;
@@ -455,14 +408,11 @@ th{
   top:0;
 
   background:#f7f9fc;
-
   color:#53677d;
 
   font-size:8px;
   font-weight:900;
-
   text-transform:uppercase;
-
   letter-spacing:.02em;
 }
 
@@ -481,31 +431,23 @@ tbody tr:hover{
 }
 
 .code{
-  font-family:
-    Consolas,
-    monospace;
-
+  font-family:Consolas,monospace;
   font-size:9px;
 }
 
 .money{
-  font-variant-numeric:
-    tabular-nums;
+  font-variant-numeric:tabular-nums;
 }
 
 .note{
   max-width:250px;
-
   white-space:normal;
-
   line-height:1.4;
 }
 
 .empty{
   padding:26px !important;
-
   text-align:center !important;
-
   color:#8090a1 !important;
 }
 
@@ -594,48 +536,34 @@ tbody tr:hover{
 
 .audit-main{
   color:#17457a;
-
   font-weight:900;
-
   white-space:nowrap;
 }
 
 .audit-sub{
   margin-top:3px;
-
   color:#7b8797;
-
   font-size:8px;
-
   white-space:nowrap;
 }
 
 .document{
-  font-family:
-    Consolas,
-    monospace;
-
+  font-family:Consolas,monospace;
   color:#244f82;
-
   font-weight:800;
-
   white-space:nowrap;
 }
 
 .treatment{
   max-width:250px;
-
   color:#53677d;
-
   font-size:9px;
   font-weight:800;
-
   line-height:1.4;
 }
 
 .legacy-note{
   max-width:230px;
-
   padding:6px 8px;
 
   border-radius:7px;
@@ -645,16 +573,261 @@ tbody tr:hover{
 
   font-size:8px;
   font-weight:800;
-
   line-height:1.4;
 }
 
 .last-update{
   margin-top:9px;
-
   color:#8291a1;
+  font-size:9px;
+}
+
+
+/* =========================================================
+   PAYMENT HISTORY
+   ========================================================= */
+
+.history-empty{
+  padding:22px;
+  text-align:center;
+  color:#8291a1;
+  font-size:10px;
+}
+
+.payment-method{
+  display:inline-block;
+
+  padding:4px 7px;
+
+  border-radius:999px;
+
+  background:#f2f5f9;
+  color:#40566f;
+
+  font-size:8px;
+  font-weight:900;
+}
+
+
+/* =========================================================
+   MODAL
+   ========================================================= */
+
+.modal-backdrop{
+  position:fixed;
+  inset:0;
+  z-index:9999;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  padding:20px;
+
+  background:rgba(18,38,63,.48);
+}
+
+.modal-backdrop[hidden]{
+  display:none !important;
+}
+
+.modal{
+  width:min(760px,100%);
+  max-height:92vh;
+  overflow:auto;
+
+  background:#fff;
+
+  border-radius:16px;
+
+  box-shadow:
+    0 30px 80px
+    rgba(0,0,0,.25);
+}
+
+.modal-head{
+  display:flex;
+  align-items:flex-start;
+  justify-content:space-between;
+  gap:12px;
+
+  padding:18px 20px;
+
+  border-bottom:1px solid var(--line);
+}
+
+.modal-title{
+  color:var(--navy);
+  font-size:17px;
+  font-weight:900;
+}
+
+.modal-sub{
+  margin-top:4px;
+  color:#7b8797;
+  font-size:10px;
+  line-height:1.5;
+}
+
+.modal-close{
+  width:34px;
+  height:34px;
+
+  border:0;
+  border-radius:8px;
+
+  background:#f2f5f9;
+  color:#52667c;
+
+  font-size:18px;
+  font-weight:900;
+
+  cursor:pointer;
+}
+
+.modal-body{
+  padding:18px 20px;
+}
+
+.modal-grid{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:12px;
+}
+
+.field{
+  min-width:0;
+}
+
+.field.full{
+  grid-column:1/-1;
+}
+
+.field label{
+  display:block;
+  margin-bottom:5px;
+
+  color:#53677d;
 
   font-size:9px;
+  font-weight:900;
+  text-transform:uppercase;
+}
+
+.field input,
+.field select,
+.field textarea{
+  width:100%;
+
+  min-height:40px;
+
+  padding:9px 10px;
+
+  border:1px solid #cbd8e7;
+  border-radius:9px;
+
+  background:#fff;
+  color:var(--text);
+
+  font:inherit;
+  font-size:11px;
+}
+
+.field textarea{
+  min-height:80px;
+  resize:vertical;
+}
+
+.helper{
+  margin-top:4px;
+
+  color:#8392a5;
+
+  font-size:9px;
+  line-height:1.4;
+}
+
+.recovery-summary{
+  display:grid;
+  grid-template-columns:repeat(4,minmax(0,1fr));
+  gap:8px;
+
+  margin-bottom:16px;
+}
+
+.recovery-box{
+  padding:10px;
+
+  border:1px solid #e1e8f1;
+  border-radius:10px;
+
+  background:#fafcff;
+}
+
+.recovery-box small{
+  display:block;
+
+  color:#7b8797;
+
+  font-size:8px;
+  font-weight:900;
+  text-transform:uppercase;
+}
+
+.recovery-box strong{
+  display:block;
+
+  margin-top:5px;
+
+  color:#17457a;
+
+  font-size:13px;
+}
+
+.recovery-box.outstanding strong{
+  color:#b43a3a;
+}
+
+.preview-box{
+  margin-top:12px;
+  padding:10px 12px;
+
+  border:1px solid #d7e5f6;
+  border-radius:9px;
+
+  background:#f7fbff;
+
+  color:#36597c;
+
+  font-size:10px;
+  line-height:1.5;
+}
+
+.modal-error{
+  margin-top:12px;
+  padding:9px 10px;
+
+  border:1px solid #f0cece;
+  border-radius:9px;
+
+  background:#fff1f1;
+  color:#9d2f2f;
+
+  font-size:10px;
+}
+
+.modal-error[hidden]{
+  display:none;
+}
+
+.modal-actions{
+  display:flex;
+  justify-content:flex-end;
+  gap:8px;
+
+  padding:15px 20px;
+
+  border-top:1px solid var(--line);
 }
 
 
@@ -665,8 +838,7 @@ tbody tr:hover{
 @media(max-width:1000px){
 
   .kpis{
-    grid-template-columns:
-      1fr 1fr;
+    grid-template-columns:1fr 1fr;
   }
 
   .summary-grid{
@@ -716,6 +888,18 @@ tbody tr:hover{
     min-width:0;
   }
 
+  .modal-grid{
+    grid-template-columns:1fr;
+  }
+
+  .field.full{
+    grid-column:auto;
+  }
+
+  .recovery-summary{
+    grid-template-columns:1fr 1fr;
+  }
+
 }
 
 </style>
@@ -737,7 +921,6 @@ tbody tr:hover{
        ===================================================== -->
 
   <div class="topbar">
-
 
     <div class="title">
 
@@ -761,7 +944,7 @@ tbody tr:hover{
     <div class="top-actions">
 
       <div class="pill">
-        SUPABASE LIVE · READ ONLY
+        SUPABASE LIVE · ACCOUNTING
       </div>
 
 
@@ -784,7 +967,6 @@ tbody tr:hover{
 
     </div>
 
-
   </div>
 
 
@@ -803,7 +985,7 @@ tbody tr:hover{
 
 
   <!-- =====================================================
-       MAIN KPI
+       KPI
        ===================================================== -->
 
   <section class="kpis">
@@ -872,17 +1054,13 @@ tbody tr:hover{
   <section class="summary-grid">
 
 
-    <!-- EXPENSE -->
-
     <div class="summary-card">
 
       <div class="summary-title">
         💸 Damage / Spoilage Expense
       </div>
 
-
       <div class="summary-stats">
-
 
         <div class="summary-stat">
 
@@ -896,7 +1074,6 @@ tbody tr:hover{
 
         </div>
 
-
         <div class="summary-stat">
 
           <small>
@@ -909,14 +1086,11 @@ tbody tr:hover{
 
         </div>
 
-
       </div>
 
     </div>
 
 
-
-    <!-- BUY BACK -->
 
     <div class="summary-card">
 
@@ -924,9 +1098,7 @@ tbody tr:hover{
         💳 Client / Supplier Buy Back Recovery
       </div>
 
-
       <div class="summary-stats">
-
 
         <div class="summary-stat">
 
@@ -940,7 +1112,6 @@ tbody tr:hover{
 
         </div>
 
-
         <div class="summary-stat">
 
           <small>
@@ -952,7 +1123,6 @@ tbody tr:hover{
           </strong>
 
         </div>
-
 
         <div class="summary-stat success">
 
@@ -966,7 +1136,6 @@ tbody tr:hover{
 
         </div>
 
-
         <div class="summary-stat">
 
           <small>
@@ -978,7 +1147,6 @@ tbody tr:hover{
           </strong>
 
         </div>
-
 
         <div class="summary-stat warning">
 
@@ -992,7 +1160,6 @@ tbody tr:hover{
 
         </div>
 
-
         <div class="summary-stat warning">
 
           <small>
@@ -1005,14 +1172,11 @@ tbody tr:hover{
 
         </div>
 
-
       </div>
 
     </div>
 
 
-
-    <!-- EXCHANGE -->
 
     <div class="summary-card">
 
@@ -1020,9 +1184,7 @@ tbody tr:hover{
         🔄 Replacement Stock Recovery
       </div>
 
-
       <div class="summary-stats">
-
 
         <div class="summary-stat">
 
@@ -1036,7 +1198,6 @@ tbody tr:hover{
 
         </div>
 
-
         <div class="summary-stat">
 
           <small>
@@ -1048,7 +1209,6 @@ tbody tr:hover{
           </strong>
 
         </div>
-
 
       </div>
 
@@ -1077,9 +1237,9 @@ tbody tr:hover{
 
         <div class="card-sub">
 
-          Read-only accounting audit.
-          Recovery settlement and Expense posting
-          are not enabled on this page yet.
+          Recovery settlement is enabled for documented
+          Client Buy Back work items.
+          Legacy Buy Back records remain review-only.
 
         </div>
 
@@ -1134,10 +1294,6 @@ tbody tr:hover{
             Exchange Completed
           </option>
 
-          <option value="REVIEW REQUIRED">
-            Review Required
-          </option>
-
         </select>
 
 
@@ -1165,14 +1321,12 @@ tbody tr:hover{
         <input
           id="dateFrom"
           type="date"
-          title="From date"
         >
 
 
         <input
           id="dateTo"
           type="date"
-          title="To date"
         >
 
 
@@ -1194,24 +1348,17 @@ tbody tr:hover{
 
     <div class="table-wrap">
 
-
       <table>
-
 
         <thead>
 
           <tr>
 
             <th>Date</th>
-
             <th>Accounting Status</th>
-
             <th>Clearance Type</th>
-
             <th>Movement</th>
-
             <th>Product</th>
-
             <th>Code</th>
 
             <th class="amount">
@@ -1246,6 +1393,10 @@ tbody tr:hover{
 
             <th class="amount">
               Outstanding
+            </th>
+
+            <th>
+              Recovery Action
             </th>
 
             <th>
@@ -1294,7 +1445,7 @@ tbody tr:hover{
           <tr>
 
             <td
-              colspan="24"
+              colspan="25"
               class="empty"
             >
               Loading...
@@ -1304,9 +1455,7 @@ tbody tr:hover{
 
         </tbody>
 
-
       </table>
-
 
     </div>
 
@@ -1320,7 +1469,418 @@ tbody tr:hover{
   </section>
 
 
+
+  <!-- =====================================================
+       RECOVERY PAYMENT HISTORY
+       ===================================================== -->
+
+  <section class="card">
+
+
+    <div class="card-head">
+
+      <div>
+
+        <div class="card-title">
+          Recovery Settlement History
+        </div>
+
+        <div class="card-sub">
+
+          Append-only settlement history for
+          documented Client Buy Back recoveries.
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <div class="table-wrap">
+
+      <table
+        style="min-width:1500px"
+      >
+
+        <thead>
+
+          <tr>
+
+            <th>Settlement ID</th>
+            <th>Date</th>
+            <th>Movement</th>
+            <th>Client / Supplier</th>
+            <th>Recovery Document</th>
+            <th>Product</th>
+            <th>Currency</th>
+
+            <th class="amount">
+              Amount
+            </th>
+
+            <th class="amount">
+              USD Value
+            </th>
+
+            <th>Method</th>
+            <th>Reference</th>
+            <th>Note</th>
+
+          </tr>
+
+        </thead>
+
+
+        <tbody id="paymentRows">
+
+          <tr>
+
+            <td
+              colspan="12"
+              class="empty"
+            >
+              No Recovery Settlement has been recorded yet.
+            </td>
+
+          </tr>
+
+        </tbody>
+
+      </table>
+
+    </div>
+
+
+    <div
+      id="paymentHistoryStatus"
+      class="last-update"
+    ></div>
+
+
+  </section>
+
+
 </main>
+
+
+
+<!-- =========================================================
+     RECORD RECOVERY MODAL
+     ========================================================= -->
+
+<div
+  id="recoveryModalBackdrop"
+  class="modal-backdrop"
+  hidden
+>
+
+
+  <div
+    class="modal"
+    role="dialog"
+    aria-modal="true"
+  >
+
+
+    <div class="modal-head">
+
+      <div>
+
+        <div class="modal-title">
+          💳 Record Recovery Settlement
+        </div>
+
+        <div
+          id="recoveryModalSub"
+          class="modal-sub"
+        >
+        </div>
+
+      </div>
+
+
+      <button
+        id="recoveryModalClose"
+        type="button"
+        class="modal-close"
+      >
+        ×
+      </button>
+
+    </div>
+
+
+
+    <div class="modal-body">
+
+
+      <div class="recovery-summary">
+
+
+        <div class="recovery-box">
+
+          <small>
+            Recovery Value
+          </small>
+
+          <strong id="modalRecoveryValue">
+            $0.00
+          </strong>
+
+        </div>
+
+
+        <div class="recovery-box">
+
+          <small>
+            Recovered
+          </small>
+
+          <strong id="modalRecovered">
+            $0.00
+          </strong>
+
+        </div>
+
+
+        <div class="recovery-box outstanding">
+
+          <small>
+            Outstanding
+          </small>
+
+          <strong id="modalOutstanding">
+            $0.00
+          </strong>
+
+        </div>
+
+
+        <div class="recovery-box">
+
+          <small>
+            Recovery Document
+          </small>
+
+          <strong id="modalRecoveryDocument">
+            -
+          </strong>
+
+        </div>
+
+
+      </div>
+
+
+
+      <div class="modal-grid">
+
+
+        <div class="field">
+
+          <label>
+            Settlement Date
+          </label>
+
+          <input
+            id="settlementDate"
+            type="date"
+          >
+
+        </div>
+
+
+        <div class="field">
+
+          <label>
+            Settlement Method
+          </label>
+
+          <select id="settlementMethod">
+
+            <option value="">
+              Select Method
+            </option>
+
+            <option value="Cash">
+              Cash
+            </option>
+
+            <option value="ABA">
+              ABA
+            </option>
+
+            <option value="Bank Transfer">
+              Bank Transfer
+            </option>
+
+            <option value="Credit Note">
+              Credit Note
+            </option>
+
+            <option value="Offset">
+              Offset
+            </option>
+
+            <option value="Other">
+              Other
+            </option>
+
+          </select>
+
+        </div>
+
+
+
+        <div class="field">
+
+          <label>
+            Currency
+          </label>
+
+          <select id="settlementCurrency">
+
+            <option value="USD">
+              USD
+            </option>
+
+            <option value="KHR">
+              KHR
+            </option>
+
+          </select>
+
+        </div>
+
+
+        <div class="field">
+
+          <label>
+            Exchange Rate
+          </label>
+
+          <input
+            id="settlementExchangeRate"
+            type="number"
+            min="0"
+            step="0.01"
+            value="1"
+          >
+
+          <div class="helper">
+            For KHR: KHR per USD.
+          </div>
+
+        </div>
+
+
+
+        <div class="field">
+
+          <label>
+            Settlement Amount
+          </label>
+
+          <input
+            id="settlementAmount"
+            type="number"
+            min="0"
+            step="0.01"
+            placeholder="0.00"
+          >
+
+          <div
+            id="settlementAmountHelp"
+            class="helper"
+          >
+          </div>
+
+        </div>
+
+
+        <div class="field">
+
+          <label>
+            Reference No.
+          </label>
+
+          <input
+            id="settlementReference"
+            type="text"
+            autocomplete="off"
+            placeholder="Optional"
+          >
+
+        </div>
+
+
+
+        <div class="field full">
+
+          <label>
+            Note
+          </label>
+
+          <textarea
+            id="settlementNote"
+            placeholder="Optional settlement note"
+          ></textarea>
+
+        </div>
+
+
+      </div>
+
+
+
+      <div
+        id="settlementPreview"
+        class="preview-box"
+      >
+        Enter settlement amount.
+      </div>
+
+
+      <div
+        id="settlementError"
+        class="modal-error"
+        hidden
+      ></div>
+
+
+    </div>
+
+
+
+    <div class="modal-actions">
+
+
+      <button
+        id="cancelSettlementBtn"
+        type="button"
+        class="btn secondary"
+      >
+        Cancel
+      </button>
+
+
+      <button
+        id="saveSettlementBtn"
+        type="button"
+        class="btn success"
+      >
+        Record Recovery
+      </button>
+
+
+    </div>
+
+
+  </div>
+
+
+</div>
 
 
 
@@ -1401,21 +1961,60 @@ tbody tr:hover{
         );
 
 
+  function localDateValue() {
+
+    const now =
+      new Date();
+
+
+    const offset =
+      now.getTimezoneOffset();
+
+
+    return new Date(
+      now.getTime()
+      -
+      offset * 60000
+    )
+      .toISOString()
+      .slice(
+        0,
+        10
+      );
+
+  }
+
+
 
   /* =========================================================
      STATE
      ========================================================= */
 
   let report = {
-
     rows:[],
     totals:{}
+  };
 
+
+  let paymentHistory = {
+    rows:[]
   };
 
 
   let loading =
     false;
+
+
+  let paymentLoading =
+    false;
+
+
+  let settlementSaving =
+    false;
+
+
+  let activeRecoveryRow =
+    null;
 
 
 
@@ -1764,6 +2363,91 @@ tbody tr:hover{
 
 
   /* =========================================================
+     RECOVERY ACTION
+     ========================================================= */
+
+  function recoveryActionHtml(
+    row
+  ) {
+
+    if (
+      clean(
+        row.clearanceType
+      ) !==
+      "CLIENT_BUY_BACK"
+    ) {
+
+      return "-";
+
+    }
+
+
+    if (
+      row.legacyRecovery
+    ) {
+
+      return (
+
+        '<span class="badge recovery-review">' +
+        'REVIEW ONLY' +
+        '</span>'
+
+      );
+
+    }
+
+
+    if (
+      num(
+        row.recoveryOutstandingValue
+      )
+      <=
+      0.005
+    ) {
+
+      return (
+
+        '<span class="badge recovery-settled">' +
+        'SETTLED' +
+        '</span>'
+
+      );
+
+    }
+
+
+    if (
+      !row.recoveryItemId
+    ) {
+
+      return "-";
+
+    }
+
+
+    return (
+
+      '<button' +
+      ' type="button"' +
+      ' class="btn success small"' +
+      ' onclick="openRecoverySettlement(' +
+      JSON.stringify(
+        String(
+          row.recoveryItemId
+        )
+      ) +
+      ')' +
+      '>' +
+      '💵 Record Recovery' +
+      '</button>'
+
+    );
+
+  }
+
+
+
+  /* =========================================================
      KPI
      ========================================================= */
 
@@ -1801,11 +2485,6 @@ tbody tr:hover{
         );
 
 
-
-    /* =====================================================
-       EXPENSE
-       ===================================================== */
-
     $("expenseQty")
       .textContent =
         qty(
@@ -1819,11 +2498,6 @@ tbody tr:hover{
           totals.expensePendingValue
         );
 
-
-
-    /* =====================================================
-       BUY BACK
-       ===================================================== */
 
     $("buyBackQty")
       .textContent =
@@ -1866,11 +2540,6 @@ tbody tr:hover{
           totals.legacyBuyBackValue
         );
 
-
-
-    /* =====================================================
-       EXCHANGE
-       ===================================================== */
 
     $("exchangeRecoveryValue")
       .textContent =
@@ -2001,37 +2670,29 @@ tbody tr:hover{
           [
 
             row.productName,
-
             row.productCode,
 
             row.movementId,
-
             row.transactionId,
 
             row.accountingStatus,
-
             row.accountingTreatment,
 
             row.clearanceType,
-
             row.clearanceTypeLabel,
 
             row.clientName,
-
             row.clientId,
 
             row.recoveryDocumentNo,
-
             row.exchangeDocumentNo,
 
             row.locationName,
-
             row.locationCode,
 
             row.controllerName,
 
             row.referenceNo,
-
             row.note
 
           ]
@@ -2061,7 +2722,7 @@ tbody tr:hover{
 
 
   /* =========================================================
-     TABLE
+     LEDGER TABLE
      ========================================================= */
 
   function renderTable() {
@@ -2079,7 +2740,7 @@ tbody tr:hover{
 
           '<tr>' +
 
-          '<td colspan="24" class="empty">' +
+          '<td colspan="25" class="empty">' +
 
           "No Damage Accounting records found." +
 
@@ -2097,297 +2758,409 @@ tbody tr:hover{
       .innerHTML =
 
         rows.map(
-          row => {
+          row => `
 
+            <tr>
 
-            return `
+              <td>
+                ${esc(
+                  row.activityDate ||
+                  "-"
+                )}
+              </td>
 
-              <tr>
+              <td>
+                ${accountingStatusBadge(
+                  row.accountingStatus
+                )}
+              </td>
 
+              <td>
+                ${clearanceBadge(
+                  row
+                )}
+              </td>
 
-                <td>
+              <td class="code">
+                ${esc(
+                  row.movementId ||
+                  "-"
+                )}
+              </td>
 
+              <td>
+                <span class="product">
                   ${esc(
-                    row.activityDate ||
+                    row.productName ||
                     "-"
                   )}
+                </span>
+              </td>
 
-                </td>
+              <td class="code">
+                ${esc(
+                  row.productCode ||
+                  "-"
+                )}
+              </td>
 
-
-                <td>
-
-                  ${accountingStatusBadge(
-                    row.accountingStatus
+              <td class="amount">
+                <strong>
+                  ${qty(
+                    row.qty
                   )}
+                </strong>
+              </td>
 
-                </td>
+              <td>
+                ${esc(
+                  row.unit ||
+                  "-"
+                )}
+              </td>
 
+              <td class="amount money">
+                ${money(
+                  row.unitCost
+                )}
+              </td>
 
-                <td>
-
-                  ${clearanceBadge(
-                    row
+              <td class="amount money">
+                <strong>
+                  ${money(
+                    row.stockCost
                   )}
+                </strong>
+              </td>
 
-                </td>
+              <td>
+                ${clientHtml(
+                  row
+                )}
+              </td>
 
+              <td>
+                ${documentHtml(
+                  row.recoveryDocumentNo
+                )}
+              </td>
 
-                <td class="code">
+              <td class="amount money">
 
+                ${
+                  clean(
+                    row.clearanceType
+                  ) ===
+                  "CLIENT_BUY_BACK"
+
+                    ? money(
+                        row.recoveryValue
+                      )
+
+                    : "-"
+                }
+
+              </td>
+
+              <td class="amount money">
+
+                ${
+                  clean(
+                    row.clearanceType
+                  ) ===
+                  "CLIENT_BUY_BACK"
+
+                    ? money(
+                        row.recoveredAmount
+                      )
+
+                    : "-"
+                }
+
+              </td>
+
+              <td class="amount money">
+
+                ${
+                  clean(
+                    row.clearanceType
+                  ) ===
+                  "CLIENT_BUY_BACK"
+
+                    ? (
+                        row.legacyRecovery
+
+                          ? "-"
+
+                          : money(
+                              row.recoveryOutstandingValue
+                            )
+                      )
+
+                    : "-"
+                }
+
+              </td>
+
+              <td>
+                ${recoveryActionHtml(
+                  row
+                )}
+              </td>
+
+              <td>
+                ${documentHtml(
+                  row.exchangeDocumentNo
+                )}
+              </td>
+
+              <td class="amount">
+                ${qty(
+                  row.exchangeReceivedQty
+                )}
+              </td>
+
+              <td class="amount">
+                <strong>
+                  ${qty(
+                    row.exchangePendingQty
+                  )}
+                </strong>
+              </td>
+
+              <td>
+                ${legacyHtml(
+                  row
+                )}
+              </td>
+
+              <td>
+                <div class="treatment">
                   ${esc(
-                    row.movementId ||
+                    row.accountingTreatment ||
                     "-"
                   )}
+                </div>
+              </td>
 
-                </td>
+              <td>
+                ${esc(
+                  row.locationName ||
+                  row.locationCode ||
+                  "-"
+                )}
+              </td>
+
+              <td>
+                ${esc(
+                  row.controllerName ||
+                  "-"
+                )}
+              </td>
+
+              <td>
+                ${esc(
+                  row.referenceNo ||
+                  "-"
+                )}
+              </td>
+
+              <td class="note">
+                ${esc(
+                  row.note ||
+                  "-"
+                )}
+              </td>
+
+            </tr>
+
+          `
+        )
+        .join("");
+
+  }
 
 
-                <td>
 
-                  <span class="product">
+  /* =========================================================
+     PAYMENT HISTORY
+     ========================================================= */
 
-                    ${esc(
-                      row.productName ||
-                      "-"
-                    )}
+  function renderPaymentHistory() {
 
-                  </span>
+    const rows =
+      Array.isArray(
+        paymentHistory.rows
+      )
+        ? paymentHistory.rows
+        : [];
 
-                </td>
+
+    if (
+      !rows.length
+    ) {
+
+      $("paymentRows")
+        .innerHTML =
+
+          '<tr>' +
+
+          '<td colspan="12" class="empty">' +
+
+          "No Recovery Settlement has been recorded yet." +
+
+          "</td>" +
+
+          "</tr>";
 
 
-                <td class="code">
+      return;
+
+    }
+
+
+    $("paymentRows")
+      .innerHTML =
+
+        rows.map(
+          row => `
+
+            <tr>
+
+              <td class="code">
+                ${esc(
+                  row.paymentId ||
+                  "-"
+                )}
+              </td>
+
+              <td>
+                ${esc(
+                  row.paymentDate ||
+                  "-"
+                )}
+              </td>
+
+              <td class="code">
+                ${esc(
+                  row.movementId ||
+                  "-"
+                )}
+              </td>
+
+              <td>
+
+                <div class="audit-main">
+                  ${esc(
+                    row.clientName ||
+                    row.clientId ||
+                    "-"
+                  )}
+                </div>
+
+                ${
+                  clean(
+                    row.clientId
+                  )
+                    ? (
+                        '<div class="audit-sub">' +
+                        esc(
+                          row.clientId
+                        ) +
+                        '</div>'
+                      )
+                    : ""
+                }
+
+              </td>
+
+              <td>
+                ${documentHtml(
+                  row.recoveryDocumentNo
+                )}
+              </td>
+
+              <td>
+
+                <span class="product">
 
                   ${esc(
+                    row.productName ||
                     row.productCode ||
                     "-"
                   )}
 
-                </td>
+                </span>
 
+              </td>
 
-                <td class="amount">
+              <td>
+                ${esc(
+                  row.currency ||
+                  "-"
+                )}
+              </td>
 
-                  <strong>
+              <td class="amount money">
 
-                    ${qty(
-                      row.qty
-                    )}
+                ${
+                  clean(
+                    row.currency
+                  ) === "KHR"
 
-                  </strong>
+                    ? "៛" +
+                      Number(
+                        row.paymentAmount ||
+                        0
+                      ).toLocaleString()
 
-                </td>
+                    : money(
+                        row.paymentAmount
+                      )
+                }
 
+              </td>
 
-                <td>
+              <td class="amount money">
 
-                  ${esc(
-                    row.unit ||
-                    "-"
-                  )}
-
-                </td>
-
-
-                <td class="amount money">
-
+                <strong>
                   ${money(
-                    row.unitCost
+                    row.paymentAmountUSD
                   )}
+                </strong>
 
-                </td>
+              </td>
 
+              <td>
 
-                <td class="amount money">
-
-                  <strong>
-
-                    ${money(
-                      row.stockCost
-                    )}
-
-                  </strong>
-
-                </td>
-
-
-                <td>
-
-                  ${clientHtml(
-                    row
-                  )}
-
-                </td>
-
-
-                <td>
-
-                  ${documentHtml(
-                    row.recoveryDocumentNo
-                  )}
-
-                </td>
-
-
-                <td class="amount money">
-
-                  ${
-                    clean(
-                      row.clearanceType
-                    ) ===
-                    "CLIENT_BUY_BACK"
-
-                      ? money(
-                          row.recoveryValue
-                        )
-
-                      : "-"
-                  }
-
-                </td>
-
-
-                <td class="amount money">
-
-                  ${
-                    clean(
-                      row.clearanceType
-                    ) ===
-                    "CLIENT_BUY_BACK"
-
-                      ? money(
-                          row.recoveredAmount
-                        )
-
-                      : "-"
-                  }
-
-                </td>
-
-
-                <td class="amount money">
-
-                  ${
-                    clean(
-                      row.clearanceType
-                    ) ===
-                    "CLIENT_BUY_BACK"
-
-                      ? (
-                          row.legacyRecovery
-                            ? "-"
-                            : money(
-                                row.recoveryOutstandingValue
-                              )
-                        )
-
-                      : "-"
-                  }
-
-                </td>
-
-
-                <td>
-
-                  ${documentHtml(
-                    row.exchangeDocumentNo
-                  )}
-
-                </td>
-
-
-                <td class="amount">
-
-                  ${qty(
-                    row.exchangeReceivedQty
-                  )}
-
-                </td>
-
-
-                <td class="amount">
-
-                  <strong>
-
-                    ${qty(
-                      row.exchangePendingQty
-                    )}
-
-                  </strong>
-
-                </td>
-
-
-                <td>
-
-                  ${legacyHtml(
-                    row
-                  )}
-
-                </td>
-
-
-                <td>
-
-                  <div class="treatment">
-
-                    ${esc(
-                      row.accountingTreatment ||
-                      "-"
-                    )}
-
-                  </div>
-
-                </td>
-
-
-                <td>
+                <span class="payment-method">
 
                   ${esc(
-                    row.locationName ||
-                    row.locationCode ||
+                    row.paymentMethod ||
                     "-"
                   )}
 
-                </td>
+                </span>
 
+              </td>
 
-                <td>
+              <td>
+                ${esc(
+                  row.referenceNo ||
+                  "-"
+                )}
+              </td>
 
-                  ${esc(
-                    row.controllerName ||
-                    "-"
-                  )}
+              <td class="note">
+                ${esc(
+                  row.note ||
+                  "-"
+                )}
+              </td>
 
-                </td>
+            </tr>
 
-
-                <td>
-
-                  ${esc(
-                    row.referenceNo ||
-                    "-"
-                  )}
-
-                </td>
-
-
-                <td class="note">
-
-                  ${esc(
-                    row.note ||
-                    "-"
-                  )}
-
-                </td>
-
-
-              </tr>
-
-            `;
-
-          }
+          `
         )
         .join("");
 
@@ -2432,7 +3205,7 @@ tbody tr:hover{
 
 
   /* =========================================================
-     LOAD
+     LOAD ACCOUNTING REPORT
      ========================================================= */
 
   async function loadData() {
@@ -2550,7 +3323,7 @@ tbody tr:hover{
 
           '<tr>' +
 
-          '<td colspan="24" class="empty">' +
+          '<td colspan="25" class="empty">' +
 
           "Could not load Damage Accounting & Recovery Ledger." +
 
@@ -2569,6 +3342,891 @@ tbody tr:hover{
       $("refreshBtn")
         .disabled =
           false;
+
+    }
+
+  }
+
+
+
+  /* =========================================================
+     LOAD PAYMENT HISTORY
+     ========================================================= */
+
+  async function loadPaymentHistory() {
+
+    if (
+      paymentLoading
+    ) {
+
+      return;
+
+    }
+
+
+    paymentLoading =
+      true;
+
+
+    try {
+
+
+      paymentHistory =
+
+        await window
+          .BBDamagedStock
+          .rpc(
+            "bb_stock_damage_recovery_payment_history",
+            {
+              p_recovery_item_id:
+                null,
+
+              p_limit:
+                2000
+            }
+          );
+
+
+      paymentHistory =
+        paymentHistory || {
+          rows:[]
+        };
+
+
+      renderPaymentHistory();
+
+
+      $("paymentHistoryStatus")
+        .textContent =
+
+          (
+            Array.isArray(
+              paymentHistory.rows
+            )
+
+              ? paymentHistory.rows.length
+
+              : 0
+          )
+
+          +
+
+          " Recovery Settlement record(s).";
+
+
+    } catch (
+      error
+    ) {
+
+
+      console.error(
+        error
+      );
+
+
+      $("paymentRows")
+        .innerHTML =
+
+          '<tr>' +
+
+          '<td colspan="12" class="empty">' +
+
+          "Recovery Settlement History is unavailable for this account." +
+
+          "</td>" +
+
+          "</tr>";
+
+
+      $("paymentHistoryStatus")
+        .textContent =
+
+          clean(
+            error?.message ||
+            error
+          );
+
+
+    } finally {
+
+
+      paymentLoading =
+        false;
+
+    }
+
+  }
+
+
+
+  /* =========================================================
+     OPEN RECOVERY SETTLEMENT
+     ========================================================= */
+
+  window.openRecoverySettlement =
+    function (
+      recoveryItemId
+    ) {
+
+
+      const row =
+
+        (
+          Array.isArray(
+            report.rows
+          )
+
+            ? report.rows
+
+            : []
+        )
+        .find(
+          item =>
+
+            String(
+              item.recoveryItemId
+            )
+
+            ===
+
+            String(
+              recoveryItemId
+            )
+        );
+
+
+      if (
+        !row
+      ) {
+
+        return;
+
+      }
+
+
+      if (
+        row.legacyRecovery
+      ) {
+
+        return;
+
+      }
+
+
+      if (
+        num(
+          row.recoveryOutstandingValue
+        )
+        <=
+        0.005
+      ) {
+
+        return;
+
+      }
+
+
+      activeRecoveryRow =
+        row;
+
+
+      $("recoveryModalSub")
+        .textContent =
+
+          clean(
+            row.clientName
+          )
+
+          +
+
+          " · "
+
+          +
+
+          clean(
+            row.productName
+          )
+
+          +
+
+          " · "
+
+          +
+
+          clean(
+            row.movementId
+          );
+
+
+      $("modalRecoveryValue")
+        .textContent =
+          money(
+            row.recoveryValue
+          );
+
+
+      $("modalRecovered")
+        .textContent =
+          money(
+            row.recoveredAmount
+          );
+
+
+      $("modalOutstanding")
+        .textContent =
+          money(
+            row.recoveryOutstandingValue
+          );
+
+
+      $("modalRecoveryDocument")
+        .textContent =
+
+          clean(
+            row.recoveryDocumentNo
+          )
+
+          ||
+
+          "-";
+
+
+      $("settlementDate")
+        .value =
+          localDateValue();
+
+
+      $("settlementMethod")
+        .value =
+          "";
+
+
+      $("settlementCurrency")
+        .value =
+          "USD";
+
+
+      $("settlementExchangeRate")
+        .value =
+          "1";
+
+
+      $("settlementExchangeRate")
+        .disabled =
+          true;
+
+
+      $("settlementAmount")
+        .value =
+          "";
+
+
+      $("settlementReference")
+        .value =
+          "";
+
+
+      $("settlementNote")
+        .value =
+          "";
+
+
+      $("settlementError")
+        .hidden =
+          true;
+
+
+      $("settlementError")
+        .textContent =
+          "";
+
+
+      updateSettlementPreview();
+
+
+      $("recoveryModalBackdrop")
+        .hidden =
+          false;
+
+
+      setTimeout(
+        () =>
+          $("settlementAmount")
+            .focus(),
+        20
+      );
+
+    };
+
+
+
+  /* =========================================================
+     CLOSE MODAL
+     ========================================================= */
+
+  function closeRecoverySettlement() {
+
+    if (
+      settlementSaving
+    ) {
+
+      return;
+
+    }
+
+
+    activeRecoveryRow =
+      null;
+
+
+    $("recoveryModalBackdrop")
+      .hidden =
+        true;
+
+  }
+
+
+
+  /* =========================================================
+     SETTLEMENT PREVIEW
+     ========================================================= */
+
+  function settlementUsdValue() {
+
+    const amount =
+      num(
+        $("settlementAmount")
+          .value
+      );
+
+
+    const currency =
+      clean(
+        $("settlementCurrency")
+          .value
+      );
+
+
+    const rate =
+      num(
+        $("settlementExchangeRate")
+          .value
+      );
+
+
+    if (
+      !(amount > 0)
+    ) {
+
+      return 0;
+
+    }
+
+
+    if (
+      currency ===
+      "KHR"
+    ) {
+
+
+      if (
+        !(rate > 0)
+      ) {
+
+        return 0;
+
+      }
+
+
+      return (
+        amount /
+        rate
+      );
+
+    }
+
+
+    return amount;
+
+  }
+
+
+
+  function updateSettlementPreview() {
+
+    if (
+      !activeRecoveryRow
+    ) {
+
+      return;
+
+    }
+
+
+    const currency =
+      clean(
+        $("settlementCurrency")
+          .value
+      );
+
+
+    const amount =
+      num(
+        $("settlementAmount")
+          .value
+      );
+
+
+    const rate =
+      num(
+        $("settlementExchangeRate")
+          .value
+      );
+
+
+    const usd =
+      settlementUsdValue();
+
+
+    const outstanding =
+      num(
+        activeRecoveryRow
+          .recoveryOutstandingValue
+      );
+
+
+    const after =
+      Math.max(
+        outstanding -
+        usd,
+        0
+      );
+
+
+    $("settlementAmountHelp")
+      .textContent =
+
+        currency === "KHR"
+
+          ? (
+              "Enter KHR amount. Current outstanding is " +
+              money(
+                outstanding
+              ) +
+              " USD."
+            )
+
+          : (
+              "Current outstanding is " +
+              money(
+                outstanding
+              ) +
+              "."
+            );
+
+
+    if (
+      !(amount > 0)
+    ) {
+
+
+      $("settlementPreview")
+        .textContent =
+
+          "Enter settlement amount.";
+
+
+      return;
+
+    }
+
+
+    if (
+      currency === "KHR"
+      &&
+      !(rate > 0)
+    ) {
+
+
+      $("settlementPreview")
+        .textContent =
+
+          "Enter a valid KHR exchange rate.";
+
+
+      return;
+
+    }
+
+
+    $("settlementPreview")
+      .textContent =
+
+        currency === "KHR"
+
+          ? (
+              "៛" +
+              amount.toLocaleString() +
+              " ÷ " +
+              rate.toLocaleString() +
+              " = approximately " +
+              money(
+                usd
+              ) +
+              " recovery. Outstanding after settlement: " +
+              money(
+                after
+              ) +
+              "."
+            )
+
+          : (
+              money(
+                amount
+              ) +
+              " recovery. Outstanding after settlement: " +
+              money(
+                after
+              ) +
+              "."
+            );
+
+  }
+
+
+
+  /* =========================================================
+     SAVE RECOVERY
+     ========================================================= */
+
+  async function saveRecoverySettlement() {
+
+    if (
+      settlementSaving
+      ||
+      !activeRecoveryRow
+    ) {
+
+      return;
+
+    }
+
+
+    const paymentDate =
+      clean(
+        $("settlementDate")
+          .value
+      );
+
+
+    const method =
+      clean(
+        $("settlementMethod")
+          .value
+      );
+
+
+    const currency =
+      clean(
+        $("settlementCurrency")
+          .value
+      );
+
+
+    const exchangeRate =
+      num(
+        $("settlementExchangeRate")
+          .value
+      );
+
+
+    const amount =
+      num(
+        $("settlementAmount")
+          .value
+      );
+
+
+    const referenceNo =
+      clean(
+        $("settlementReference")
+          .value
+      );
+
+
+    const note =
+      clean(
+        $("settlementNote")
+          .value
+      );
+
+
+    const outstanding =
+      num(
+        activeRecoveryRow
+          .recoveryOutstandingValue
+      );
+
+
+    const usd =
+      settlementUsdValue();
+
+
+    function modalError(
+      message
+    ) {
+
+      $("settlementError")
+        .textContent =
+          message;
+
+
+      $("settlementError")
+        .hidden =
+          false;
+
+    }
+
+
+    $("settlementError")
+      .hidden =
+        true;
+
+
+    if (
+      !paymentDate
+    ) {
+
+      return modalError(
+        "Settlement Date is required."
+      );
+
+    }
+
+
+    if (
+      !method
+    ) {
+
+      return modalError(
+        "Settlement Method is required."
+      );
+
+    }
+
+
+    if (
+      currency !== "USD"
+      &&
+      currency !== "KHR"
+    ) {
+
+      return modalError(
+        "Currency must be USD or KHR."
+      );
+
+    }
+
+
+    if (
+      !(amount > 0)
+    ) {
+
+      return modalError(
+        "Settlement Amount must be greater than zero."
+      );
+
+    }
+
+
+    if (
+      currency === "KHR"
+      &&
+      !(exchangeRate > 0)
+    ) {
+
+      return modalError(
+        "Exchange Rate is required for KHR."
+      );
+
+    }
+
+
+    if (
+      usd >
+      outstanding +
+      0.005
+    ) {
+
+      return modalError(
+        "Settlement exceeds the current outstanding amount."
+      );
+
+    }
+
+
+    settlementSaving =
+      true;
+
+
+    $("saveSettlementBtn")
+      .disabled =
+        true;
+
+
+    $("cancelSettlementBtn")
+      .disabled =
+        true;
+
+
+    $("recoveryModalClose")
+      .disabled =
+        true;
+
+
+    $("saveSettlementBtn")
+      .textContent =
+        "Saving...";
+
+
+    try {
+
+
+      const result =
+
+        await window
+          .BBDamagedStock
+          .rpc(
+            "bb_stock_damage_record_recovery_payment",
+            {
+
+              p_payload:{
+
+                recoveryItemId:
+                  String(
+                    activeRecoveryRow
+                      .recoveryItemId
+                  ),
+
+                paymentDate,
+
+                currency,
+
+                exchangeRate:
+                  currency === "KHR"
+                    ? exchangeRate
+                    : 1,
+
+                paymentAmount:
+                  amount,
+
+                paymentMethod:
+                  method,
+
+                referenceNo,
+
+                note
+
+              }
+
+            }
+          );
+
+
+      const newStatus =
+        clean(
+          result?.status
+        );
+
+
+      const outstandingAfter =
+        num(
+          result?.outstandingAfter
+        );
+
+
+      $("recoveryModalBackdrop")
+        .hidden =
+          true;
+
+
+      activeRecoveryRow =
+        null;
+
+
+      setStatus(
+
+        "Recovery Settlement saved · " +
+
+        clean(
+          result?.paymentId
+        ) +
+
+        " · Status " +
+
+        newStatus +
+
+        " · Outstanding " +
+
+        money(
+          outstandingAfter
+        ) +
+
+        ".",
+
+        "success"
+
+      );
+
+
+      await loadData();
+
+      await loadPaymentHistory();
+
+
+    } catch (
+      error
+    ) {
+
+
+      console.error(
+        error
+      );
+
+
+      modalError(
+        clean(
+          error?.message ||
+          error
+        )
+      );
+
+
+    } finally {
+
+
+      settlementSaving =
+        false;
+
+
+      $("saveSettlementBtn")
+        .disabled =
+          false;
+
+
+      $("cancelSettlementBtn")
+        .disabled =
+          false;
+
+
+      $("recoveryModalClose")
+        .disabled =
+          false;
+
+
+      $("saveSettlementBtn")
+        .textContent =
+          "Record Recovery";
 
     }
 
@@ -2673,7 +4331,136 @@ tbody tr:hover{
   $("refreshBtn")
     .addEventListener(
       "click",
-      loadData
+      async function () {
+
+        await loadData();
+
+        await loadPaymentHistory();
+
+      }
+    );
+
+
+  $("recoveryModalClose")
+    .addEventListener(
+      "click",
+      closeRecoverySettlement
+    );
+
+
+  $("cancelSettlementBtn")
+    .addEventListener(
+      "click",
+      closeRecoverySettlement
+    );
+
+
+  $("saveSettlementBtn")
+    .addEventListener(
+      "click",
+      saveRecoverySettlement
+    );
+
+
+  $("settlementCurrency")
+    .addEventListener(
+      "change",
+      function () {
+
+
+        const khr =
+
+          clean(
+            $("settlementCurrency")
+              .value
+          ) === "KHR";
+
+
+        $("settlementExchangeRate")
+          .disabled =
+            !khr;
+
+
+        if (
+          !khr
+        ) {
+
+          $("settlementExchangeRate")
+            .value =
+              "1";
+
+        } else if (
+          num(
+            $("settlementExchangeRate")
+              .value
+          )
+          <=
+          1
+        ) {
+
+          $("settlementExchangeRate")
+            .value =
+              "";
+
+        }
+
+
+        updateSettlementPreview();
+
+      }
+    );
+
+
+  $("settlementExchangeRate")
+    .addEventListener(
+      "input",
+      updateSettlementPreview
+    );
+
+
+  $("settlementAmount")
+    .addEventListener(
+      "input",
+      updateSettlementPreview
+    );
+
+
+  $("recoveryModalBackdrop")
+    .addEventListener(
+      "click",
+      function (
+        event
+      ) {
+
+        if (
+          event.target ===
+          $("recoveryModalBackdrop")
+        ) {
+
+          closeRecoverySettlement();
+
+        }
+
+      }
+    );
+
+
+  document
+    .addEventListener(
+      "keydown",
+      function (
+        event
+      ) {
+
+        if (
+          event.key === "Escape"
+        ) {
+
+          closeRecoverySettlement();
+
+        }
+
+      }
     );
 
 
@@ -2683,6 +4470,8 @@ tbody tr:hover{
      ========================================================= */
 
   loadData();
+
+  loadPaymentHistory();
 
 
 })();
