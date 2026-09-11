@@ -28,7 +28,6 @@
   --blue:#245fae;
   --green:#168652;
   --red:#b43a3a;
-  --orange:#b56a13;
 
   --line:#d9e2ef;
   --muted:#667085;
@@ -66,7 +65,7 @@ body.embed .page{
 
 .page{
 
-  max-width:1800px;
+  max-width:2000px;
   margin:auto;
   padding:24px;
 
@@ -133,9 +132,7 @@ body.embed .page{
 
   padding:8px 12px;
 
-  border:
-    1px solid #cbead9;
-
+  border:1px solid #cbead9;
   border-radius:999px;
 
   background:#e8f7ef;
@@ -180,8 +177,7 @@ body.embed .page{
   background:#fff;
   color:var(--navy);
 
-  border:
-    1px solid var(--line);
+  border:1px solid var(--line);
 
 }
 
@@ -195,7 +191,7 @@ body.embed .page{
 
 
 /* =========================================================
-   STATUS BAR
+   STATUS
    ========================================================= */
 
 .status{
@@ -204,9 +200,7 @@ body.embed .page{
 
   padding:10px 12px;
 
-  border:
-    1px solid #ceddf0;
-
+  border:1px solid #ceddf0;
   border-radius:10px;
 
   background:#eef5ff;
@@ -236,7 +230,7 @@ body.embed .page{
 
 
 /* =========================================================
-   MAIN KPI
+   KPI
    ========================================================= */
 
 .kpis{
@@ -260,9 +254,7 @@ body.embed .page{
 
   background:#fff;
 
-  border:
-    1px solid var(--line);
-
+  border:1px solid var(--line);
   border-radius:14px;
 
   padding:15px;
@@ -309,7 +301,7 @@ body.embed .page{
 
 
 /* =========================================================
-   CLEARANCE TYPE CARDS
+   TYPE CARDS
    ========================================================= */
 
 .type-grid{
@@ -333,9 +325,7 @@ body.embed .page{
 
   background:#fff;
 
-  border:
-    1px solid var(--line);
-
+  border:1px solid var(--line);
   border-radius:14px;
 
   padding:15px;
@@ -378,9 +368,7 @@ body.embed .page{
 
   padding:9px;
 
-  border:
-    1px solid #e8edf4;
-
+  border:1px solid #e8edf4;
   border-radius:9px;
 
   background:#fafcff;
@@ -416,16 +404,14 @@ body.embed .page{
 
 
 /* =========================================================
-   HISTORY CARD
+   HISTORY
    ========================================================= */
 
 .card{
 
   background:#fff;
 
-  border:
-    1px solid var(--line);
-
+  border:1px solid var(--line);
   border-radius:14px;
 
   padding:15px;
@@ -495,9 +481,7 @@ body.embed .page{
 
   padding:8px 10px;
 
-  border:
-    1px solid #cbd8e7;
-
+  border:1px solid #cbd8e7;
   border-radius:9px;
 
   background:#fff;
@@ -511,7 +495,7 @@ body.embed .page{
 
 .controls input[type="search"]{
 
-  min-width:250px;
+  min-width:280px;
 
 }
 
@@ -524,9 +508,7 @@ body.embed .page{
 
   overflow:auto;
 
-  border:
-    1px solid var(--line);
-
+  border:1px solid var(--line);
   border-radius:10px;
 
 }
@@ -536,7 +518,7 @@ table{
 
   width:100%;
 
-  min-width:1900px;
+  min-width:2250px;
 
   border-collapse:collapse;
 
@@ -548,8 +530,7 @@ td{
 
   padding:10px;
 
-  border-bottom:
-    1px solid #edf1f5;
+  border-bottom:1px solid #edf1f5;
 
   text-align:left;
   vertical-align:top;
@@ -727,7 +708,7 @@ tbody tr:hover{
 
 
 /* =========================================================
-   RECEIVED PRODUCT LIST
+   RECEIVED PRODUCTS
    ========================================================= */
 
 .received-list{
@@ -744,9 +725,7 @@ tbody tr:hover{
 
   padding:5px 7px;
 
-  border:
-    1px solid #e5ebf3;
-
+  border:1px solid #e5ebf3;
   border-radius:7px;
 
   background:#fafcff;
@@ -776,6 +755,49 @@ tbody tr:hover{
   color:#667085;
 
   font-size:8px;
+
+}
+
+
+/* =========================================================
+   CLIENT AUDIT
+   ========================================================= */
+
+.audit-main{
+
+  color:#17457a;
+
+  font-weight:900;
+
+  white-space:nowrap;
+
+}
+
+
+.audit-sub{
+
+  margin-top:3px;
+
+  color:#7b8797;
+
+  font-size:8px;
+
+  white-space:nowrap;
+
+}
+
+
+.document-no{
+
+  font-family:
+    Consolas,
+    monospace;
+
+  color:#244f82;
+
+  font-weight:800;
+
+  white-space:nowrap;
 
 }
 
@@ -918,7 +940,8 @@ tbody tr:hover{
 
         BIG BROTHER · Stock Management ·
         Cleared Damaged Stock History,
-        Cost Classification and Exchange Receiving Audit
+        Cost Classification,
+        Exchange Document and Receiving Audit
 
       </div>
 
@@ -1026,7 +1049,7 @@ tbody tr:hover{
 
 
   <!-- =====================================================
-       CLEARANCE TYPES
+       TYPE CARDS
        ===================================================== -->
 
   <section class="type-grid">
@@ -1211,9 +1234,10 @@ tbody tr:hover{
 
         <div class="card-sub">
 
-          Every Damage Stock clearance is permanently
-          classified and Exchange replacement receipts
-          remain linked for audit.
+          Every clearance remains linked to
+          its final processing status,
+          Client / Supplier,
+          Exchange Document and physical receipt history.
 
         </div>
 
@@ -1226,7 +1250,7 @@ tbody tr:hover{
         <input
           id="search"
           type="search"
-          placeholder="Search product / received SKU / reference / movement"
+          placeholder="Search product / client / exchange document / received SKU"
         >
 
 
@@ -1356,6 +1380,14 @@ tbody tr:hover{
             </th>
 
             <th>
+              Client / Supplier
+            </th>
+
+            <th>
+              Exchange Document
+            </th>
+
+            <th>
               Received Product(s)
             </th>
 
@@ -1397,7 +1429,7 @@ tbody tr:hover{
           <tr>
 
             <td
-              colspan="17"
+              colspan="19"
               class="empty"
             >
               Loading...
@@ -1435,7 +1467,7 @@ tbody tr:hover{
 
 
   /* =========================================================
-     EMBED MODE
+     EMBED
      ========================================================= */
 
   if (
@@ -1458,7 +1490,9 @@ tbody tr:hover{
 
   const $ =
     id =>
-      document.getElementById(id);
+      document.getElementById(
+        id
+      );
 
 
   const clean =
@@ -1472,28 +1506,36 @@ tbody tr:hover{
 
   const num =
     value =>
-      Number(value) || 0;
+      Number(
+        value
+      ) || 0;
 
 
   const esc =
     value =>
       window
         .BBDamagedStock
-        .escapeHtml(value);
+        .escapeHtml(
+          value
+        );
 
 
   const qty =
     value =>
       window
         .BBDamagedStock
-        .qty(value);
+        .qty(
+          value
+        );
 
 
   const money =
     value =>
       window
         .BBDamagedStock
-        .money(value);
+        .money(
+          value
+        );
 
 
 
@@ -1503,15 +1545,22 @@ tbody tr:hover{
 
   let cleared = {
 
-    rows: [],
-    totals: {}
+    rows:[],
+    totals:{}
 
   };
 
 
   let remaining = {
 
-    totals: {}
+    totals:{}
+
+  };
+
+
+  let exchangeAudit = {
+
+    rows:[]
 
   };
 
@@ -1530,17 +1579,21 @@ tbody tr:hover{
     type = ""
   ) {
 
-    $("status").className =
-      "status" +
-      (
-        type
-          ? " " + type
-          : ""
-      );
+    $("status")
+      .className =
+
+        "status" +
+
+        (
+          type
+            ? " " + type
+            : ""
+        );
 
 
-    $("status").textContent =
-      message || "";
+    $("status")
+      .textContent =
+        message || "";
 
   }
 
@@ -1611,6 +1664,7 @@ tbody tr:hover{
   }
 
 
+
   function typeBadge(
     row
   ) {
@@ -1659,13 +1713,19 @@ tbody tr:hover{
 
 
     return (
+
       '<span class="badge ' +
       cls +
       '">' +
+
       esc(
-        typeLabel(row)
+        typeLabel(
+          row
+        )
       ) +
+
       "</span>"
+
     );
 
   }
@@ -1681,8 +1741,9 @@ tbody tr:hover{
   ) {
 
     const value =
-      clean(status)
-        .toUpperCase();
+      clean(
+        status
+      ).toUpperCase();
 
 
     let cls =
@@ -1723,14 +1784,18 @@ tbody tr:hover{
 
 
     return (
+
       '<span class="badge ' +
       cls +
       '">' +
+
       esc(
         value ||
         "CLEARED"
       ) +
+
       "</span>"
+
     );
 
   }
@@ -1745,14 +1810,10 @@ tbody tr:hover{
     row
   ) {
 
-    const type =
+    if (
       clean(
         row.clearanceType
-      );
-
-
-    if (
-      type !==
+      ) !==
       "EXCHANGE_FOR_GOOD_PRODUCTS"
     ) {
 
@@ -1779,6 +1840,7 @@ tbody tr:hover{
 
 
     return (
+
       '<div class="received-list">' +
 
       products.map(
@@ -1815,10 +1877,12 @@ tbody tr:hover{
                   clean(
                     product.unit
                   )
+
                     ? " " +
                       esc(
                         product.unit
                       )
+
                     : ""
                 ) +
 
@@ -1832,6 +1896,7 @@ tbody tr:hover{
       ).join("") +
 
       "</div>"
+
     );
 
   }
@@ -1839,7 +1904,245 @@ tbody tr:hover{
 
 
   /* =========================================================
-     MAIN KPI
+     CLIENT / DOCUMENT
+     ========================================================= */
+
+  function clientHtml(
+    row
+  ) {
+
+    if (
+      clean(
+        row.clearanceType
+      ) !==
+      "EXCHANGE_FOR_GOOD_PRODUCTS"
+    ) {
+
+      return "-";
+
+    }
+
+
+    const name =
+      clean(
+        row.clientName
+      );
+
+
+    const id =
+      clean(
+        row.clientId
+      );
+
+
+    if (
+      !name &&
+      !id
+    ) {
+
+      return "-";
+
+    }
+
+
+    return (
+
+      '<div class="audit-main">' +
+
+      esc(
+        name ||
+        id
+      ) +
+
+      "</div>" +
+
+      (
+        id
+          ? (
+              '<div class="audit-sub">' +
+              esc(id) +
+              "</div>"
+            )
+          : ""
+      )
+
+    );
+
+  }
+
+
+
+  function documentHtml(
+    row
+  ) {
+
+    if (
+      clean(
+        row.clearanceType
+      ) !==
+      "EXCHANGE_FOR_GOOD_PRODUCTS"
+    ) {
+
+      return "-";
+
+    }
+
+
+    const documentNo =
+      clean(
+        row.exchangeDocumentNo
+      );
+
+
+    if (
+      !documentNo
+    ) {
+
+      return "-";
+
+    }
+
+
+    return (
+
+      '<span class="document-no">' +
+
+      esc(
+        documentNo
+      ) +
+
+      "</span>"
+
+    );
+
+  }
+
+
+
+  /* =========================================================
+     MERGE EXCHANGE AUDIT
+     ========================================================= */
+
+  function applyExchangeAudit() {
+
+    const auditRows =
+      Array.isArray(
+        exchangeAudit.rows
+      )
+        ? exchangeAudit.rows
+        : [];
+
+
+    const auditByTransaction =
+      new Map();
+
+
+    auditRows.forEach(
+      audit => {
+
+        const key =
+          clean(
+            audit.clearanceTransactionId
+          );
+
+
+        if (
+          key
+        ) {
+
+          auditByTransaction.set(
+            key,
+            audit
+          );
+
+        }
+
+      }
+    );
+
+
+    const rows =
+      Array.isArray(
+        cleared.rows
+      )
+        ? cleared.rows
+        : [];
+
+
+    cleared.rows =
+      rows.map(
+        row => {
+
+          const audit =
+            auditByTransaction.get(
+              clean(
+                row.transactionId
+              )
+            );
+
+
+          if (
+            !audit
+          ) {
+
+            return {
+
+              ...row,
+
+              clientId:
+                "",
+
+              clientName:
+                "",
+
+              exchangeDocumentNo:
+                ""
+
+            };
+
+          }
+
+
+          return {
+
+            ...row,
+
+            clientId:
+              clean(
+                audit.clientId
+              ),
+
+            clientName:
+              clean(
+                audit.clientName
+              ),
+
+            exchangeDocumentNo:
+              clean(
+                audit.exchangeDocumentNo
+              ),
+
+            exchangeReferenceNo:
+              clean(
+                audit.referenceNo
+              ),
+
+            exchangeNote:
+              clean(
+                audit.note
+              )
+
+          };
+
+        }
+      );
+
+  }
+
+
+
+  /* =========================================================
+     KPI
      ========================================================= */
 
   function renderMainKpis() {
@@ -1856,10 +2159,6 @@ tbody tr:hover{
         : [];
 
 
-    /*
-     * Prefer backend unique movement count.
-     * Fallback keeps compatibility.
-     */
     let transactionCount =
       num(
         totals.transactionCount
@@ -1882,13 +2181,18 @@ tbody tr:hover{
 
               clean(
                 row.movementId
-              ) ||
+              )
+
+              ||
 
               clean(
                 row.transactionId
-              ) ||
+              )
 
-              "ROW-" + index
+              ||
+
+              "ROW-" +
+              index
 
           )
 
@@ -1984,6 +2288,7 @@ tbody tr:hover{
       );
 
   }
+
 
 
   function renderCategoryTotals() {
@@ -2191,10 +2496,15 @@ tbody tr:hover{
           receivedProducts
             .map(
               product =>
+
                 [
+
                   product.productName,
+
                   product.productCode
+
                 ].join(" ")
+
             )
             .join(" ");
 
@@ -2203,14 +2513,17 @@ tbody tr:hover{
           [
 
             row.productName,
+
             row.productCode,
 
             row.movementId,
+
             row.transactionId,
 
             row.referenceNo,
 
             row.locationName,
+
             row.locationCode,
 
             row.controllerName,
@@ -2218,9 +2531,18 @@ tbody tr:hover{
             row.note,
 
             row.clearanceType,
+
             row.clearanceTypeLabel,
 
             row.receiveStatus,
+
+            row.clientName,
+
+            row.clientId,
+
+            row.exchangeDocumentNo,
+
+            row.exchangeReferenceNo,
 
             receivedText
 
@@ -2270,7 +2592,7 @@ tbody tr:hover{
 
           '<tr>' +
 
-          '<td colspan="17" class="empty">' +
+          '<td colspan="19" class="empty">' +
 
           "No Cleared Damaged Stock records found." +
 
@@ -2313,7 +2635,10 @@ tbody tr:hover{
             const receiveStatus =
               clean(
                 row.receiveStatus
-              ) ||
+              )
+
+              ||
+
               "CLEARED";
 
 
@@ -2323,31 +2648,25 @@ tbody tr:hover{
 
 
                 <td>
-
                   ${esc(
                     row.activityDate ||
                     "-"
                   )}
-
                 </td>
 
 
                 <td>
-
                   ${typeBadge(
                     row
                   )}
-
                 </td>
 
 
                 <td class="code">
-
                   ${esc(
                     row.movementId ||
                     "-"
                   )}
-
                 </td>
 
 
@@ -2366,138 +2685,126 @@ tbody tr:hover{
 
 
                 <td class="code">
-
                   ${esc(
                     row.productCode ||
                     "-"
                   )}
-
                 </td>
 
 
                 <td class="amount">
 
                   <strong>
-
                     ${qty(
                       clearedQty
                     )}
-
                   </strong>
 
                 </td>
 
 
                 <td class="amount">
-
                   ${qty(
                     receivedQty
                   )}
-
                 </td>
 
 
                 <td class="amount">
 
                   <strong>
-
                     ${qty(
                       pendingQty
                     )}
-
                   </strong>
 
                 </td>
 
 
                 <td>
-
                   ${receiveStatusBadge(
                     receiveStatus
                   )}
-
                 </td>
 
 
                 <td>
+                  ${clientHtml(
+                    row
+                  )}
+                </td>
 
+
+                <td>
+                  ${documentHtml(
+                    row
+                  )}
+                </td>
+
+
+                <td>
                   ${receivedProductsHtml(
                     row
                   )}
-
                 </td>
 
 
                 <td>
-
                   ${esc(
                     row.unit ||
                     "-"
                   )}
-
                 </td>
 
 
                 <td class="amount money">
-
                   ${money(
                     row.unitCost
                   )}
-
                 </td>
 
 
                 <td class="amount money">
 
                   <strong>
-
                     ${money(
                       row.lineValue
                     )}
-
                   </strong>
 
                 </td>
 
 
                 <td>
-
                   ${esc(
                     row.locationName ||
                     row.locationCode ||
                     "-"
                   )}
-
                 </td>
 
 
                 <td>
-
                   ${esc(
                     row.controllerName ||
                     "-"
                   )}
-
                 </td>
 
 
                 <td>
-
                   ${esc(
                     row.referenceNo ||
                     "-"
                   )}
-
                 </td>
 
 
                 <td class="note">
-
                   ${esc(
                     row.note ||
                     "-"
                   )}
-
                 </td>
 
 
@@ -2536,12 +2843,16 @@ tbody tr:hover{
           cleared.lastUpdate ||
           cleared.generatedAt ||
           "-"
-        ) +
+        )
+
+        +
 
         (
           cleared.revision
+
             ? " · Revision " +
               cleared.revision
+
             : ""
         );
 
@@ -2582,8 +2893,13 @@ tbody tr:hover{
 
 
       const [
+
         clearedResult,
-        remainingResult
+
+        remainingResult,
+
+        exchangeAuditResult
+
       ] =
 
         await Promise.all([
@@ -2598,7 +2914,18 @@ tbody tr:hover{
 
           window
             .BBDamagedStock
-            .getDamageReport()
+            .getDamageReport(),
+
+
+          window
+            .BBDamagedStock
+            .rpc(
+              "bb_stock_damage_exchange_audit_details",
+              {
+                p_limit:
+                  2000
+              }
+            )
 
 
         ]);
@@ -2615,6 +2942,15 @@ tbody tr:hover{
         remainingResult || {
           totals:{}
         };
+
+
+      exchangeAudit =
+        exchangeAuditResult || {
+          rows:[]
+        };
+
+
+      applyExchangeAudit();
 
 
       render();
@@ -2678,7 +3014,7 @@ tbody tr:hover{
 
           '<tr>' +
 
-          '<td colspan="17" class="empty">' +
+          '<td colspan="19" class="empty">' +
 
           "Could not load Cleared Damaged Stock." +
 
@@ -2720,7 +3056,9 @@ tbody tr:hover{
 
       location.href =
 
-        "index.html?v=2" +
+        "index.html?v=2"
+
+        +
 
         (
           embed
