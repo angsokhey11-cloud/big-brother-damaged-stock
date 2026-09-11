@@ -2367,8 +2367,91 @@ tbody tr:hover{
      ========================================================= */
 
   function recoveryActionHtml(
-    row
+  row
+) {
+
+  if (
+    clean(
+      row.clearanceType
+    ) !==
+    "CLIENT_BUY_BACK"
   ) {
+
+    return "-";
+
+  }
+
+
+  if (
+    row.legacyRecovery
+  ) {
+
+    return (
+
+      '<span class="badge recovery-review">' +
+      'REVIEW ONLY' +
+      '</span>'
+
+    );
+
+  }
+
+
+  if (
+    num(
+      row.recoveryOutstandingValue
+    )
+    <=
+    0.005
+  ) {
+
+    return (
+
+      '<span class="badge recovery-settled">' +
+      'SETTLED' +
+      '</span>'
+
+    );
+
+  }
+
+
+  const recoveryItemId =
+    Number(
+      row.recoveryItemId
+    );
+
+
+  if (
+    !Number.isFinite(
+      recoveryItemId
+    )
+
+    ||
+
+    recoveryItemId <= 0
+  ) {
+
+    return "-";
+
+  }
+
+
+  return (
+
+    '<button' +
+    ' type="button"' +
+    ' class="btn success small"' +
+    ' onclick="window.openRecoverySettlement(' +
+    recoveryItemId +
+    ')"' +
+    '>' +
+    '💵 Record Recovery' +
+    '</button>'
+
+  );
+
+}
 
     if (
       clean(
