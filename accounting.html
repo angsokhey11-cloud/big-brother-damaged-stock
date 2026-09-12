@@ -1181,6 +1181,9 @@ tbody tr:hover{
             <th>
               Write-Off ID
             </th>
+            <th>
+              Expense ID
+            </th>
 
             <th>
               Write-Off Action
@@ -1358,7 +1361,7 @@ tbody tr:hover{
           <tr>
 
             <td
-              colspan="11"
+              colspan="12"
               class="empty"
             >
               No Inventory Write-Off has been posted yet.
@@ -2852,6 +2855,8 @@ function filteredRows(){
 
           row.writeoffId,
 
+          row.expenseId,
+
           row.locationName,
 
           row.locationCode,
@@ -3001,10 +3006,29 @@ function renderTable(){
             </td>
 
             <td>
-              ${documentHtml(
-                row.writeoffId
-              )}
-            </td>
+
+  ${documentHtml(
+    row.writeoffId
+  )}
+
+  ${
+    clean(
+      row.expenseId
+    )
+
+      ? (
+          '<div class="audit-sub">' +
+          'Expense: ' +
+          esc(
+            row.expenseId
+          ) +
+          '</div>'
+        )
+
+      : ""
+  }
+
+</td>
 
             <td>
               ${writeOffActionHtml(
@@ -3369,7 +3393,7 @@ function renderWriteOffHistory(){
 
         '<tr>' +
 
-        '<td colspan="11" class="empty">' +
+        '<td colspan="12" class="empty">' +
 
         'No Inventory Write-Off has been posted yet.' +
 
@@ -3397,7 +3421,12 @@ function renderWriteOffHistory(){
                 "-"
               )}
             </td>
-
+            <td class="code">
+  ${esc(
+    row.expenseId ||
+    "-"
+  )}
+</td>
             <td>
               ${esc(
                 row.writeoffDate ||
@@ -3553,7 +3582,7 @@ async function loadData(){
       await window
         .BBDamagedStock
         .rpc(
-          "bb_stock_damage_accounting_report",
+          "bb_stock_damage_accounting_report_v4",
           {
             p_limit:
               2000
@@ -3854,7 +3883,7 @@ async function loadWriteOffHistory(){
 
         '<tr>' +
 
-        '<td colspan="11" class="empty">' +
+        '<td colspan="12" class="empty">' +
 
         'Inventory Write-Off History is unavailable for this account.' +
 
@@ -4177,25 +4206,44 @@ async function saveWriteOff(){
 
       "Inventory Write-Off posted · "
 
-      +
++
 
-      clean(
-        result?.writeoffId
+clean(
+  result?.writeoffId
+)
+
++
+
+(
+
+  clean(
+    result?.expenseId
+  )
+
+    ? (
+        " · Expense " +
+        clean(
+          result?.expenseId
+        )
       )
 
-      +
+    : ""
 
-      " · "
+)
 
-      +
++
 
-      money(
-        result?.writeoffValue
-      )
+" · "
 
-      +
++
 
-      ".",
+money(
+  result?.writeoffValue
+)
+
++
+
+"."
 
       "success"
 
