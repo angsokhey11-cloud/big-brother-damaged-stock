@@ -68,7 +68,7 @@ const title=document.querySelector('.title h1');if(title)title.textContent='💰
 })();
 `;
 try{
- const response=await fetch('accounting.html?v=20260915-mobile-3',{cache:'no-store'});
+ const response=await fetch('accounting.html?v=20260915-mobile-3',{cache:'default'});
  if(!response.ok)throw new Error('Could not load Damage Accounting source.');
  let html=await response.text();
  const h=html.toLowerCase().indexOf('</head>');if(h<0)throw new Error('Accounting source missing </head>.');
