@@ -1,3 +1,5 @@
+> **Update 03-Nov-2026:** The approved SQL migrations are now registered in [the trusted dashboard Code Sync manifest](https://github.com/angsokhey11-cloud/big-brother-dashboard/blob/main/local-db-migrations/manifest.json) as `20261103_a_direct_sale_warehouse_source_v1` and `20261103_b_damage_exchange_cost_cogs_v1`. The user's uploaded V3.4 Controller was integrated and packaged as a separate candidate. **The Local database has NOT yet been changed or tested on Windows.** Original planning notes below document the pre-integration state.
+
 # BIG BROTHER V3.4 Local Brain V5/V6 - Damage Exchange Cost / COGS
 
 **State:** PREPARED; NOT APPLIED TO LOCAL BRAIN; CONTROLLER REGISTRATION PENDING.
